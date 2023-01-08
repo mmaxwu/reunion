@@ -3,7 +3,7 @@
 
 @import "{{ site.theme }}";
 
-$orange: #d4d4d4;
+$lightgray: #d4d4d4;
 /* "row style" is flexible size and aligns pictures in center */
 .row {
     align-items: center;
@@ -18,5 +18,5 @@ $orange: #d4d4d4;
 
 header table {
     font-size: 2rem;
-    background: $orange;
+    background: $lightgray;
 }
