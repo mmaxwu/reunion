@@ -1,5 +1,4 @@
-## Sports
-> Group sports will occur each every morning.  Sports will be fun and competitive.  Winners will have Leuck bragging rights for years to come.  On site..
+## Restaurants
 
 - Swimming Pool
 - Fishing (Bring your own equipment, some provided by ranch)

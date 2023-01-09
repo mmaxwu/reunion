@@ -1,52 +1,47 @@
-## Housing Overview
-> Sleeps 48 people. Verify your housing assignment at the reunion with Jeremiah and Melissa in case there are last minute changes.
- 
-> Preview [Homes](https://www.coramranch.com/vacation-home)
-- River House
-- Dogwood House
-- Alpine and Birch House
-- Cedar House
-- Rec Room
+# Wildlife Tracking
 
-## Cooking
-> On site there are cooking facilities in each house. The Alpine ranch kitchens will be for large group meals and has appliances and utensils. There is an outdoor barbecue!
+<table>
+  <tr>
+    <th>National Park</th>
+    <th>Wildlife</th>
+    <th>Number</th>
+  </tr>
+  <tr>
+    <td>Yosemite</td>
+    <td>Black bears</td>
+    <td id="yosemite-bears">0</td>
+  </tr>
+  <tr>
+    <td>Joshua Tree</td>
+    <td>Desert bighorn sheep</td>
+    <td id="joshua-sheep">0</td>
+  </tr>
+  <tr>
+    <td>Point Reyes</td>
+    <td>Seals</td>
+    <td id="point-reyes-seals">0</td>
+  </tr>
+</table>
 
+<script>
+  function updateWildlifeCount() {
+    // Retrieve updated wildlife count data
+    const yosemiteBears = retrieveUpdatedCount('yosemite-bears');
+    const joshuaSheep = retrieveUpdatedCount('joshua-sheep');
+    const pointReyesSeals = retrieveUpdatedCount('point-reyes-seals');
 
-## Housing Assignment
+    // Update the table with the new counts
+    document.getElementById('yosemite-bears').innerHTML = yosemiteBears;
+    document.getElementById('joshua-sheep').innerHTML = joshuaSheep;
+    document.getElementById('point-reyes-seals').innerHTML = pointReyesSeals;
+  }
 
-| Family | Attending | Assignment | Count | Children | Arrive | Depart
-| --- | --- | --- | --- | --- | --- | --- |
-| Frank, Judith | Yes | Dogwood Primary | 2 | None | Mon | Sat |
-| | | | | |
-| Johnner, Lora | Yes | ? | 3 | Shay (14) | Mon | Sat |
-| Trent, Yuri | Yes | ? | 5 | Amelia (8), Cruz (6), Gavi (1) | Mon | Sat |
-| Corey | Yes | ? | 1 | - | Mon | Fri |
-| Tiernan | Yes | ? | 1 | - | Mon | Sat |
-| Claire | Yes | ? | 1 | - | Mon | Sat |
-| | | | | |
-|Lisa-Anne, Chris | Yes | ? | 1+ | None | Mon | Sat |
-|Brianna, Forest | Yes | ? | 6 | Sayla (6), Tundra (4), Alora (2), Keelynn (1) | Mon | Sat |
-|Kira, Spencer | Yes | ? | 5 | Georgianna (6), James (5), Arabella (2), Henry (NB) | Mon | Sat |
-|Ethan, Layne | Yes | ? | 6 | William (6), Lily (4), Adeline (2), Eleanor (1) | Mon | Sat |
-| Jarom | Yes | ? | 1 | None | Mon | Sat |
-| Braden | Yes | ? | 1 | None | Mon | Sat |
-| | | | | |
-| Mathew | ? | ? | 1 | None | Unk | Unk |
-| | | | | |
-| Sherri, Drumond | Yes | ? | 2 | None | Mon | Sat |
-| Taylor | Yes | ? | 1 | None | Unk | Unk |
-| Jake | Yes | ? | 1 | None | Unk | Unk |
-| | | | | |
-| Angela, Tye | Yes | ? | 2 | None | Mon | Sat |
-| Bryce | ? | ? | 1 | None | Unk | Unk |
-| Aspen, Brandon | ? | ? | 2 | None | Unk | Unk |
-| Calem | ? | ? | 1 | None | Unk | Unk |
-| | | | | |
-| Jared, Janice | Yes | ? | 4 | Kelle (15), Naya (13) | Mon | Sat |
-| | | | | |
-| John, Melanie | Yes | ? | 4 | Connor (17), Sophia (14) | Mon | Sat |
-| Isaiah | ? | ? | 1 | None | Unk | Unk |
-| | | | | |
-| Jeremiah, Melissa | Yes | ? | 3 | Liam (11) | Mon | Sat |
-| Annalyce | ? | ? | 1 | None | Unk | Unk |
-| Peyton | Yes | ? | 1 | None | Unk | Unk |
+  // This function would be responsible for retrieving updated wildlife count data
+  function retrieveUpdatedCount(id) {
+    // Return placeholder data for now
+    return Math.floor(Math.random() * 100);
+  }
+
+  // Update the wildlife counts every 5 seconds
+  setInterval(updateWildlifeCount, 5000);
+</script>
