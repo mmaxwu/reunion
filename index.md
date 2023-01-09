@@ -1,41 +1,16 @@
 ## National parks
-> Browse [Coram Ranch Site](https://www.coramranch.com/) to learn about reunion location and surrounding community. 
-- [Video Tour](https://youtu.be/kX24Zv1CJZA)
-- [Google Maps 14251 Coram Rd, Shasta Lake, California 96089](https://www.google.com/maps/place/14251+Coram+Rd,+Shasta+Lake,+CA+96019/@40.707988,-122.44701,16z/data=!4m5!3m4!1s0x54d28be161c895ef:0xca3b8805b9b6a5ec!8m2!3d40.7079882!4d-122.4470104?hl=en)
-- ***NO PETS***
+Welcome to our website about California's stunning national parks! California is home to some of the most beautiful and diverse national parks in the country, and we are here to help you discover them all. From the towering trees of Sequoia and Kings Canyon National Parks, to the rugged coastline of Point Reyes National Seashore, there is something for everyone in California's national parks. Whether you're a seasoned hiker, a nature photographer, or just looking to escape the city for a while, our website has everything you need to plan your next national park adventure. So come explore the Golden State's natural beauty and discover why California's national parks are truly one of a kind.
 
-## Schedule
+## Weather
+> This table displays today's weather for each national park. The weather is displayed in fahrenheit
 
-| Date | Day | Time | Event | Meet At | Coordinator |
-| --- | --- | --- | --- | --- | --- |
-| 6/26 | Monday | 3pm | Check in | Shasta Lakes | Frank and Judith |
-| --- | --- | 6pm | Dinner | Dining Room | Lisa |
-| --- | --- | 7pm | Leuck Greet | Dining Room | Frank and Judith |
-| 6/27 | Tuesday | 8am | Breakfast | Dining Room | Lisa |
-| --- | --- | 10am | Greet Games | Field and Court | Johnner, Lora, Shay|
-| --- | --- | 12pm | Make & Go Lunch | Dining Room | Lisa |
-| --- | --- | 2pm | Bike/Hike | Bike Rack | Johnner and Lora |
-| --- | --- | 6pm | Dinner hi| Dining Room | Sherri |
-| --- | --- | 7pm | Family Night | Dining Room | John and Mel |
-| 6/28 | Wednesday | 7:30 | Zumba | Court | Kira |
-| --- | --- | 8:30am | Breakfast | Dining | Lisa |
-| --- | --- | 10am | Pool Olympics | Pool Area | Annalyce, Peyton |
-| --- | --- | 12pm | Make & Go Lunch | Dining Room | Lisa |
-| --- | --- | 1pm | Spelunking | [Cars, 32 minutes travel](http://lakeshastacaverns.clickforward.com/group-tours) | Johnner and Lora|
-| --- | --- | 6pm | Dinner | Dining Room | Angela |
-| --- | --- | 7pm | Family Night | Dining Room | John and Mel |
-| 6/29 | Thursday | 8am | Breakfast | Dining Room | Lisa |
-| --- | --- | 10am | Field Olympics | Field | Jake, Taylor |
-| --- | --- | 12:30pm | Make & Go Lunch | Dining Room | Lisa |
-| --- | --- | 1pm | Boating | [Cars, 25 minutes travel](https://bridgebayhouseboats.com/houseboats/grand-sierra) | Jared |
-| --- | --- | 6pm | Dinner | Dining Room | Jared and Jeremiah |
-| --- | --- | 7pm | Family Night | Dining Room | John and Mel |
-| 6/30 | Friday | 7:30 | Zumba | Court | Lisa |
-| --- | --- | 8:30am | Breakfast | Dining | Kira |
-| --- | --- | 10am | Family Relays | Field or Court | Johnner |
-| --- | --- | 12pm | Make & Go Lunch | Dining Room | Lisa |
-| --- | --- | 1pm | Explore the area | You pick | Self coordinated |
-| --- | --- | 6pm | Dinner | Dining Room | John |
-| --- | --- | 7pm | Family Night | Dining Room |John and Mel |
-| 7/1 | Saturday | 8am | Breakfast | Dining Room | Lisa |
-| --- | --- | 10am | Check Out | Travel Home | Your it |
+| Park | Date | Type | Low | High |
+| Channel Islands National Park | 1/9/22 | Rain | 57° | 62° |
+| Lassen Volcanic National Park | 1/9/22 | Snow | 19° | 33° |
+| Point Reyes National Seashore | 1/9/22 | Rain | 49° | 56° |
+| Redwood National & State Parks | 1/9/22 | Scattered Showers | 45° | 54° |
+| Sequoia & Kings Canyon National Parks | 1/9/22 | Heavy Winter Storm | 16° | 25° |
+| Death Valley National Park | 1/9/22 | Scattered Showers | 59° | 68° |
+| Joshua Tree National Park | 1/9/22 | Partly Cloudy | 44° | 62° |
+| Pinnacles National Park | 1/9/22 | Rain | 47° | 56° |
+| Yosemite National Park | 1/9/22 | Rain and Snow | 33° | 39° |
