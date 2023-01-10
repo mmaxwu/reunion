@@ -4,6 +4,8 @@
 @import "{{ site.theme }}";
 
 $lightgray: #d4d4d4;
+$buttoncolor: #2c6d1c8a;
+$titlecolor: #eaaefc;
 /* "row style" is flexible size and aligns pictures in center */
 .row {
     align-items: center;
@@ -16,7 +18,12 @@ $lightgray: #d4d4d4;
     padding: 5px;
   }
 
-header table {
-    font-size: 2rem;
-    background: $lightgray;
+.menu, tr {
+    text-align: center;
+    font-size: 1.5rem;
+    width: 100%;
+}
+body, .page-header,div,a {
+    color: white;
+    td:hover {background-color: $buttoncolor;};
 }
