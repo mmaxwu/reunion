@@ -18,12 +18,12 @@ $titlecolor: #eaaefc;
     padding: 5px;
   }
 
-.menu, tr {
+.menu {
     text-align: center;
     font-size: 1.5rem;
     width: 100%;
+    td:hover {background-color: $buttoncolor;};
 }
 body, .page-header,div,a {
     color: white;
-    td:hover {background-color: $buttoncolor;};
 }

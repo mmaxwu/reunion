@@ -1,47 +1,95 @@
-# Wildlife Tracking
+<!DOCTYPE html>
+<html>
 
-<table>
-  <tr>
-    <th>National Park</th>
-    <th>Wildlife</th>
-    <th>Number</th>
-  </tr>
-  <tr>
-    <td>Yosemite</td>
-    <td>Black bears</td>
-    <td id="yosemite-bears">0</td>
-  </tr>
-  <tr>
-    <td>Joshua Tree</td>
-    <td>Desert bighorn sheep</td>
-    <td id="joshua-sheep">0</td>
-  </tr>
-  <tr>
-    <td>Point Reyes</td>
-    <td>Seals</td>
-    <td id="point-reyes-seals">0</td>
-  </tr>
-</table>
+<head>
+    <style>
+        /* styles for the game board */
+        #board {
+            width: 400px;
+            height: 400px;
+            border: 1px solid black;
+        }
 
-<script>
-  function updateWildlifeCount() {
-    // Retrieve updated wildlife count data
-    const yosemiteBears = retrieveUpdatedCount('yosemite-bears');
-    const joshuaSheep = retrieveUpdatedCount('joshua-sheep');
-    const pointReyesSeals = retrieveUpdatedCount('point-reyes-seals');
+        /* styles for each cell */
+        .cell {
+            width: 20px;
+            height: 20px;
+            border: 1px solid black;
+        }
 
-    // Update the table with the new counts
-    document.getElementById('yosemite-bears').innerHTML = yosemiteBears;
-    document.getElementById('joshua-sheep').innerHTML = joshuaSheep;
-    document.getElementById('point-reyes-seals').innerHTML = pointReyesSeals;
-  }
+        /* styles for the snake */
+        .snake {
+            background-color: green;
+        }
 
-  // This function would be responsible for retrieving updated wildlife count data
-  function retrieveUpdatedCount(id) {
-    // Return placeholder data for now
-    return Math.floor(Math.random() * 100);
-  }
+        /* styles for the food */
+        .food {
+            background-color: red;
+        }
+    </style>
+</head>
 
-  // Update the wildlife counts every 5 seconds
-  setInterval(updateWildlifeCount, 5000);
-</script>
+<body>
+    <div id="board"></div>
+    <div id="score">Score: <span id="score-value">0</span></div>
+    <script>
+        // global variables
+        const board = document.getElementById("board");
+        const scoreValue = document.getElementById("score-value");
+        let snake = [[2, 0], [1, 0], [0, 0]];
+        let food = [3, 3];
+        let direction = "right";
+        let score = 0;
+
+        // creates the game board
+        function createBoard() {
+            for (let i = 0; i < 20; i++) {
+                for (let j = 0; j < 20; j++) {
+                    let cell = document.createElement("div");
+                    cell.classList.add("cell");
+                    cell.setAttribute("id", i + "-" + j);
+                    board.appendChild(cell);
+                }
+            }
+        }
+
+        // renders the snake and food on the board
+        function render() {
+            snake.forEach(([x, y]) => {
+                let cell = document.getElementById(x + "-" + y);
+                cell.classList.add("snake");
+            });
+
+            let foodCell = document.getElementById(food[0] + "-" + food[1]);
+            foodCell.classList.add("food");
+        }
+
+        // moves the snake in the specified direction
+        function move() {
+            let head = snake[snake.length - 1];
+            let newHead = [...head];
+            switch (direction) {
+                case "right":
+                    newHead[1]++;
+                    break;
+                case "left":
+                    newHead[1]--;
+                    break;
+                case "up":
+                    newHead[0]--;
+                    break;
+                case "down":
+                    newHead[0]++;
+                    break;
+            }
+            snake.push(newHead);
+            let tail = snake.shift();
+            let tailCell = document.getElementById(tail[0] + "-" + tail[1]);
+            tailCell.classList.remove("snake");
+
+            // check if the snake has collided with the food
+            let snakeHead = snake[snake.length - 1];
+            if (snakeHead[0] === food[0] && snakeHead[1] === food[1]) {
+                food = generateFood();
+                score++;
+                score
