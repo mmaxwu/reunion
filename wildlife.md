@@ -9,19 +9,16 @@
             height: 400px;
             border: 1px solid black;
         }
-
         /* styles for each cell */
         .cell {
             width: 20px;
             height: 20px;
             border: 1px solid black;
         }
-
         /* styles for the snake */
         .snake {
             background-color: green;
         }
-
         /* styles for the food */
         .food {
             background-color: red;
@@ -40,7 +37,6 @@
         let food = [3, 3];
         let direction = "right";
         let score = 0;
-
         // creates the game board
         function createBoard() {
             for (let i = 0; i < 20; i++) {
@@ -52,18 +48,15 @@
                 }
             }
         }
-
         // renders the snake and food on the board
         function render() {
             snake.forEach(([x, y]) => {
                 let cell = document.getElementById(x + "-" + y);
                 cell.classList.add("snake");
             });
-
             let foodCell = document.getElementById(food[0] + "-" + food[1]);
             foodCell.classList.add("food");
         }
-
         // moves the snake in the specified direction
         function move() {
             let head = snake[snake.length - 1];
@@ -86,10 +79,11 @@
             let tail = snake.shift();
             let tailCell = document.getElementById(tail[0] + "-" + tail[1]);
             tailCell.classList.remove("snake");
-
+            }
             // check if the snake has collided with the food
             let snakeHead = snake[snake.length - 1];
             if (snakeHead[0] === food[0] && snakeHead[1] === food[1]) {
                 food = generateFood();
                 score++;
                 score
+                }
