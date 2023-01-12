@@ -4,7 +4,7 @@
 @import "{{ site.theme }}";
 
 $lightgray: #d4d4d4;
-$buttoncolor: #2c6d1c8a;
+$buttoncolor: #33ff0085;
 $titlecolor: #eaaefc;
 /* "row style" is flexible size and aligns pictures in center */
 .row {
@@ -22,8 +22,17 @@ $titlecolor: #eaaefc;
     text-align: center;
     font-size: 1.5rem;
     width: 100%;
-    td:hover {background-color: $buttoncolor;};
+    td:hover {background-color: $buttoncolor};
 }
 body, .page-header,div,a {
-    color: white;
+    color: rgb(255, 255, 255);
 }
+
+body, header, .title {
+    h1{background-color: rgba(255, 72, 0, 0.719)};
+    h1{text-align: center};
+}
+
+// body, header, .title,p {
+//   p{text-align: center};
+// }
