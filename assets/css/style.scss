@@ -40,7 +40,7 @@ li { line-height: 1.4; }
 
 /* Header, <header> header   - container h1       - project name h2       - project description
 */
-header { background: rgba(0, 0, 0, 0.1); width: 100%; border-bottom: 1px dashed #b5e853; padding: 20px 0; margin: 0 0 40px 0; }
+header { background: rgba(0, 0, 0, 0.1); width: 100%; border-bottom: 1px dashed #00FFFF; padding: 20px 0; margin: 0 0 40px 0; }
 
 header h1 { font-size: 30px; line-height: 1.5; margin: 0 0 0 -40px; font-weight: bold; font-family: Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal, monospace; color: #b5e853; text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1), 0 0 5px rgba(181, 232, 83, 0.1), 0 0 10px rgba(181, 232, 83, 0.1); letter-spacing: -1px; -webkit-font-smoothing: antialiased; }
 @media (max-width: 1000px) { header h1 { margin-left: 0; } }
@@ -57,7 +57,7 @@ header h2 { font-size: 18px; font-weight: 300; color: #666; }
 
 section img { max-width: 100%; }
 
-h1, h2, h3, h4, h5, h6 { font-weight: normal; font-family: Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal, monospace; color: #ff4800da; letter-spacing: -0.03em; text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1), 0 0 5px rgba(181, 232, 83, 0.1), 0 0 10px rgba(181, 232, 83, 0.1); }
+h1, h2, h3, h4, h5, h6 { font-weight: normal; font-family: Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal, monospace; color: #00FFFF; letter-spacing: -0.03em; text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1), 0 0 5px rgba(181, 232, 83, 0.1), 0 0 10px rgba(181, 232, 83, 0.1); }
 
 #main_content h1 { font-size: 30px; }
 
@@ -77,17 +77,17 @@ ul li { list-style-image: url("../images/bullet.png"); }
 
 blockquote { color: #aaa; padding-left: 10px; border-left: 1px dotted #666; }
 
-pre { background: rgba(0, 0, 0, 0.9); border: 1px solid rgba(255, 255, 255, 0.15); padding: 10px; font-size: 16px; color: #ff4800da; border-radius: 2px; word-wrap: normal; overflow: auto; overflow-y: hidden; }
+pre { background: rgba(0, 0, 0, 0.9); border: 1px solid rgba(255, 255, 255, 0.15); padding: 10px; font-size: 16px; color: #00FFFF; border-radius: 2px; word-wrap: normal; overflow: auto; overflow-y: hidden; }
 
 code.highlighter-rouge { background: rgba(0, 0, 0, 0.9); border: 1px solid rgba(255, 255, 255, 0.15); padding: 0px 3px; margin: 0px -3px; color: #aa759f; border-radius: 2px; }
 
 table { width: 100%; margin: 0 0 20px 0; }
 
-th { text-align: left; border-bottom: 1px dashed #ff4800da; padding: 5px 10px; }
+th { text-align: left; border-bottom: 1px dashed #00FFFF; padding: 5px 10px; }
 
 td { padding: 5px 10px; }
 
-hr { height: 0; border: 0; border-bottom: 1px dashed #ff4800da; color: #ff4800da; }
+hr { height: 0; border: 0; border-bottom: 1px dashed #00FFFF; color: #00FFFF; }
 
 /* Buttons
 */
@@ -112,9 +112,7 @@ a { color: #63c0f5; text-shadow: 0 0 5px rgba(104, 182, 255, 0.5); }
 
 #a-title { text-decoration: none; }
 
-$lightgray: #d4d4d4;
-$buttoncolor: #ff4800da;
-$titlecolor: #eaaefc;
+
 /* "row style" is flexible size and aligns pictures in center */
 .row { align-items: center; display: flex; }
 
@@ -122,12 +120,12 @@ $titlecolor: #eaaefc;
 .column { flex: 33.33%; padding: 5px; }
 
 .menu { text-align: center; font-size: 1.5rem; width: 100%; }
-.menu td:hover { background-color: #ff4800da; }
+.menu td:hover { background-color: #00FFFF; }
 
 body, .page-header, div, a { color: white; }
 
-body h1, header h1, .title h1 { background-color: rgba(255, 72, 0, 0.719); }
+body h1, header h1, .title h1 { background-color: rgb(0,255,255); }
 body h1, header h1, .title h1 { text-align: center; }
 // body, header, .title,p {
 //   p{text-align: center};
-// }
+// 
