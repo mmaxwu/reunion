@@ -6,22 +6,65 @@ Welcome to our website where we host multiple retro mini games with a leader boa
 ## Snake Leaderboard
 > This table displays the top 5 current leaders in the maximum score for Snake
 
-| Username | Date | Score |
-| Bob123 | 1/3/22 | 128 |
-| Markk | 1/9/23 | 100 |
-| mmaxwu | 12/25/22 | 98 |
-| A1234l | 1/9/23 | 98 |
-| chewyboba10 | 1/10/23 | 98 |
+<html>
+<head>
+  <title>Random Score Table</title>
+</head>
+<body>
+  <table id="scoreTable">
+    <thead>
+      <tr>
+        <th>Username</th>
+        <th>Date</th>
+        <th>Score</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Bob123</td>
+        <td>1/3/22</td>
+        <td id="score1">128</td>
+      </tr>
+      <tr>
+        <td>Markk</td>
+        <td>1/9/23</td>
+        <td id="score2">100</td>
+      </tr>
+      <tr>
+        <td>mmaxwu</td>
+        <td>12/25/22</td>
+        <td id="score3">98</td>
+      </tr>
+      <tr>
+        <td>A1234l</td>
+        <td>1/9/23</td>
+        <td id="score4">98</td>
+      </tr>
+      <tr>
+        <td>chewyboba10</td>
+        <td>1/10/23</td>
+        <td id="score5">98</td>
+      </tr>
+    </tbody>
+  </table>
 
+  <script>
+    // Function to update the score with a random number between 0-100
+    function updateScore() {
+      let score1 = document.getElementById("score1");
+      let score2 = document.getElementById("score2");
+      let score3 = document.getElementById("score3");
+      let score4 = document.getElementById("score4");
+      let score5 = document.getElementById("score5");
+      score1.innerHTML = Math.floor(Math.random() * 101);
+      score2.innerHTML = Math.floor(Math.random() * 101);
+      score3.innerHTML = Math.floor(Math.random() * 101);
+      score4.innerHTML = Math.floor(Math.random() * 101);
+      score5.innerHTML = Math.floor(Math.random() * 101);
+    }
 
-## Mini Arcade
-Welcome to our website about California's stunning national parks! California is home to some of the most beautiful and diverse national parks in the country, and we are here to help you discover them all. From the towering trees of Sequoia and Kings Canyon National Parks, to the rugged coastline of Point Reyes National Seashore, there is something for everyone in California's national parks. Whether you're a seasoned hiker, a nature photographer, or just looking to escape the city for a while, our website has everything you need to plan your next national park adventure. So come explore the Golden State's natural beauty and discover why California's national parks are truly one of a kind.
-## Snake Leaderboard
-> This table displays the top 5 current leaders in the maximum score for Snake
-
-| Username | Date | Score |
-| Bob123 | 1/3/22 | 128 |
-| Markk | 1/9/23 | 100 |
-| mmaxwu | 12/25/22 | 98 |
-| A1234l | 1/9/23 | 98 |
-| chewyboba10 | 1/10/23 | 98 |
+    // Call the updateScore function every 5 seconds
+    setInterval(updateScore, 5000);
+  </script>
+</body>
+</html>
