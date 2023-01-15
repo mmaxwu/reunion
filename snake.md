@@ -372,3 +372,24 @@ window.addEventListener("keydown", function(e) {
     })();
 </script>
 
+<!-- Enters highscore -->
+<h3>Enter Your Highscore:</h3>
+<table class = "snakeScore">
+    <tr>
+        <th><label for="Username">Username</label></th>
+        <th><label for="Date">Date</label></th>
+        <th><label for="Score">Score</label></th>
+    </tr>
+    <tr>
+        <td><input type="text" name="Username" id="Username" required></td>
+        <td><input type="Date" name="Date" id="Date" placeholder="abc@xyz.org" required></td>
+        <td id="score_value">0</td>
+        <td ><button onclick="create_User()">Add</button></td>
+    </tr>
+</table>
+
+<style>
+    .snakeScore {
+        width: 50%;
+    }
+</style>
