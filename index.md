@@ -17,6 +17,7 @@ Welcome to our website where we host multiple retro mini games with a leader boa
         <th>Username</th>
         <th>Date</th>
         <th>Score</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -24,26 +25,31 @@ Welcome to our website where we host multiple retro mini games with a leader boa
         <td>Bob123</td>
         <td>1/3/22</td>
         <td id="score1">128</td>
+        <td>update  delete</td>
       </tr>
       <tr>
         <td>Markk</td>
         <td>1/9/23</td>
         <td id="score2">100</td>
+        <td>update  delete</td>
       </tr>
       <tr>
         <td>mmaxwu</td>
         <td>12/25/22</td>
         <td id="score3">98</td>
+        <td>update  delete</td>
       </tr>
       <tr>
         <td>A1234l</td>
         <td>1/9/23</td>
         <td id="score4">98</td>
+        <td>update  delete</td>
       </tr>
       <tr>
         <td>chewyboba10</td>
         <td>1/10/23</td>
         <td id="score5">98</td>
+        <td>update  delete</td>
       </tr>
     </tbody>
   </table>
