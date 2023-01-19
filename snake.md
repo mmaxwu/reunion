@@ -383,10 +383,15 @@ window.addEventListener("keydown", function(e) {
     <tr>
         <td><input type="text" name="Username" id="Username" required></td>
         <td><input type="Date" name="Date" id="Date" placeholder="abc@xyz.org" required></td>
-        <td id="score_value">0</td>
+        <td><span id="fixed_score">0</span></td>
         <td ><button onclick="create_User()">Add</button></td>
     </tr>
 </table>
+
+<script>
+    document.getElementById("fixed_score").innerHTML = String(score_val);
+    // table_score.innerHTML = String(score_val);
+</script>
 
 <style>
     .snakeScore {
