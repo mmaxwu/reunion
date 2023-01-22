@@ -382,8 +382,8 @@ window.addEventListener("keydown", function(e) {
     </tr>
     <tr>
         <td><input type="text" name="Username" id="Username" required></td>
-        <td><input type="Date" name="Date" id="Date" placeholder="abc@xyz.org" required></td>
-        <td><span id="fixed_score">0</span></td>
+        <td><input type="Date" name="Date" id="Date" required></td>
+        <td><input type="text" name="Score" id="Score" placeholder="Ex: 3" required></td>
         <td ><button onclick="create_User()">Add</button></td>
     </tr>
 </table>
