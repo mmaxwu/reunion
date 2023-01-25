@@ -82,7 +82,7 @@
             <a id="setting_menu1" class="link-alert">settings</a>
         </div>
         <!-- Play Screen -->
-        <canvas id="snake" class="wrap" width="320" height="320" tabindex="1"></canvas>
+        <canvas id="snake" class="wrap" width="480" height="480" tabindex="1"></canvas>
         <!-- Settings Screen -->
         <div id="setting" class="py-4 text-light">
             <p>Settings Screen, press <span style="background-color: #FFFFFF; color: #000000">space</span> to go back to playing</p>
@@ -139,7 +139,7 @@ window.addEventListener("keydown", function(e) {
         const button_setting_menu = document.getElementById("setting_menu");
         const button_setting_menu1 = document.getElementById("setting_menu1");
         // Game Control
-        const BLOCK = 10;   // size of block rendering
+        const BLOCK = 15;   // size of block rendering
         let SCREEN = SCREEN_MENU;
         let snake;
         let snake_dir;
@@ -267,18 +267,18 @@ window.addEventListener("keydown", function(e) {
                 snake[snake.length] = {x: snake[0].x, y: snake[0].y};
                 altScore(++score);
                 addFood();
-                activeDot(food.x, food.y);
+                activeDotFood(food.x, food.y);
             }
             // Repaint canvas
             ctx.beginPath();
-            ctx.fillStyle = "royalblue";
+            ctx.fillStyle = "#38d42c";
             ctx.fillRect(0, 0, canvas.width, canvas.height);
             // Paint snake
             for(let i = 0; i < snake.length; i++){
-                activeDot(snake[i].x, snake[i].y);
+                activeDotSnake(snake[i].x, snake[i].y);
             }
             // Paint food
-            activeDot(food.x, food.y);
+            activeDotFood(food.x, food.y);
             // Debug
             //document.getElementById("debug").innerHTML = snake_dir + " " + snake_next_dir + " " + snake[0].x + " " + snake[0].y;
             // Recursive call after speed delay, déjà vu
@@ -330,10 +330,16 @@ window.addEventListener("keydown", function(e) {
         }
         /* Dot for Food or Snake part */
         /////////////////////////////////////////////////////////////
-        let activeDot = function(x, y){
-            ctx.fillStyle = "#FFFFFF";
+        let activeDotFood = function(x, y){
+            ctx.fillStyle = "#ba1818";
             ctx.fillRect(x * BLOCK, y * BLOCK, BLOCK, BLOCK);
         }
+
+        let activeDotSnake = function(x, y){
+            ctx.fillStyle = "#5c3601";
+            ctx.fillRect(x * BLOCK, y * BLOCK, BLOCK, BLOCK);
+        }
+
         /* Random food placement */
         /////////////////////////////////////////////////////////////
         let addFood = function(){
