@@ -1,7 +1,7 @@
 <html>
-<head>
-  <title>Snake High Scores</title>
-</head>
+<h1>
+Snake High Scores
+</h1>
 <body>
   <table id="scoreTable">
     <thead>
