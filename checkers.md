@@ -39,7 +39,6 @@
   }
   body {
     width: 100%;
-    background: #ffef80;
     text-align: center;
     display: flex;
     flex-direction: row;
@@ -188,9 +187,9 @@
   .piece.black.king::after {
     color: #fff;
   }
-  .piece.white {
+  .piece.red {
   }
-  .piece.white::before {
+  .piece.red::before {
     content: "";
     display: block;
     margin: 0 auto;
@@ -205,8 +204,8 @@
     transform: translateX(-50%) translateY(-50%);
     z-index: 1;
   }
-  .piece.white.king::after {
-    color: #000;
+  .piece.red.king::after {
+    color: #FF0000;
   }
   .piece.half-highlight {
     border-color: rgb(117, 247, 167);
@@ -265,7 +264,7 @@ let history = [];
 let currentPlayer = null;
 
 const init = (event) => {
-  currentPlayer = Player.White;
+  currentPlayer = Player.Red;
   updateUI();
   reset();
 };
@@ -273,7 +272,7 @@ document.addEventListener("DOMContentLoaded", init);
 
 // UI -- begin
 const updateUI = () => {
-  if (currentPlayer == Player.White) btnnextmove.setAttribute("disabled", true);
+  if (currentPlayer == Player.Red) btnnextmove.setAttribute("disabled", true);
   else if (currentPlayer == Player.Black)
     btnnextmove.removeAttribute("disabled");
   
@@ -399,7 +398,7 @@ selectailevel.addEventListener('change', (e) => {
 // UI -- end
 
 const reset = () => {
-  currentPlayer = Player.White;
+  currentPlayer = Player.Red;
   board = new Board(new Array(BASE * BASE).fill(Piece.Empty), currentPlayer, BASE);
 
   board.set(1, 0, Piece.BlackMan);
@@ -415,24 +414,24 @@ const reset = () => {
   board.set(5, 2, Piece.BlackMan);
   board.set(7, 2, Piece.BlackMan);
 
-  board.set(0, 5, Piece.WhiteMan);
-  board.set(2, 5, Piece.WhiteMan);
-  board.set(4, 5, Piece.WhiteMan);
-  board.set(6, 5, Piece.WhiteMan);
-  board.set(1, 6, Piece.WhiteMan);
-  board.set(3, 6, Piece.WhiteMan);
-  board.set(5, 6, Piece.WhiteMan);
-  board.set(7, 6, Piece.WhiteMan);
-  board.set(0, 7, Piece.WhiteMan);
-  board.set(2, 7, Piece.WhiteMan);
-  board.set(4, 7, Piece.WhiteMan);
-  board.set(6, 7, Piece.WhiteMan);
+  board.set(0, 5, Piece.RedMan);
+  board.set(2, 5, Piece.RedMan);
+  board.set(4, 5, Piece.RedMan);
+  board.set(6, 5, Piece.RedMan);
+  board.set(1, 6, Piece.RedMan);
+  board.set(3, 6, Piece.RedMan);
+  board.set(5, 6, Piece.RedMan);
+  board.set(7, 6, Piece.RedMan);
+  board.set(0, 7, Piece.RedMan);
+  board.set(2, 7, Piece.RedMan);
+  board.set(4, 7, Piece.RedMan);
+  board.set(6, 7, Piece.RedMan);
 
   render(root, board);
   showPossibleMoves();
 };
 const detectWinner = () => {
-  if (board.isWin(Player.White)) {
+  if (board.isWin(Player.Red)) {
     alert("Player wins!");
     reset();
     return 1;
@@ -562,8 +561,8 @@ const render = (root, board) => {
       else span.classList.add("dark");
       // type
       if (piece == Piece.Empty) span.classList.add("empty");
-      else if (piece == Piece.WhiteMan) span.classList.add("man", "white");
-      else if (piece == Piece.WhiteKing) span.classList.add("king", "white");
+      else if (piece == Piece.RedMan) span.classList.add("man", "red");
+      else if (piece == Piece.RedKing) span.classList.add("king", "red");
       else if (piece == Piece.BlackMan) span.classList.add("man", "black");
       else if (piece == Piece.BlackKing) span.classList.add("king", "black");
       else span.classList.add("empty");
@@ -584,27 +583,27 @@ const render = (root, board) => {
  */
 class Piece {
   static Empty = 0;
-  static WhiteMan = 1;
+  static RedMan = 1;
   static BlackMan = 2;
-  static WhiteKing = 3;
+  static RedKing = 3;
   static BlackKing = 4;
 
   static opposite(type) {
-    if (type == Piece.WhiteMan) return Piece.BlackMan;
-    else if (type == Piece.BlackMan) return Piece.WhiteMan;
-    else if (type == Piece.WhiteKing) return Piece.BlackKing;
-    else if (type == Piece.BlackKing) return Piece.WhiteKing;
+    if (type == Piece.RedMan) return Piece.BlackMan;
+    else if (type == Piece.BlackMan) return Piece.RedMan;
+    else if (type == Piece.RedKing) return Piece.BlackKing;
+    else if (type == Piece.BlackKing) return Piece.RedKing;
     else return Piece.Empty;
   }
   static dir(type) {
-    if ([Piece.WhiteKing, Piece.BlackKing].includes(type)) return [1, -1];
-    else if (type == Piece.WhiteMan) return [-1];
+    if ([Piece.RedKing, Piece.BlackKing].includes(type)) return [1, -1];
+    else if (type == Piece.RedMan) return [-1];
     else if (type == Piece.BlackMan) return [1];
     else return [];
   }
   static value(type) {
-    if ([Piece.WhiteKing, Piece.BlackKing].includes(type)) return 10;
-    else if ([Piece.WhiteMan, Piece.BlackMan].includes(type)) return 3;
+    if ([Piece.RedKing, Piece.BlackKing].includes(type)) return 10;
+    else if ([Piece.RedMan, Piece.BlackMan].includes(type)) return 3;
     else return 0;
   }
 }
@@ -613,16 +612,16 @@ class Piece {
  * Represents a player.
  */
 class Player {
-  static White = 1;
+  static Red = 1;
   static Black = 2;
 
   static opposite(type) {
-    if (type == Player.White) return Player.Black;
-    else if (type == Player.Black) return Player.White;
+    if (type == Player.Red) return Player.Black;
+    else if (type == Player.Black) return Player.Red;
     else return null;
   }
   static byPiece(type) {
-    if ([Piece.WhiteMan, Piece.WhiteKing].includes(type)) return Player.White;
+    if ([Piece.RedMan, Piece.RedKing].includes(type)) return Player.Red;
     else if ([Piece.BlackMan, Piece.BlackKing].includes(type))
       return Player.Black;
     else return null;
@@ -853,11 +852,11 @@ class Board {
     for (let x = 0; x < this.base; x++)
       if (this.get(x, blackY) == Piece.BlackMan)
         this.set(x, blackY, Piece.BlackKing);
-    // white
-    let whiteY = 0;
+    // red
+    let redY = 0;
     for (let x = 0; x < this.base; x++)
-      if (this.get(x, whiteY) == Piece.WhiteMan)
-        this.set(x, whiteY, Piece.WhiteKing);
+      if (this.get(x, redY) == Piece.RedMan)
+        this.set(x, redY, Piece.RedKing);
   }
   // Performs a move and returns the resulting board.
   move(move) {
