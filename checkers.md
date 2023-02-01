@@ -25,221 +25,223 @@
     </label>
   </div>
 </div>
-<styles>
-html {
-  font-size: 16px;
-}
-html,
-body,
-div {
-  margin: 0;
-  padding: 0;
-}
-body {
-  width: 100%;
-  background: #ffef80;
-  text-align: center;
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  justify-content: center;
-}
-.board {
-  display: block;
-  position: relative;
-  margin: 1rem;
-  padding: 1rem;
-  width: 500px;
-  height: 500px;
-  background: #fff;
-  white-space: normal;
-  font-family: monospace;
-  box-sizing: border-box;
-  font-size: 0;
-}
-.s-panel {
-  display: flex;
-  justify-content: flex-start;
-  align-items: stretch;
-  width: 100%;
-  height: 100%;
-}
-.s-ui {
-  display: block;
-  background: #fff6b5;
-  width: 300px;
-  height: auto;
-  margin: 1rem 0;
-  padding: 1rem;
-  box-sizing: border-box;
-}
-.s-ui button {
-  display: inline-block;
-  width: 100%;
-  box-sizing: border-box;
-  margin: 0 auto 0.6rem;
-  padding: 0.5rem 1.5rem;
-  font-size: 1.5rem;
-  cursor: pointer;
-}
-.s-ui select {
-  display: inline-block;
-  width: 100%;
-  box-sizing: border-box;
-  margin: 0 auto 0.6rem;
-  padding: 0.5rem 1.5rem;
-  font-size: 1.5rem;
-  cursor: pointer;
-}
-.s-ui select option {
-  font-size: 1rem;
-}
-label {
-  display: block;
-  position: relative;
-  width: 100%;
-  margin: 0.5rem auto;
-  height: auto;
-  padding: 0;
-  font-size: 1.75rem;
-  text-align: left;
-  
-  > span {
-    padding-left: .5rem;
-  }
-}
-label input[type="checkbox"] {
-  position: relative;
-  display: inline-block;
-  width: 20px;
-  height: 20px;
-  background: rgb(255, 255, 255);
-}
 
-.piece {
-  display: inline-block;
-  position: relative;
-  border: 1px solid #fff;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-.piece.possible-move {
-  border: 4px solid #00ff00;
-  cursor: pointer;
-}
-/*.piece.empty { background: rgb(127,127,127); }*/
-.piece.light {
-  background: rgb(247, 220, 220);
-}
-.piece.dark {
-  background: rgb(130, 79, 79);  
-}
-.piece.man::after {
-  content: "";
-  display: block;
-  margin: 0 auto; 
-  padding: 0;
-  width: 30%;
-  height: 30%;
-  background: rgba(196, 65, 65, .5);
-  border-radius: 50%;
-  position: absolute;
-  left: 50%;
-  top: 50%;  
-  transform: translateX(-50%) translateY(-50%);
-  z-index: 2;
-}
-.piece.king::after {
-  content: "K";
-  display: block;
-  margin: 0 auto;
-  padding: 0;
-  width: auto;
-  height: auto;
-  color: #fff;
-  font-size: 16px;
-  font-weight: 600;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translateX(-50%) translateY(-50%);
-  z-index: 2;
-}
-.piece.black {
-}
-.piece.black::before {
-  content: "";
-  display: block;
-  margin: 0 auto;
-  padding: 0;
-  width: 80%;
-  height: 80%;
-  border-radius: 50%;
-  background: rgb(25, 25, 25);
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translateX(-50%) translateY(-50%);
-  z-index: 1;
-}
-.piece.black.king::after {
-  color: #fff;
-}
-.piece.white {
-}
-.piece.white::before {
-  content: "";
-  display: block;
-  margin: 0 auto;
-  padding: 0;
-  width: 80%;
-  height: 80%;
-  border-radius: 50%;
-  background: rgb(235, 235, 235);
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translateX(-50%) translateY(-50%);
-  z-index: 1;
-}
-.piece.white.king::after {
-  color: #000;
-}
-.piece.half-highlight {
-  border-color: rgb(117, 247, 167);
-  background-color: rgb(48, 156, 40);
-}
-.piece.highlight {
-  border-color: rgb(165, 255, 199);
-  background-color: rgb(113, 251, 103);
-}
-hr {
-  display: block;
-  width: 100%; height: 1px;
-  background: rgba(0,0,0,.2);
-  border: none;
-  margin: 1rem auto .75rem;
-} 
-select {
-  width: 100%; height: auto;
-  padding: .25rem 0; 
-  margin: 1rem auto 1rem;
-  
-  option {
-    padding: .5rem .5rem;
-    font-size: 1rem;
-  } 
-}
-select[multiple] {
-  max-height: 200px;
-  
-  option {
-    padding: .5rem .5rem;
+<style>
+
+  html {
+    font-size: 16px;
+  }
+  html,
+  body,
+  div {
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    width: 100%;
+    background: #ffef80;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+  }
+  .board {
+    display: block;
+    position: relative;
+    margin: 1rem;
+    padding: 1rem;
+    width: 500px;
+    height: 500px;
+    background: #fff;
+    white-space: normal;
+    font-family: monospace;
+    box-sizing: border-box;
+    font-size: 0;
+  }
+  .s-panel {
+    display: flex;
+    justify-content: flex-start;
+    align-items: stretch;
+    width: 100%;
+    height: 100%;
+  }
+  .s-ui {
+    display: block;
+    background: #fff6b5;
+    width: 300px;
+    height: auto;
+    margin: 1rem 0;
+    padding: 1rem;
+    box-sizing: border-box;
+  }
+  .s-ui button {
+    display: inline-block;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0 auto 0.6rem;
+    padding: 0.5rem 1.5rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+  .s-ui select {
+    display: inline-block;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0 auto 0.6rem;
+    padding: 0.5rem 1.5rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+  .s-ui select option {
     font-size: 1rem;
   }
-}
-</styles>
+  label {
+    display: block;
+    position: relative;
+    width: 100%;
+    margin: 0.5rem auto;
+    height: auto;
+    padding: 0;
+    font-size: 1.75rem;
+    text-align: left;
+    
+    > span {
+      padding-left: .5rem;
+    }
+  }
+  label input[type="checkbox"] {
+    position: relative;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background: rgb(255, 255, 255);
+  }
+
+  .piece {
+    display: inline-block;
+    position: relative;
+    border: 1px solid #fff;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  .piece.possible-move {
+    border: 4px solid #00ff00;
+    cursor: pointer;
+  }
+  /*.piece.empty { background: rgb(127,127,127); }*/
+  .piece.light {
+    background: rgb(247, 220, 220);
+  }
+  .piece.dark {
+    background: rgb(130, 79, 79);  
+  }
+  .piece.man::after {
+    content: "";
+    display: block;
+    margin: 0 auto; 
+    padding: 0;
+    width: 30%;
+    height: 30%;
+    background: rgba(196, 65, 65, .5);
+    border-radius: 50%;
+    position: absolute;
+    left: 50%;
+    top: 50%;  
+    transform: translateX(-50%) translateY(-50%);
+    z-index: 2;
+  }
+  .piece.king::after {
+    content: "K";
+    display: block;
+    margin: 0 auto;
+    padding: 0;
+    width: auto;
+    height: auto;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    z-index: 2;
+  }
+  .piece.black {
+  }
+  .piece.black::before {
+    content: "";
+    display: block;
+    margin: 0 auto;
+    padding: 0;
+    width: 80%;
+    height: 80%;
+    border-radius: 50%;
+    background: rgb(25, 25, 25);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    z-index: 1;
+  }
+  .piece.black.king::after {
+    color: #fff;
+  }
+  .piece.white {
+  }
+  .piece.white::before {
+    content: "";
+    display: block;
+    margin: 0 auto;
+    padding: 0;
+    width: 80%;
+    height: 80%;
+    border-radius: 50%;
+    background: rgb(235, 235, 235);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    z-index: 1;
+  }
+  .piece.white.king::after {
+    color: #000;
+  }
+  .piece.half-highlight {
+    border-color: rgb(117, 247, 167);
+    background-color: rgb(48, 156, 40);
+  }
+  .piece.highlight {
+    border-color: rgb(165, 255, 199);
+    background-color: rgb(113, 251, 103);
+  }
+  hr {
+    display: block;
+    width: 100%; height: 1px;
+    background: rgba(0,0,0,.2);
+    border: none;
+    margin: 1rem auto .75rem;
+  } 
+  select {
+    width: 100%; height: auto;
+    padding: .25rem 0; 
+    margin: 1rem auto 1rem;
+    
+    option {
+      padding: .5rem .5rem;
+      font-size: 1rem;
+    } 
+  }
+  select[multiple] {
+    max-height: 200px;
+    
+    option {
+      padding: .5rem .5rem;
+      font-size: 1rem;
+    }
+  }
+</style>
 <script>
 /**
  * A simple implementation of the game Checkers. 
