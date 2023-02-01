@@ -409,12 +409,12 @@ const reset = () => {
 };
 const detectWinner = () => {
   if (board.isWin(Player.Red)) {
-    alert("Player wins!");
+    alert("Red wins!");
     reset();
     return 1;
   }
   if (board.isWin(Player.Black)) {
-    alert("Computer wins!");
+    alert("Black wins!");
     reset();
     return -1;
   }
