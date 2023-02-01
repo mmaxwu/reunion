@@ -1,3 +1,4 @@
+<html>
 <div class="s-panel">
   <div id="board" class="board">
   </div>
@@ -50,8 +51,8 @@
     position: relative;
     margin: 1rem;
     padding: 1rem;
-    width: 250px;
-    height: 250px;
+    width: 300px;
+    height: 300px;
     background: #fff;
     white-space: normal;
     font-family: monospace;
@@ -878,3 +879,4 @@ class Board {
 }
 // Classes -- end
 </script>
+</html>
