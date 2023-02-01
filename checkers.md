@@ -50,8 +50,8 @@
     position: relative;
     margin: 1rem;
     padding: 1rem;
-    width: 500px;
-    height: 500px;
+    width: 250px;
+    height: 250px;
     background: #fff;
     white-space: normal;
     font-family: monospace;
