@@ -1,6 +1,8 @@
 <div class="s-panel">
   <div id="board" class="board">
   </div>
+  <div class="s-ui">
+  </div>
 </div>
 
 <style>
@@ -409,12 +411,12 @@ const reset = () => {
 };
 const detectWinner = () => {
   if (board.isWin(Player.Red)) {
-    alert("Red wins!");
+    alert("Player wins!");
     reset();
     return 1;
   }
   if (board.isWin(Player.Black)) {
-    alert("Black wins!");
+    alert("Computer wins!");
     reset();
     return -1;
   }
