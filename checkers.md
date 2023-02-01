@@ -1,29 +1,6 @@
 <div class="s-panel">
   <div id="board" class="board">
   </div>
-  <div class="s-ui">
-    <button name="btnnextmove">Next move</button>
-    <button name="btnreset">Reset</button>
-    <label>
-      <input type="checkbox" name="autoplay">
-      <span>Autoplay</span>
-    </label>
-    <hr>
-    <label>
-      "AI" level
-      <select name="selectailevel">
-        <option value="3" selected>Beginner</option>
-        <option value="6">Intermediate</option>
-        <option value="8">Expert</option>
-        <option value="9">Mr. Slow</option>
-      </select>
-    </label>
-    <label>
-      History
-      <select name="selecthistory" multiple>
-      </select>
-    </label>
-  </div>
 </div>
 
 <style>
