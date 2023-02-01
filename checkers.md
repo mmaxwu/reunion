@@ -67,7 +67,7 @@
   }
   .s-ui {
     display: block;
-    background: #fff6b5;
+    background: #808080;
     width: 300px;
     height: auto;
     margin: 1rem 0;
