@@ -1,245 +1,223 @@
 <div class="s-panel">
   <div id="board" class="board">
   </div>
-  <div class="s-ui">
-    <button name="btnnextmove">Next move</button>
-    <button name="btnreset">Reset</button>
-    <label>
-      <input type="checkbox" name="autoplay">
-      <span>Autoplay</span>
-    </label>
-    <hr>
-    <label>
-      "AI" level
-      <select name="selectailevel">
-        <option value="3" selected>Beginner</option>
-        <option value="6">Intermediate</option>
-        <option value="8">Expert</option>
-        <option value="9">Mr. Slow</option>
-      </select>
-    </label>
-    <label>
-      History
-      <select name="selecthistory" multiple>
-      </select>
-    </label>
-  </div>
 </div>
-<styles>
-html {
-  font-size: 16px;
-}
-html,
-body,
-div {
-  margin: 0;
-  padding: 0;
-}
-body {
-  width: 100%;
-  background: #ffef80;
-  text-align: center;
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  justify-content: center;
-}
-.board {
-  display: block;
-  position: relative;
-  margin: 1rem;
-  padding: 1rem;
-  width: 500px;
-  height: 500px;
-  background: #fff;
-  white-space: normal;
-  font-family: monospace;
-  box-sizing: border-box;
-  font-size: 0;
-}
-.s-panel {
-  display: flex;
-  justify-content: flex-start;
-  align-items: stretch;
-  width: 100%;
-  height: 100%;
-}
-.s-ui {
-  display: block;
-  background: #fff6b5;
-  width: 300px;
-  height: auto;
-  margin: 1rem 0;
-  padding: 1rem;
-  box-sizing: border-box;
-}
-.s-ui button {
-  display: inline-block;
-  width: 100%;
-  box-sizing: border-box;
-  margin: 0 auto 0.6rem;
-  padding: 0.5rem 1.5rem;
-  font-size: 1.5rem;
-  cursor: pointer;
-}
-.s-ui select {
-  display: inline-block;
-  width: 100%;
-  box-sizing: border-box;
-  margin: 0 auto 0.6rem;
-  padding: 0.5rem 1.5rem;
-  font-size: 1.5rem;
-  cursor: pointer;
-}
-.s-ui select option {
-  font-size: 1rem;
-}
-label {
-  display: block;
-  position: relative;
-  width: 100%;
-  margin: 0.5rem auto;
-  height: auto;
-  padding: 0;
-  font-size: 1.75rem;
-  text-align: left;
-  
-  > span {
-    padding-left: .5rem;
-  }
-}
-label input[type="checkbox"] {
-  position: relative;
-  display: inline-block;
-  width: 20px;
-  height: 20px;
-  background: rgb(255, 255, 255);
-}
 
-.piece {
-  display: inline-block;
-  position: relative;
-  border: 1px solid #fff;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-.piece.possible-move {
-  border: 4px solid #00ff00;
-  cursor: pointer;
-}
-/*.piece.empty { background: rgb(127,127,127); }*/
-.piece.light {
-  background: rgb(247, 220, 220);
-}
-.piece.dark {
-  background: rgb(130, 79, 79);  
-}
-.piece.man::after {
-  content: "";
-  display: block;
-  margin: 0 auto; 
-  padding: 0;
-  width: 30%;
-  height: 30%;
-  background: rgba(196, 65, 65, .5);
-  border-radius: 50%;
-  position: absolute;
-  left: 50%;
-  top: 50%;  
-  transform: translateX(-50%) translateY(-50%);
-  z-index: 2;
-}
-.piece.king::after {
-  content: "K";
-  display: block;
-  margin: 0 auto;
-  padding: 0;
-  width: auto;
-  height: auto;
-  color: #fff;
-  font-size: 16px;
-  font-weight: 600;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translateX(-50%) translateY(-50%);
-  z-index: 2;
-}
-.piece.black {
-}
-.piece.black::before {
-  content: "";
-  display: block;
-  margin: 0 auto;
-  padding: 0;
-  width: 80%;
-  height: 80%;
-  border-radius: 50%;
-  background: rgb(25, 25, 25);
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translateX(-50%) translateY(-50%);
-  z-index: 1;
-}
-.piece.black.king::after {
-  color: #fff;
-}
-.piece.white {
-}
-.piece.white::before {
-  content: "";
-  display: block;
-  margin: 0 auto;
-  padding: 0;
-  width: 80%;
-  height: 80%;
-  border-radius: 50%;
-  background: rgb(235, 235, 235);
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translateX(-50%) translateY(-50%);
-  z-index: 1;
-}
-.piece.white.king::after {
-  color: #000;
-}
-.piece.half-highlight {
-  border-color: rgb(117, 247, 167);
-  background-color: rgb(48, 156, 40);
-}
-.piece.highlight {
-  border-color: rgb(165, 255, 199);
-  background-color: rgb(113, 251, 103);
-}
-hr {
-  display: block;
-  width: 100%; height: 1px;
-  background: rgba(0,0,0,.2);
-  border: none;
-  margin: 1rem auto .75rem;
-} 
-select {
-  width: 100%; height: auto;
-  padding: .25rem 0; 
-  margin: 1rem auto 1rem;
-  
-  option {
-    padding: .5rem .5rem;
-    font-size: 1rem;
-  } 
-}
-select[multiple] {
-  max-height: 200px;
-  
-  option {
-    padding: .5rem .5rem;
+<style>
+
+  html {
+    font-size: 16px;
+  }
+  html,
+  body,
+  div {
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    width: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+  }
+  .board {
+    display: block;
+    position: relative;
+    margin: 1rem;
+    padding: 1rem;
+    width: 500px;
+    height: 500px;
+    background: #fff;
+    white-space: normal;
+    font-family: monospace;
+    box-sizing: border-box;
+    font-size: 0;
+  }
+  .s-panel {
+    display: flex;
+    justify-content: flex-start;
+    align-items: stretch;
+    width: 100%;
+    height: 100%;
+  }
+  .s-ui {
+    display: block;
+    background: #808080;
+    width: 300px;
+    height: auto;
+    margin: 1rem 0;
+    padding: 1rem;
+    box-sizing: border-box;
+  }
+  .s-ui button {
+    display: inline-block;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0 auto 0.6rem;
+    padding: 0.5rem 1.5rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+  .s-ui select {
+    display: inline-block;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0 auto 0.6rem;
+    padding: 0.5rem 1.5rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+  .s-ui select option {
     font-size: 1rem;
   }
-}
-</styles>
+  label {
+    display: block;
+    position: relative;
+    width: 100%;
+    margin: 0.5rem auto;
+    height: auto;
+    padding: 0;
+    font-size: 1.75rem;
+    text-align: left;
+    
+    > span {
+      padding-left: .5rem;
+    }
+  }
+  label input[type="checkbox"] {
+    position: relative;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background: rgb(255, 255, 255);
+  }
+
+  .piece {
+    display: inline-block;
+    position: relative;
+    border: 1px solid #fff;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  .piece.possible-move {
+    border: 4px solid #00ff00;
+    cursor: pointer;
+  }
+  /*.piece.empty { background: rgb(127,127,127); }*/
+  .piece.light {
+    background: rgb(247, 220, 220);
+  }
+  .piece.dark {
+    background: rgb(130, 79, 79);  
+  }
+  .piece.man::after {
+    content: "";
+    display: block;
+    margin: 0 auto; 
+    padding: 0;
+    width: 30%;
+    height: 30%;
+    background: rgba(196, 65, 65, .5);
+    border-radius: 50%;
+    position: absolute;
+    left: 50%;
+    top: 50%;  
+    transform: translateX(-50%) translateY(-50%);
+    z-index: 2;
+  }
+  .piece.king::after {
+    content: "K";
+    display: block;
+    margin: 0 auto;
+    padding: 0;
+    width: auto;
+    height: auto;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    z-index: 2;
+  }
+  .piece.black {
+  }
+  .piece.black::before {
+    content: "";
+    display: block;
+    margin: 0 auto;
+    padding: 0;
+    width: 80%;
+    height: 80%;
+    border-radius: 50%;
+    background: rgb(25, 25, 25);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    z-index: 1;
+  }
+  .piece.black.king::after {
+    color: #fff;
+  }
+  .piece.red {
+  }
+  .piece.red::before {
+    content: "";
+    display: block;
+    margin: 0 auto;
+    padding: 0;
+    width: 80%;
+    height: 80%;
+    border-radius: 50%;
+    background: rgb(235, 235, 235);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    z-index: 1;
+  }
+  .piece.red.king::after {
+    color: #FF0000;
+  }
+  .piece.half-highlight {
+    border-color: rgb(117, 247, 167);
+    background-color: rgb(48, 156, 40);
+  }
+  .piece.highlight {
+    border-color: rgb(165, 255, 199);
+    background-color: rgb(113, 251, 103);
+  }
+  hr {
+    display: block;
+    width: 100%; height: 1px;
+    background: rgba(0,0,0,.2);
+    border: none;
+    margin: 1rem auto .75rem;
+  } 
+  select {
+    width: 100%; height: auto;
+    padding: .25rem 0; 
+    margin: 1rem auto 1rem;
+    
+    option {
+      padding: .5rem .5rem;
+      font-size: 1rem;
+    } 
+  }
+  select[multiple] {
+    max-height: 200px;
+    
+    option {
+      padding: .5rem .5rem;
+      font-size: 1rem;
+    }
+  }
+</style>
 <script>
 /**
  * A simple implementation of the game Checkers. 
@@ -263,7 +241,7 @@ let history = [];
 let currentPlayer = null;
 
 const init = (event) => {
-  currentPlayer = Player.White;
+  currentPlayer = Player.Red;
   updateUI();
   reset();
 };
@@ -271,7 +249,7 @@ document.addEventListener("DOMContentLoaded", init);
 
 // UI -- begin
 const updateUI = () => {
-  if (currentPlayer == Player.White) btnnextmove.setAttribute("disabled", true);
+  if (currentPlayer == Player.Red) btnnextmove.setAttribute("disabled", true);
   else if (currentPlayer == Player.Black)
     btnnextmove.removeAttribute("disabled");
   
@@ -397,7 +375,7 @@ selectailevel.addEventListener('change', (e) => {
 // UI -- end
 
 const reset = () => {
-  currentPlayer = Player.White;
+  currentPlayer = Player.Red;
   board = new Board(new Array(BASE * BASE).fill(Piece.Empty), currentPlayer, BASE);
 
   board.set(1, 0, Piece.BlackMan);
@@ -413,24 +391,24 @@ const reset = () => {
   board.set(5, 2, Piece.BlackMan);
   board.set(7, 2, Piece.BlackMan);
 
-  board.set(0, 5, Piece.WhiteMan);
-  board.set(2, 5, Piece.WhiteMan);
-  board.set(4, 5, Piece.WhiteMan);
-  board.set(6, 5, Piece.WhiteMan);
-  board.set(1, 6, Piece.WhiteMan);
-  board.set(3, 6, Piece.WhiteMan);
-  board.set(5, 6, Piece.WhiteMan);
-  board.set(7, 6, Piece.WhiteMan);
-  board.set(0, 7, Piece.WhiteMan);
-  board.set(2, 7, Piece.WhiteMan);
-  board.set(4, 7, Piece.WhiteMan);
-  board.set(6, 7, Piece.WhiteMan);
+  board.set(0, 5, Piece.RedMan);
+  board.set(2, 5, Piece.RedMan);
+  board.set(4, 5, Piece.RedMan);
+  board.set(6, 5, Piece.RedMan);
+  board.set(1, 6, Piece.RedMan);
+  board.set(3, 6, Piece.RedMan);
+  board.set(5, 6, Piece.RedMan);
+  board.set(7, 6, Piece.RedMan);
+  board.set(0, 7, Piece.RedMan);
+  board.set(2, 7, Piece.RedMan);
+  board.set(4, 7, Piece.RedMan);
+  board.set(6, 7, Piece.RedMan);
 
   render(root, board);
   showPossibleMoves();
 };
 const detectWinner = () => {
-  if (board.isWin(Player.White)) {
+  if (board.isWin(Player.Red)) {
     alert("Player wins!");
     reset();
     return 1;
@@ -560,8 +538,8 @@ const render = (root, board) => {
       else span.classList.add("dark");
       // type
       if (piece == Piece.Empty) span.classList.add("empty");
-      else if (piece == Piece.WhiteMan) span.classList.add("man", "white");
-      else if (piece == Piece.WhiteKing) span.classList.add("king", "white");
+      else if (piece == Piece.RedMan) span.classList.add("man", "red");
+      else if (piece == Piece.RedKing) span.classList.add("king", "red");
       else if (piece == Piece.BlackMan) span.classList.add("man", "black");
       else if (piece == Piece.BlackKing) span.classList.add("king", "black");
       else span.classList.add("empty");
@@ -582,27 +560,27 @@ const render = (root, board) => {
  */
 class Piece {
   static Empty = 0;
-  static WhiteMan = 1;
+  static RedMan = 1;
   static BlackMan = 2;
-  static WhiteKing = 3;
+  static RedKing = 3;
   static BlackKing = 4;
 
   static opposite(type) {
-    if (type == Piece.WhiteMan) return Piece.BlackMan;
-    else if (type == Piece.BlackMan) return Piece.WhiteMan;
-    else if (type == Piece.WhiteKing) return Piece.BlackKing;
-    else if (type == Piece.BlackKing) return Piece.WhiteKing;
+    if (type == Piece.RedMan) return Piece.BlackMan;
+    else if (type == Piece.BlackMan) return Piece.RedMan;
+    else if (type == Piece.RedKing) return Piece.BlackKing;
+    else if (type == Piece.BlackKing) return Piece.RedKing;
     else return Piece.Empty;
   }
   static dir(type) {
-    if ([Piece.WhiteKing, Piece.BlackKing].includes(type)) return [1, -1];
-    else if (type == Piece.WhiteMan) return [-1];
+    if ([Piece.RedKing, Piece.BlackKing].includes(type)) return [1, -1];
+    else if (type == Piece.RedMan) return [-1];
     else if (type == Piece.BlackMan) return [1];
     else return [];
   }
   static value(type) {
-    if ([Piece.WhiteKing, Piece.BlackKing].includes(type)) return 10;
-    else if ([Piece.WhiteMan, Piece.BlackMan].includes(type)) return 3;
+    if ([Piece.RedKing, Piece.BlackKing].includes(type)) return 10;
+    else if ([Piece.RedMan, Piece.BlackMan].includes(type)) return 3;
     else return 0;
   }
 }
@@ -611,16 +589,16 @@ class Piece {
  * Represents a player.
  */
 class Player {
-  static White = 1;
+  static Red = 1;
   static Black = 2;
 
   static opposite(type) {
-    if (type == Player.White) return Player.Black;
-    else if (type == Player.Black) return Player.White;
+    if (type == Player.Red) return Player.Black;
+    else if (type == Player.Black) return Player.Red;
     else return null;
   }
   static byPiece(type) {
-    if ([Piece.WhiteMan, Piece.WhiteKing].includes(type)) return Player.White;
+    if ([Piece.RedMan, Piece.RedKing].includes(type)) return Player.Red;
     else if ([Piece.BlackMan, Piece.BlackKing].includes(type))
       return Player.Black;
     else return null;
@@ -851,11 +829,11 @@ class Board {
     for (let x = 0; x < this.base; x++)
       if (this.get(x, blackY) == Piece.BlackMan)
         this.set(x, blackY, Piece.BlackKing);
-    // white
-    let whiteY = 0;
+    // red
+    let redY = 0;
     for (let x = 0; x < this.base; x++)
-      if (this.get(x, whiteY) == Piece.WhiteMan)
-        this.set(x, whiteY, Piece.WhiteKing);
+      if (this.get(x, redY) == Piece.RedMan)
+        this.set(x, redY, Piece.RedKing);
   }
   // Performs a move and returns the resulting board.
   move(move) {
