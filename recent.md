@@ -1,2 +1,1 @@
-# SNAKE GAME RECENT SCORE
-
+# Recent Scores

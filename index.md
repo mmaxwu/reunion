@@ -1,70 +1,32 @@
-## Welcome!
-Welcome to our website! 
-
-## Mini Arcade
-Welcome to our website where we host multiple retro mini games with a leader board! 
-## Snake Leaderboard
-> This table displays the top 5 current leaders in the maximum score for Snake
-
 <html>
 <head>
-  <title>Random Score Table</title>
+  <title>Login Page</title>
 </head>
 <body>
-  <table id="scoreTable">
-    <thead>
-      <tr>
-        <th>Username</th>
-        <th>Date</th>
-        <th>Score</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Bob123</td>
-        <td>1/3/22</td>
-        <td id="score1">128</td>
-      </tr>
-      <tr>
-        <td>Markk</td>
-        <td>1/9/23</td>
-        <td id="score2">100</td>
-      </tr>
-      <tr>
-        <td>mmaxwu</td>
-        <td>12/25/22</td>
-        <td id="score3">98</td>
-      </tr>
-      <tr>
-        <td>A1234l</td>
-        <td>1/9/23</td>
-        <td id="score4">98</td>
-      </tr>
-      <tr>
-        <td>chewyboba10</td>
-        <td>1/10/23</td>
-        <td id="score5">98</td>
-      </tr>
-    </tbody>
-  </table>
+  <h1>Login Page</h1>
+  <form action="">
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username"><br><br>
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password"><br><br>
+    <input type="submit" value="Submit">
+  </form>
 
   <script>
-    // Function to update the score with a random number between 0-100
-    function updateScore() {
-      let score1 = document.getElementById("score1");
-      let score2 = document.getElementById("score2");
-      let score3 = document.getElementById("score3");
-      let score4 = document.getElementById("score4");
-      let score5 = document.getElementById("score5");
-      score1.innerHTML = Math.floor(Math.random() * 101);
-      score2.innerHTML = Math.floor(Math.random() * 101);
-      score3.innerHTML = Math.floor(Math.random() * 101);
-      score4.innerHTML = Math.floor(Math.random() * 101);
-      score5.innerHTML = Math.floor(Math.random() * 101);
-    }
+    const form = document.querySelector("form");
+    form.addEventListener("submit", function(event) {
+      event.preventDefault();
+      const username = document.querySelector("#username").value;
+      const password = document.querySelector("#password").value;
 
-    // Call the updateScore function every 5 seconds
-    setInterval(updateScore, 5000);
+      // Here is the code to check if the login is successful
+      if (username === "admin" && password === "password") {
+        // Redirect to the index page if the login is successful
+        window.location.href = "Home.html";
+      } else {
+        alert("Invalid username or password. Please try again.");
+      }
+    });
   </script>
 </body>
 </html>
