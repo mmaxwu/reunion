@@ -29,7 +29,7 @@
 
 <style>
   body {
-    width: 100%;
+    width: 75%;
     text-align: center;
     display: flex;
     flex-direction: row;
@@ -39,8 +39,7 @@
   .board {
     display: block;
     position: relative;
-    margin: 1rem;
-    padding: 1rem;
+    margin: auto;
     width: 500px;
     height: 500px;
     background: #fff;
