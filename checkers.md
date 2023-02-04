@@ -51,8 +51,8 @@
     position: relative;
     margin: 1rem;
     padding: 1rem;
-    width: 300px;
-    height: 300px;
+    width: 500px;
+    height: 500px;
     background: #fff;
     white-space: normal;
     font-family: monospace;
@@ -60,11 +60,10 @@
     font-size: 0;
   }
   .s-panel {
-    display: flex;
-    justify-content: flex-start;
-    align-items: stretch;
-    width: 100%;
-    height: 100%;
+    margin: auto;
+    width: 50%;
+    border: 3px;
+    padding: 10px;
   }
   .s-ui {
     display: block;
