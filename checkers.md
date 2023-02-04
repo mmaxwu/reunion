@@ -28,16 +28,6 @@
 </div>
 
 <style>
-
-  html {
-    font-size: 16px;
-  }
-  html,
-  body,
-  div {
-    margin: 0;
-    padding: 0;
-  }
   body {
     width: 100%;
     text-align: center;
