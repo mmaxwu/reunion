@@ -124,7 +124,7 @@ Snake High Scores
 
     // obtain data that is specific to the API 
     username.innerHTML = data.username; 
-    posts.innerHTML = data.score;
+    score.innerHTML = data.score;
     dos.innerHTML = data.dos; 
 
 
