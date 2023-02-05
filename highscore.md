@@ -63,7 +63,7 @@ Snake High Scores
   // prepare URL's to allow easy switch from deployment and localhost
   //const url needed
   const url = "http://172.28.227.245:8086/api/score"
-  const create_fetch = url + '/addScore';
+  const create_fetch = url + '/scoresList';
   read_users();
   // Display User Table, data is fetched from Backend Database
   function read_users() {
