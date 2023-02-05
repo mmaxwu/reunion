@@ -45,6 +45,7 @@ Snake High Scores
       </tr>
     </tbody>
   </table>
+
   <table>
     <thead>
     <tr>
@@ -59,7 +60,7 @@ Snake High Scores
   </table>
 
   
-  <script>
+<script>
       // prepare HTML result container for new output
   const resultContainer = document.getElementById("result");
   // prepare URL's to allow easy switch from deployment and localhost
@@ -119,21 +120,6 @@ Snake High Scores
       resultContainer.appendChild(tr);
     });
   }
-  
-
-    // obtain data that is specific to the API 
-    username.innerHTML = data.username; 
-    score.innerHTML = data.score;
-    dos.innerHTML = data.dos; 
-
-
-    // add HTML to container
-    tr.appendChild(username);
-    tr.appendChild(score);
-    tr.appendChild(dos);
-
-    resultContainer.appendChild(tr);
-  }
-  </script>
+</script>
 </body>
 </html>
