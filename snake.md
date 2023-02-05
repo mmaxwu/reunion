@@ -376,6 +376,7 @@ window.addEventListener("keydown", function(e) {
             if(wall === 1){screen_snake.style.borderColor = "#FFFFFF";}
         }
     })();
+
 </script>
 
 <!-- Enters highscore -->
