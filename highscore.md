@@ -1,4 +1,3 @@
-<html>
 <h1>
 Snake High Scores
 </h1>
@@ -60,6 +59,8 @@ Snake High Scores
   </table>
 
   
+
+</body>
 <script>
       // prepare HTML result container for new output
   const resultContainer = document.getElementById("result");
@@ -67,12 +68,7 @@ Snake High Scores
   //const url needed
   const url = "http://172.28.227.245:8086/api/score"
   const create_fetch = url + '/addScore';
-
-  // Load users on page entry
-// Load users on page entry
   read_users();
-
-
   // Display User Table, data is fetched from Backend Database
   function read_users() {
     // prepare fetch options
@@ -85,7 +81,6 @@ Snake High Scores
         'Content-Type': 'application/json'
       },
     };
-
     // fetch the data from API
     fetch(read_fetch, read_options)
       // response is a RESTful "promise" on any successful fetch
@@ -121,5 +116,3 @@ Snake High Scores
     });
   }
 </script>
-</body>
-</html>
