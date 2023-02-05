@@ -1,7 +1,6 @@
 <h1>
 Snake High Scores
 </h1>
-<body>
   <table id="scoreTable">
     <thead>
       <tr>
@@ -58,9 +57,6 @@ Snake High Scores
     </tbody>
   </table>
 
-  
-
-</body>
 <script>
       // prepare HTML result container for new output
   const resultContainer = document.getElementById("result");
