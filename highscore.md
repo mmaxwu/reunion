@@ -15,47 +15,61 @@ Snake High Scores
     <tbody>
       <tr>
         <td>1</td>
-        <td>Bob123</td>
+        <td>BOB</td>
         <td>1/3/22</td>
         <td id="score1">128</td>
       </tr>
       <tr>
         <td>2</td>
-        <td>Markk</td>
+        <td>ADD</td>
         <td>1/9/23</td>
         <td id="score2">100</td>
       </tr>
       <tr>
         <td>3</td>
-        <td>mmaxwu</td>
+        <td>MAX</td>
         <td>12/25/22</td>
         <td id="score3">98</td>
       </tr>
       <tr>
         <td>4</td>
-        <td>A1234l</td>
+        <td>ALA</td>
         <td>1/9/23</td>
         <td id="score4">98</td>
       </tr>
       <tr>
         <td>5</td>
-        <td>chewyboba10</td>
+        <td>EVA</td>
         <td>1/10/23</td>
         <td id="score5">98</td>
       </tr>
     </tbody>
   </table>
+  <table>
+    <thead>
+    <tr>
+      <th>User ID</th>
+      <th>Score</th>
+      <th>Date of Score</th>
+    </tr>
+    </thead>
+    <tbody id="result">
+      <!-- javascript generated data -->
+    </tbody>
+  </table>
 
+  
   <script>
       // prepare HTML result container for new output
   const resultContainer = document.getElementById("result");
   // prepare URL's to allow easy switch from deployment and localhost
   //const url needed
-  const url = ""
-  const create_fetch = url + '/create';
-  const read_fetch = url + '/';
+  const url = "http://172.28.227.245:8086/api/score"
+  const create_fetch = url + '/addScore';
+  const read_fetch = url + '/scoresList';
 
   // Load users on page entry
+// Load users on page entry
   read_users();
 
 
@@ -106,49 +120,15 @@ Snake High Scores
       resultContainer.appendChild(tr);
     });
   }
-
-
-    // URL for Create API
-    // Fetch API call to the database to create a new user
-    fetch(create_fetch, requestOptions)
-      .then(response => {
-        // trap error response from Web API
-        if (response.status !== 200) {
-          const errorMsg = 'Database create error: ' + response.status;
-          console.log(errorMsg);
-          const tr = document.createElement("tr");
-          const td = document.createElement("td");
-          td.innerHTML = errorMsg;
-          tr.appendChild(td);
-          resultContainer.appendChild(tr);
-          return;
-        }
-        // response contains valid result
-        response.json().then(data => {
-            console.log(data);
-            //add a table row for the new/created userid
-            add_row(data);
-        })
-    })
-  }
-  function add_row(data) {
-    const tr = document.createElement("tr");
-    const uid = document.createElement("td");
-    const name = document.createElement("td");
-    const posts = document.createElement("td")
-    const dob = document.createElement("td");
-    const age = document.createElement("td");
   
 
-    // obtain data that is specific to the API
-    name.innerHTML = data.name; 
+    // obtain data that is specific to the API 
     username.innerHTML = data.username; 
     posts.innerHTML = data.score;
     dos.innerHTML = data.dos; 
 
 
     // add HTML to container
-    tr.appendChild(name);
     tr.appendChild(username);
     tr.appendChild(score);
     tr.appendChild(dos);
