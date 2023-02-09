@@ -12,7 +12,7 @@
     // prepare fetch options
     const read_options = {
       method: 'GET', // *GET, POST, PUT, DELETE, etc.
-      mode: 'cors', // no-cors, *cors, same-origin
+      mode: 'no-cors', // no-cors, *cors, same-origin
       cache: 'default', // *default, no-cache, reload, force-cache, only-if-cached
       credentials: 'omit', // include, *same-origin, omit
       headers: {
