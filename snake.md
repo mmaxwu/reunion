@@ -1,4 +1,3 @@
-
 <style>
 
     body{
@@ -63,7 +62,6 @@
     }
 </style>
 
-
 <div class="container">
     <header class="pb-3 mb-4 border-bottom border-primary text-dark">
         <p class="fs-4">Snake score: <span id="score_value">0</span></p>
@@ -72,6 +70,7 @@
         <!-- Main Menu -->
         <div id="menu" class="py-4 text-light">
             <p>Welcome to Snake, press <span style="background-color: #FFFFFF; color: #000000">space</span> to begin</p>
+            <a class="link-alert" href="{{site.baseurl}}/recent" style="text-decoration: none;">recent games</a>
             <a id="new_game" class="link-alert">new game</a>
             <a id="setting_menu" class="link-alert">settings</a>
         </div>
@@ -148,6 +147,27 @@ window.addEventListener("keydown", function(e) {
         let food = {x: 0, y: 0};
         let score;
         let wall;
+
+        const getScores = () => JSON.parse(localStorage.getItem("recentScores")) || []
+
+        const saveScore = (username) => {
+            const prevScores = getScores()
+            prevScores.push({ username, score, date: new Date() })
+            localStorage.setItem(
+                "recentScores",
+                JSON.stringify(prevScores)
+            )
+        }
+
+        const getUsername = () => {
+            let tried = false;
+            while (true) {
+                const username = prompt(`${tried ? "Invalid username!" : "Game over"}! Enter your username to save your score (max 3 chars.)`)
+                if (username.length === 3) return username;
+                else tried = true;
+            }
+        }
+
         /* Display Control */
         /////////////////////////////////////////////////////////////
         // 0 for the game
@@ -164,6 +184,9 @@ window.addEventListener("keydown", function(e) {
                     screen_game_over.style.display = "none";
                     break;
                 case SCREEN_GAME_OVER:
+                    const username = getUsername();
+                    saveScore(username);
+
                     screen_snake.style.display = "block";
                     screen_menu.style.display = "none";
                     screen_setting.style.display = "none";
@@ -378,4 +401,3 @@ window.addEventListener("keydown", function(e) {
     })();
 
 </script>
-
