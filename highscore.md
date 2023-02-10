@@ -11,7 +11,7 @@
 <script>
 const getScores = () => JSON.parse(localStorage.getItem("recentScores")) || []
 const scoreList = document.getElementById("scoreList");
-getScores().slice(-5).sort((a, b) => b.score - a.score).forEach((s) => {
+getScores().slice(-5).sort((a, b) => a.score - b.score).reverse().forEach((s) => {
     const scoreElement = document.createElement("tr")
 
     const padL = (nr, len = 2, chr = `0`) => `${nr}`.padStart(2, chr);
