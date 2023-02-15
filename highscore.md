@@ -13,7 +13,7 @@
   const resultContainer = document.getElementById("result");
   // prepare URL's to allow easy switch from deployment and localhost
   //const url = "http://localhost:8086/api/users"
-  const url = "http://172.28.232.136:8086/api/score"
+  const url = "https://pythonalflask.tk/api/score"
   const read_fetch = url + 'scoresList/';
 
   // Load users on page entry
