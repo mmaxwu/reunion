@@ -60,6 +60,21 @@
         background-color: #FFF;
         color: #000;
     }
+
+    #new_game {
+        position: absolute;
+        z-index: 100;
+    }
+
+    #new_game1 {
+        position: absolute;
+        z-index: 100;
+    }
+
+    #new_game2 {
+        position: absolute;
+        z-index: 100;
+    }
 </style>
 
 <div class="container">
