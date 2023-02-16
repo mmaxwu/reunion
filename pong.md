@@ -7,6 +7,7 @@
     }
 
     #board {
+    position: relative;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -18,6 +19,7 @@
 
     #board::before {
     content: "";
+    position: relative;
     top: 0;
     left: 50%;
     height: 100%;
@@ -30,6 +32,7 @@
     height: 80px;
     width:10px;
     background: #eee;
+    position: relative;
     }
 
     #paddle-1 {
@@ -45,6 +48,7 @@
     #ball {
     width: 10px;
     height: 10px;
+    position: relative;
     background: #eee;
     top: 190px;
     left: 40px;
@@ -54,6 +58,7 @@
     .score {
     font-size: 4rem;
     color: #aaa;
+    position: relative;
     transform: translate(-50%, 0%);
     top: 10px;
     }
