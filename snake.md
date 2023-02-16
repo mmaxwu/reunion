@@ -83,7 +83,7 @@
                     <span type="date" name="dos" id="dos"></span>
                 </label></p>
                 <p>
-                    <button>Create</button>
+                    <button>Submit</button>
                 </p>
             </form>
             <a id="new_game1" class="link-alert">new game</a>
