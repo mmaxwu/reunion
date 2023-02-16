@@ -69,6 +69,23 @@
         <!-- Game Over -->
         <div id="gameover" class="py-4 text-light">
             <p>Game Over, press <span style="background-color: #FFFFFF; color: #000000">space</span> to try again</p>
+            <form action="javascript:create_user()">
+                <p><label>
+                    User ID:
+                    <input type="text" name="username" id="username" required>
+                </label></p>
+                <p><label>
+                    Score:
+                    <span id="score_value" name="score" id="score">0</span>>
+                </label></p>
+                <p><label>
+                    Date of Score:
+                    <span type="date" name="dos" id="dos"></span>
+                </label></p>
+                <p>
+                    <button>Create</button>
+                </p>
+            </form>
             <a id="new_game1" class="link-alert">new game</a>
             <a id="setting_menu1" class="link-alert">settings</a>
         </div>
