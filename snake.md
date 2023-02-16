@@ -64,49 +64,44 @@
 
 <div class="container">
     <header class="pb-3 mb-4 border-bottom border-primary text-dark">
-        <div class="the_data">
-        <p class="fs-4">Snake score: <span id="score_value">0</span></p>
-        <p id="user">Username Appears Here</p>
-        <button onclick="create_user()">Post</button>
+        <div class="container bg-secondary" style="text-align:center;">
+            <!-- Main Menu -->
+            <div id="menu" class="py-4 text-light">
+                <p>Welcome to Snake, press <span style="background-color: #FFFFFF; color: #000000">space</span> to begin</p>
+                <a class="link-alert" href="{{site.baseurl}}/recent" style="text-decoration: none;">recent games</a>
+                <a id="new_game" class="link-alert">new game</a>
+                <a id="setting_menu" class="link-alert">settings</a>
+            </div>
+            <!-- Game Over -->
+            <div id="gameover" class="py-4 text-light">
+                <p>Game Over, press <span style="background-color: #FFFFFF; color: #000000">space</span> to try again</p>
+                <a id="new_game1" class="link-alert">new game</a>
+                <a id="setting_menu1" class="link-alert">settings</a>
+            </div>
+            <!-- Play Screen -->
+            <canvas id="snake" class="wrap" width="480" height="480" tabindex="1"></canvas>
+            <!-- Settings Screen -->
+            <div id="setting" class="py-4 text-light">
+                <p>Settings Screen, press <span style="background-color: #FFFFFF; color: #000000">space</span> to go back to playing</p>
+                <a id="new_game2" class="link-alert">new game</a>
+                <br>
+                <p>Speed:
+                    <input id="speed1" type="radio" name="speed" value="120" checked/>
+                    <label for="speed1">Slow</label>
+                    <input id="speed2" type="radio" name="speed" value="75"/>
+                    <label for="speed2">Normal</label>
+                    <input id="speed3" type="radio" name="speed" value="35"/>
+                    <label for="speed3">Fast</label>
+                </p>
+                <p>Wall:
+                    <input id="wallon" type="radio" name="wall" value="1" checked/>
+                    <label for="wallon">On</label>
+                    <input id="walloff" type="radio" name="wall" value="0"/>
+                    <label for="walloff">Off</label>
+                </p>
+            </div>
         </div>
     </header>
-    <div class="container bg-secondary" style="text-align:center;">
-        <!-- Main Menu -->
-        <div id="menu" class="py-4 text-light">
-            <p>Welcome to Snake, press <span style="background-color: #FFFFFF; color: #000000">space</span> to begin</p>
-            <a class="link-alert" href="{{site.baseurl}}/recent" style="text-decoration: none;">recent games</a>
-            <a id="new_game" class="link-alert">new game</a>
-            <a id="setting_menu" class="link-alert">settings</a>
-        </div>
-        <!-- Game Over -->
-        <div id="gameover" class="py-4 text-light">
-            <p>Game Over, press <span style="background-color: #FFFFFF; color: #000000">space</span> to try again</p>
-            <a id="new_game1" class="link-alert">new game</a>
-            <a id="setting_menu1" class="link-alert">settings</a>
-        </div>
-        <!-- Play Screen -->
-        <canvas id="snake" class="wrap" width="480" height="480" tabindex="1"></canvas>
-        <!-- Settings Screen -->
-        <div id="setting" class="py-4 text-light">
-            <p>Settings Screen, press <span style="background-color: #FFFFFF; color: #000000">space</span> to go back to playing</p>
-            <a id="new_game2" class="link-alert">new game</a>
-            <br>
-            <p>Speed:
-                <input id="speed1" type="radio" name="speed" value="120" checked/>
-                <label for="speed1">Slow</label>
-                <input id="speed2" type="radio" name="speed" value="75"/>
-                <label for="speed2">Normal</label>
-                <input id="speed3" type="radio" name="speed" value="35"/>
-                <label for="speed3">Fast</label>
-            </p>
-            <p>Wall:
-                <input id="wallon" type="radio" name="wall" value="1" checked/>
-                <label for="wallon">On</label>
-                <input id="walloff" type="radio" name="wall" value="0"/>
-                <label for="walloff">Off</label>
-            </p>
-        </div>
-    </div>
 </div>
 
 <script>
@@ -406,47 +401,49 @@ window.addEventListener("keydown", function(e) {
         }
     })();
 
-// create user
-const url = "https://pythonalflask.tk/api/history"
-const fetchCreate = url + '/createGameHistory';
-const fetchRead = url + '/gameHistoriesList';
+ // prepare HTML result container for new output
+  const resultContainer = document.getElementById("scoresList");
+  // prepare URL's to allow easy switch from deployment and localhost
+  //const url = "http://localhost:8095/api/score"
+  const url = "https://pythonalflask.tk/api/score"
+  const create_fetch = url + '/addScore';
 
-function create_user(){
+  // Load users on page entry
+  function create_user(){
     //Validate Password (must be 6-20 characters in len)
     //verifyPassword("click");
     const body = {
-        username: document.getElementById("user").value,
-        score: document.getElementById("score_value").value
+        username: document.getElementById("username").value,
+        score: document.getElementById("score").value,
+        dos: document.getElementById("dos").value,
     };
     const requestOptions = {
         method: 'POST',
         body: JSON.stringify(body),
         headers: {
-            "content-type": "application/json"
+            "content-type": "application/json",
+            'Authorization': 'Bearer my-token',
         },
     };
 
     // URL for Create API
     // Fetch API call to the database to create a new user
-    fetch(fetchCreate, requestOptions)
+    fetch(create_fetch, requestOptions)
       .then(response => {
         // trap error response from Web API
         if (response.status !== 200) {
           const errorMsg = 'Database create error: ' + response.status;
           console.log(errorMsg);
-        //   const tr = document.createElement("tr");
-        //   const td = document.createElement("td");
-        //   td.innerHTML = errorMsg;
-        //   tr.appendChild(td);
-        //   addTable.appendChild(tr);
           return;
         }
         // response contains valid result
         response.json().then(data => {
             console.log(data);
-            //add a table row for the new/created userid
-            // add_row(data);
         })
     })
-    }
+  }
+    // obtain data that is specific to the API
+    username.innerHTML = data.username; 
+    score.innerHTML = data.score; 
+    dos.innerHTML = data.dos;
 </script>
