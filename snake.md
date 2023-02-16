@@ -79,10 +79,6 @@
                     <span name="score" id="score">0</span>
                 </label></p>
                 <p><label>
-                    Enter Score:
-                    <input type="text" name="score2" id="score2" required>
-                </label></p>
-                <p><label>
                     Date of Score:
                     <span type="date" name="dos" id="dos"></span>
                 </label></p>
@@ -391,7 +387,7 @@ window.addEventListener("keydown", function(e) {
         /////////////////////////////////////////////////////////////
         let altScore = function(score_val){
             ele_score.innerHTML = String(score_val);
-            ele_score1.innerHTML = score_val;
+            ele_score1.innerHTML = String(score_val);
         }
         /////////////////////////////////////////////////////////////
         // Change the snake speed...
@@ -421,7 +417,7 @@ window.addEventListener("keydown", function(e) {
     //verifyPassword("click");
     const body = {
         username: document.getElementById("username").value,
-        score: document.getElementById("score2").value
+        score: document.getElementById("score").innerHTML
     };
     const requestOptions = {
         method: 'POST',
