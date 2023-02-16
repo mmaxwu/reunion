@@ -424,7 +424,7 @@ window.addEventListener("keydown", function(e) {
         body: JSON.stringify(body),
         mode: 'cors',
         cache: 'default',
-        credentials: 'omit',
+        credentials: 'include',
         headers: {
             "content-type": "application/json",
             'Authorization': 'Bearer my-token',
