@@ -1,10 +1,7 @@
-<!DOCTYPE html>
 <html>
 <head>
-	<title>
-		
+	<title>		
 	</title>
-	<link rel="stylesheet" href="style.css">
 
 </head>
 <body id="ht">
@@ -15,7 +12,6 @@
 
 <div class="square" style="display: none" id ="ht"> </div>
 <div class="black_background" id="black_background"> </div>
-
 	<div class="score" id="score">
 		<br>
 	</div>
