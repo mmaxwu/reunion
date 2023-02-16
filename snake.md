@@ -1,12 +1,10 @@
 <style>
-
     body{
     }
     .wrap{
         margin-left: auto;
         margin-right: auto;
     }
-
     canvas{
         display: none;
         border-style: solid;
@@ -16,46 +14,36 @@
     canvas:focus{
         outline: none;
     }
-
     /* All screens style */
     #gameover p, #setting p, #menu p{
         font-size: 20px;
     }
-
     #gameover a, #setting a, #menu a{
         font-size: 30px;
         display: block;
     }
-
     #gameover a:hover, #setting a:hover, #menu a:hover{
         cursor: pointer;
     }
-
     #gameover a:hover::before, #setting a:hover::before, #menu a:hover::before{
         content: ">";
         margin-right: 10px;
     }
-
     #menu{
         display: block;
     }
-
     #gameover{
         display: none;
     }
-
     #setting{
         display: none;
     }
-
     #setting input{
         display:none;
     }
-
     #setting label{
         cursor: pointer;
     }
-
     #setting input:checked + label{
         background-color: #FFF;
         color: #000;
@@ -65,7 +53,9 @@
 <div class="container">
     <header class="pb-3 mb-4 border-bottom border-primary text-dark">
         <div class="the_data">
-        <p class="fs-4">I like the look of this border and if possible would want the below to be in it since it looks nice</p>
+        <p class="fs-4">Snake score: <span id="score_value">0</span></p>
+        <p id="user">Username Appears Here</p>
+        <button onclick="create_user()">Post</button>
         </div>
     </header>
     <div class="container bg-secondary" style="text-align:center;">
@@ -115,7 +105,6 @@ window.addEventListener("keydown", function(e) {
         e.preventDefault();
     }
 }, false);
-
     (function(){
         /* Attributes of Game */
         /////////////////////////////////////////////////////////////
@@ -150,9 +139,7 @@ window.addEventListener("keydown", function(e) {
         let food = {x: 0, y: 0};
         let score;
         let wall;
-
         const getScores = () => JSON.parse(localStorage.getItem("recentScores")) || []
-
         const saveScore = (username) => {
             display_username.innerHTML = username;
             const prevScores = getScores()
@@ -162,7 +149,6 @@ window.addEventListener("keydown", function(e) {
                 JSON.stringify(prevScores)
             )
         }
-
         const getUsername = () => {
             let tried = false;
             while (true) {
@@ -171,7 +157,6 @@ window.addEventListener("keydown", function(e) {
                 else tried = true;
             }
         }
-
         /* Display Control */
         /////////////////////////////////////////////////////////////
         // 0 for the game
@@ -188,6 +173,8 @@ window.addEventListener("keydown", function(e) {
                     screen_game_over.style.display = "none";
                     break;
                 case SCREEN_GAME_OVER:
+                    const username = getUsername();
+                    saveScore(username);
                     screen_snake.style.display = "block";
                     screen_menu.style.display = "none";
                     screen_setting.style.display = "none";
@@ -358,12 +345,10 @@ window.addEventListener("keydown", function(e) {
             ctx.fillStyle = "#ba1818";
             ctx.fillRect(x * BLOCK, y * BLOCK, BLOCK, BLOCK);
         }
-
         let activeDotSnake = function(x, y){
             ctx.fillStyle = "#5c3601";
             ctx.fillRect(x * BLOCK, y * BLOCK, BLOCK, BLOCK);
         }
-
         /* Random food placement */
         /////////////////////////////////////////////////////////////
         let addFood = function(){
@@ -402,7 +387,7 @@ window.addEventListener("keydown", function(e) {
     })();
 
  // prepare HTML result container for new output
-  const resultContainer = document.getElementById("scoresList");
+  // const resultContainer = document.getElementById("scoresList");
   // prepare URL's to allow easy switch from deployment and localhost
   //const url = "http://localhost:8095/api/score"
   const url = "https://pythonalflask.tk/api/score"
