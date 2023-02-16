@@ -421,7 +421,7 @@ window.addEventListener("keydown", function(e) {
     //verifyPassword("click");
     const body = {
         username: document.getElementById("username").value,
-        score: document.getElementById("score2").value
+        score: ele_score1.innerHTML
     };
     const requestOptions = {
         method: 'POST',
