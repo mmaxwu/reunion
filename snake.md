@@ -65,7 +65,7 @@
 <div class="container">
     <header class="pb-3 mb-4 border-bottom border-primary text-dark">
         <div class="the_data">
-        <p class="fs-4">border and if possible would want the below to be in it since it looks nice</p>
+        <p class="fs-4">I like the look of this border and if possible would want the below to be in it since it looks nice</p>
         </div>
     </header>
     <div class="container bg-secondary" style="text-align:center;">
