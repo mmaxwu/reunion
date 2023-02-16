@@ -188,9 +188,6 @@ window.addEventListener("keydown", function(e) {
                     screen_game_over.style.display = "none";
                     break;
                 case SCREEN_GAME_OVER:
-                    const username = getUsername();
-                    saveScore(username);
-
                     screen_snake.style.display = "block";
                     screen_menu.style.display = "none";
                     screen_setting.style.display = "none";
