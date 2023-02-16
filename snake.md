@@ -446,8 +446,11 @@ window.addEventListener("keydown", function(e) {
         })
     })
   }
+  
+  function add_row(data) {
     // obtain data that is specific to the API
     username.innerHTML = data.username; 
     score.innerHTML = data.score; 
     dos.innerHTML = data.dos;
+  }
 </script>
