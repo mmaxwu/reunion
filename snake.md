@@ -391,7 +391,7 @@ window.addEventListener("keydown", function(e) {
         /////////////////////////////////////////////////////////////
         let altScore = function(score_val){
             ele_score.innerHTML = String(score_val);
-            ele_score1.innerHTML = score_val;
+            ele_score1.innerHTML = JSON.stringify(score_val);
         }
         /////////////////////////////////////////////////////////////
         // Change the snake speed...
@@ -421,7 +421,7 @@ window.addEventListener("keydown", function(e) {
     //verifyPassword("click");
     const body = {
         username: document.getElementById("username").value,
-        score: ele_score1
+        score: document.getElementById("score").value
     };
     const requestOptions = {
         method: 'POST',
