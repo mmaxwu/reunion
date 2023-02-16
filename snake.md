@@ -443,15 +443,7 @@ window.addEventListener("keydown", function(e) {
         // response contains valid result
         response.json().then(data => {
             console.log(data);
-            add_row(data);
         })
     })
-  }
-  
-  function add_row(data) {
-    // obtain data that is specific to the API
-    username.innerHTML = data.username; 
-    score.innerHTML = data.score;
-    dos.innerHTML = dos.score;
   }
 </script>
