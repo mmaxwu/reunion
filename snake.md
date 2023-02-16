@@ -419,9 +419,8 @@ window.addEventListener("keydown", function(e) {
     };
     const requestOptions = {
         method: 'POST',
-        mode: 'no-cors',
+        mode: 'cors',
         cache: 'default'
-        credentials: 'omit',
         body: JSON.stringify(body),
         headers: {
             "content-type": "application/json",
