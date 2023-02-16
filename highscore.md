@@ -14,7 +14,7 @@
   // prepare URL's to allow easy switch from deployment and localhost
   //const url = "http://localhost:8086/api/users"
   const url = "https://pythonalflask.tk/api/score"
-  const read_fetch = url + 'scoresList/';
+  const read_fetch = url + '/scoresList';
 
   // Load users on page entry
   read_users();
