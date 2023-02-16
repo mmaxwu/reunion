@@ -411,7 +411,6 @@ window.addEventListener("keydown", function(e) {
   //const url = "http://localhost:8095/api/score"
   const url = "https://pythonalflask.tk/api/score"
   const create_fetch = url + '/addScore';
-
   // Load users on page entry
   function create_user(){
     //Validate Password (must be 6-20 characters in len)
@@ -422,13 +421,13 @@ window.addEventListener("keydown", function(e) {
     };
     const requestOptions = {
         method: 'POST',
+        mode: 'no-cors',
         body: JSON.stringify(body),
         headers: {
             "content-type": "application/json",
             'Authorization': 'Bearer my-token',
         },
     };
-
     // URL for Create API
     // Fetch API call to the database to create a new user
     fetch(create_fetch, requestOptions)
