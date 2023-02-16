@@ -1,8 +1,8 @@
 <table id="recentGames" style="width: 100%;">
   <tr>
-    <th>Date & Time</th>
     <th>Username</th>
     <th>Score</th>
+    <th>Date & Time</th>
   </tr>
   <tbody id="scoresList">
   </tbody>
@@ -69,6 +69,25 @@
       tr.appendChild(td);
       resultContainer.appendChild(tr);
     });
+  }
+
+  function add_row(data) {
+    const tr = document.createElement("tr");
+    const username = document.createElement("td");
+    const score = document.createElement("td");
+    const dos = document.createElement("td")
+  
+    // obtain data that is specific to the API
+    username.innerHTML = data.username; 
+    score.innerHTML = data.score; 
+    dos.innerHTML = data.dos;
+
+    // add HTML to container
+    tr.appendChild(username);
+    tr.appendChild(score);
+    tr.appendChild(dos);
+
+    resultContainer.appendChild(tr);
   }
 </script>
 
