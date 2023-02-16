@@ -422,6 +422,9 @@ window.addEventListener("keydown", function(e) {
     const requestOptions = {
         method: 'POST',
         body: JSON.stringify(body),
+        mode: 'cors',
+        cache: 'default',
+        credentials: 'omit',
         headers: {
             "content-type": "application/json",
             'Authorization': 'Bearer my-token',
