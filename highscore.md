@@ -4,13 +4,13 @@
     <th>Username</th>
     <th>Score</th>
   </tr>
-  <tbody id="scoreList">
+  <tbody id="scoresList">
   </tbody>
 </table>
 
 <script>
  // prepare HTML result container for new output
-  const resultContainer = document.getElementById("result");
+  const resultContainer = document.getElementById("scoresList");
   // prepare URL's to allow easy switch from deployment and localhost
   //const url = "http://localhost:8086/api/users"
   const url = "https://pythonalflask.tk/api/score"
