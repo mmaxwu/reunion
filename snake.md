@@ -419,7 +419,6 @@ window.addEventListener("keydown", function(e) {
     const body = {
         username: document.getElementById("username").value,
         score: document.getElementById("score").value,
-        dos: document.getElementById("dos").value,
     };
     const requestOptions = {
         method: 'POST',
@@ -451,7 +450,6 @@ window.addEventListener("keydown", function(e) {
   function add_row(data) {
     // obtain data that is specific to the API
     username.innerHTML = data.username; 
-    score.innerHTML = data.score; 
-    dos.innerHTML = data.dos;
+    score.innerHTML = data.score;
   }
 </script>
