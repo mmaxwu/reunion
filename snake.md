@@ -64,7 +64,8 @@
 
 <div class="container">
     <header class="pb-3 mb-4 border-bottom border-primary text-dark">
-        <p class="fs-4">Snake score: <span id="score_value">0</span></p>
+        <p class="fs-4">Snake score: <span class="score_value">0</span></p>
+        <p class="user">Username Appears Here</p>
     </header>
     <div class="container bg-secondary" style="text-align:center;">
         <!-- Main Menu -->
@@ -131,6 +132,7 @@ window.addEventListener("keydown", function(e) {
         const screen_menu = document.getElementById("menu");
         const screen_game_over = document.getElementById("gameover");
         const screen_setting = document.getElementById("setting");
+        const display_username = document.getElementById("user");
         // HTML Event IDs (a tags)
         const button_new_game = document.getElementById("new_game");
         const button_new_game1 = document.getElementById("new_game1");
@@ -151,6 +153,7 @@ window.addEventListener("keydown", function(e) {
         const getScores = () => JSON.parse(localStorage.getItem("recentScores")) || []
 
         const saveScore = (username) => {
+            display_username.innerHTML = username;
             const prevScores = getScores()
             prevScores.push({ username, score, date: new Date() })
             localStorage.setItem(
