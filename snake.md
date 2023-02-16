@@ -443,6 +443,7 @@ window.addEventListener("keydown", function(e) {
         // response contains valid result
         response.json().then(data => {
             console.log(data);
+            add_row(data);
         })
     })
   }
