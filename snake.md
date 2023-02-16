@@ -76,7 +76,7 @@
                 </label></p>
                 <p><label>
                     Score:
-                    <span id="score_value" name="score" id="score">0</span>>
+                    <span name="score" id="score">0</span>
                 </label></p>
                 <p><label>
                     Date of Score:
@@ -132,6 +132,7 @@ window.addEventListener("keydown", function(e) {
         const SCREEN_SNAKE = 0;
         const screen_snake = document.getElementById("snake");
         const ele_score = document.getElementById("score_value");
+        const ele_score1 = document.getElementById("score");
         const speed_setting = document.getElementsByName("speed");
         const wall_setting = document.getElementsByName("wall");
         // HTML Screen IDs (div)
@@ -386,6 +387,7 @@ window.addEventListener("keydown", function(e) {
         /////////////////////////////////////////////////////////////
         let altScore = function(score_val){
             ele_score.innerHTML = String(score_val);
+            ele_score1.innerHTML = String(score_val);
         }
         /////////////////////////////////////////////////////////////
         // Change the snake speed...
