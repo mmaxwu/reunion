@@ -54,9 +54,10 @@
           data.sort(function(a, b) {
             return b.score - a.score;
           });
-          for (let row in data) {
-            console.log(data[row]);
-            add_row(data[row]);
+        for (let i = 0; i < 5; i++) {
+          const row = data[i];
+          console.log(row);
+          add_row(row);
           }
         })
     })
