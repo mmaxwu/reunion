@@ -47,18 +47,20 @@ User History
   </table>
 
   <script>
+    const test = document.getElementById("score5");
     // Function to update the score with a random number between 0-100
     function updateScore() {
       let score1 = document.getElementById("score1");
       let score2 = document.getElementById("score2");
       let score3 = document.getElementById("score3");
       let score4 = document.getElementById("score4");
-      let score5 = document.getElementById("score5");
+      // let score5 = document.getElementById("score5");
       score1.innerHTML = Math.floor(Math.random() * 101);
       score2.innerHTML = Math.floor(Math.random() * 101);
       score3.innerHTML = Math.floor(Math.random() * 101);
       score4.innerHTML = Math.floor(Math.random() * 101);
-      score5.innerHTML = Math.floor(Math.random() * 101);
+      // score5.innerHTML = Math.floor(Math.random() * 101);
+      test.innerHTML = document.getElementById("score_value");
     }
 
     // Call the updateScore function every 5 seconds

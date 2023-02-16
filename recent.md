@@ -80,46 +80,46 @@
       addTable.appendChild(tr);
     });
   }
+// create function moved to snake game
+  // function create_user(){
+  //   //Validate Password (must be 6-20 characters in len)
+  //   //verifyPassword("click");
+  //   const body = {
+  //       username: document.getElementById("user").value,
+  //       score: document.getElementById("score_value").value
+  //   };
+  //   const requestOptions = {
+  //       method: 'POST',
+  //       body: JSON.stringify(body),
+  //       headers: {
+  //           "content-type": "application/json",
+  //           'Authorization': 'Bearer my-token',
+  //       },
+  //   };
 
-  function create_user(){
-    //Validate Password (must be 6-20 characters in len)
-    //verifyPassword("click");
-    const body = {
-        username: document.getElementById("user").value,
-        score: document.getElementById("score_value").value
-    };
-    const requestOptions = {
-        method: 'POST',
-        body: JSON.stringify(body),
-        headers: {
-            "content-type": "application/json",
-            'Authorization': 'Bearer my-token',
-        },
-    };
-
-    // URL for Create API
-    // Fetch API call to the database to create a new user
-    fetch(fetchCreate, requestOptions)
-      .then(response => {
-        // trap error response from Web API
-        if (response.status !== 200) {
-          const errorMsg = 'Database create error: ' + response.status;
-          console.log(errorMsg);
-          const tr = document.createElement("tr");
-          const td = document.createElement("td");
-          td.innerHTML = errorMsg;
-          tr.appendChild(td);
-          addTable.appendChild(tr);
-          return;
-        }
-        // response contains valid result
-        response.json().then(data => {
-            console.log(data);
-            //add a table row for the new/created userid
-            add_row(data);
-        })
-    })
-  }
+  //   // URL for Create API
+  //   // Fetch API call to the database to create a new user
+  //   fetch(fetchCreate, requestOptions)
+  //     .then(response => {
+  //       // trap error response from Web API
+  //       if (response.status !== 200) {
+  //         const errorMsg = 'Database create error: ' + response.status;
+  //         console.log(errorMsg);
+  //         const tr = document.createElement("tr");
+  //         const td = document.createElement("td");
+  //         td.innerHTML = errorMsg;
+  //         tr.appendChild(td);
+  //         addTable.appendChild(tr);
+  //         return;
+  //       }
+  //       // response contains valid result
+  //       response.json().then(data => {
+  //           console.log(data);
+  //           //add a table row for the new/created userid
+  //           add_row(data);
+  //       })
+  //   })
+  // }
 
   function add_row(data) {
     const tr = document.createElement("tr");
