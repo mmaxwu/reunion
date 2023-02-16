@@ -1,26 +1,159 @@
-<div class="container">
 <h2>Recent Scores</h2>
 
-<h2>snake</h2>
-<p>5 most recent results for the snake game!</p>
+<h2>Snake</h2>
+<p>A list of the game history for snake!</p>
 
-<ul id="recentGames"></ul>
+<!-- <body> -->
+<table>
+  <thead>
+  <tr>
+    <th>Username</th>
+    <th>Score</th>
+    <th>Date</th>
+    <th>Time</th>
+  </tr>
+  </thead>
+  <tbody id="dataTable">
 
-<h2>hangman</h2>
+  </tbody>
+</table>
 
-</div>
+<!-- </body> -->
 
 <script>
-const getScores = () => JSON.parse(localStorage.getItem("recentScores")) || []
-const recentGames = document.getElementById("recentGames");
-getScores().slice(-5).reverse().forEach((s) => {
-    const scoreElement = document.createElement("li")
+  // prepare HTML result container for new output
+  const addTable = document.getElementById("dataTable");
+  // prepare URL's to allow easy switch from deployment and localhost
+  //const url = "http://localhost:8086/api/users"
+  const url = "https://pythonalflask.tk/api/history"
+  const fetchCreate = url + '/createGameHistory';
+  const fetchRead = url + '/gameHistoriesList';
 
-    const padL = (nr, len = 2, chr = `0`) => `${nr}`.padStart(2, chr);
-    const dt = new Date(s.date)
-    const str = `${padL(dt.getMonth()+1)}/${padL(dt.getDate())}/${dt.getFullYear()} ${padL(dt.getHours())}:${padL(dt.getMinutes())}:${padL(dt.getSeconds())}`
+  // Load users on page entry
+  read();
 
-    scoreElement.innerHTML = `${str} - <b>${s.username}</b>: ${s.score}`
-    recentGames.appendChild(scoreElement)
-})
+
+  // Display User Table, data is fetched from Backend Database
+  function read() {
+    // prepare fetch options
+    const read_options = {
+      method: 'GET', // *GET, POST, PUT, DELETE, etc.
+      mode: 'cors', // no-cors, *cors, same-origin
+      cache: 'default', // *default, no-cache, reload, force-cache, only-if-cached
+      credentials: 'omit', // include, *same-origin, omit
+      headers: {
+        'Content-Type': 'application/json'
+      },
+    };
+
+    // fetch the data from API
+    fetch(fetchRead, read_options)
+      // response is a RESTful "promise" on any successful fetch
+      .then(response => {
+        // check for response errors
+        if (response.status !== 200) {
+            const errorMsg = 'Database read error: ' + response.status;
+            console.log(errorMsg);
+            const tr = document.createElement("tr");
+            const td = document.createElement("td");
+            td.innerHTML = errorMsg;
+            tr.appendChild(td);
+            addTable.appendChild(tr);
+            return;
+        }
+        // valid response will have json data
+        response.json().then(data => {
+            console.log(data);
+            for (let row in data) {
+              console.log(data[row]);
+              add_row(data[row]);
+            }
+        })
+    })
+    // catch fetch errors (ie ACCESS to server blocked)
+    .catch(err => {
+      console.error(err);
+      const tr = document.createElement("tr");
+      const td = document.createElement("td");
+      td.innerHTML = err;
+      tr.appendChild(td);
+      addTable.appendChild(tr);
+    });
+  }
+// create function moved to snake game
+  // function create_user(){
+  //   //Validate Password (must be 6-20 characters in len)
+  //   //verifyPassword("click");
+  //   const body = {
+  //       username: document.getElementById("user").value,
+  //       score: document.getElementById("score_value").value
+  //   };
+  //   const requestOptions = {
+  //       method: 'POST',
+  //       body: JSON.stringify(body),
+  //       headers: {
+  //           "content-type": "application/json",
+  //           'Authorization': 'Bearer my-token',
+  //       },
+  //   };
+
+  //   // URL for Create API
+  //   // Fetch API call to the database to create a new user
+  //   fetch(fetchCreate, requestOptions)
+  //     .then(response => {
+  //       // trap error response from Web API
+  //       if (response.status !== 200) {
+  //         const errorMsg = 'Database create error: ' + response.status;
+  //         console.log(errorMsg);
+  //         const tr = document.createElement("tr");
+  //         const td = document.createElement("td");
+  //         td.innerHTML = errorMsg;
+  //         tr.appendChild(td);
+  //         addTable.appendChild(tr);
+  //         return;
+  //       }
+  //       // response contains valid result
+  //       response.json().then(data => {
+  //           console.log(data);
+  //           //add a table row for the new/created userid
+  //           add_row(data);
+  //       })
+  //   })
+  // }
+
+  function add_row(data) {
+    const tr = document.createElement("tr");
+    const username = document.createElement("td");
+    const score = document.createElement("td");
+    const dos = document.createElement("td");
+    const tos = document.createElement("td");
+  
+
+    // obtain data that is specific to the API
+    username.innerHTML = data.username; 
+    score.innerHTML = data.score; 
+    dos.innerHTML = data.dos;
+    tos.innerHTML = data.tos; 
+
+    // add HTML to container
+    tr.appendChild(username);
+    tr.appendChild(score);
+    tr.appendChild(dos);
+    tr.appendChild(tos);
+
+    addTable.appendChild(tr);
+  }
+// const getScores = () => JSON.parse(localStorage.getItem("recentScores")) || []
+// const recentGames = document.getElementById("recentGames");
+// getScores().slice(-5).reverse().forEach((s) => {
+//     const scoreElement = document.createElement("li")
+
+//     const padL = (nr, len = 2, chr = `0`) => `${nr}`.padStart(2, chr);
+//     const dt = new Date(s.date)
+//     const str = `${padL(dt.getMonth()+1)}/${padL(dt.getDate())}/${dt.getFullYear()} ${padL(dt.getHours())}:${padL(dt.getMinutes())}:${padL(dt.getSeconds())}`
+
+//     scoreElement.innerHTML = `${str} - <b>${s.username}</b>: ${s.score}`
+//     recentGames.appendChild(scoreElement)
+// })
+
 </script>

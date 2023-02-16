@@ -97,7 +97,6 @@ class Hangman {
     // SHOULD DETERMINE BY DIFFICULTY
     this.maxStrikes = 6
   }
-  
   reset () {
     this.guessed = []
     this.strikes = 0
@@ -105,9 +104,8 @@ class Hangman {
     $('.letter').removeClass('used')
     for(let i = 1; i <= 6; i++) {
       $(`#hangman-${i}`).removeClass('top')
-    }
+      }
   }
-  
   checkGameOver() {
     if(this.strikes >= this.maxStrikes) {
       // do gameover stuff
@@ -132,12 +130,10 @@ class Hangman {
     }
     this.update()
   }
-  
   letterClick(letter, el) {
     $(el).addClass('used');
     this.letterCheck(letter)
   }
-  
   createLetters() {
     let self = this;
     let range = {
@@ -145,7 +141,6 @@ class Hangman {
       end: 90,
       divider: 9
     }
-
     let div = document.getElementById('characters');
     for(var i = range.init; i <= range.end; i++) {
       if((i - 65) % range.divider == 0) {
@@ -163,14 +158,12 @@ class Hangman {
       });
     }
   }
-  
   setWord () {
     let words = ['tropical', 'assigned', 'coordinated']
     let num = Math.floor(Math.random() * 3)
     this.word = words[num].split('').map(l => l.toUpperCase()).join('')
     this.update()
   }
-  
   transformWord () {
     let transform = []
     let letters = this.word.split('')
@@ -181,33 +174,27 @@ class Hangman {
     })
     return transform.join('')
   }
-  
   update () {
     $('#guesses').html(`Wrong Guesses: ${this.strikes}/${this.maxStrikes}` )
     $('#letters').html(this.transformWord(this.word))
     this.checkGameOver()
   }
-  
   createImages () {
     let images = []
     for(let i = 0; i <= 6; i++) {
       images.push(`<img class="stacked" id="hangman-${i}" src="https://justinbess.com/wp-content/uploads/2018/04/${i}.png"/>`)
     }
-    
     $('#hangman').html(images.join(''))
     $('#hangman-0').addClass('top')
   }
-  
   initialize () {
     this.createImages()
     this.createLetters()
     this.setWord()
   }
 }
-
 let game = new Hangman('easy', 1);
 game.initialize()
-
 $('#resetGame').click(function() {
   game.reset()
 })

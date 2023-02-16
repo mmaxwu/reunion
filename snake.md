@@ -64,7 +64,11 @@
 
 <div class="container">
     <header class="pb-3 mb-4 border-bottom border-primary text-dark">
+        <div class="the_data">
         <p class="fs-4">Snake score: <span id="score_value">0</span></p>
+        <p id="user">Username Appears Here</p>
+        <button onclick="create_user()">Post</button>
+        </div>
     </header>
     <div class="container bg-secondary" style="text-align:center;">
         <!-- Main Menu -->
@@ -131,6 +135,7 @@ window.addEventListener("keydown", function(e) {
         const screen_menu = document.getElementById("menu");
         const screen_game_over = document.getElementById("gameover");
         const screen_setting = document.getElementById("setting");
+        const display_username = document.getElementById("user");
         // HTML Event IDs (a tags)
         const button_new_game = document.getElementById("new_game");
         const button_new_game1 = document.getElementById("new_game1");
@@ -151,6 +156,7 @@ window.addEventListener("keydown", function(e) {
         const getScores = () => JSON.parse(localStorage.getItem("recentScores")) || []
 
         const saveScore = (username) => {
+            display_username.innerHTML = username;
             const prevScores = getScores()
             prevScores.push({ username, score, date: new Date() })
             localStorage.setItem(
@@ -400,4 +406,47 @@ window.addEventListener("keydown", function(e) {
         }
     })();
 
+// create user
+const url = "https://pythonalflask.tk/api/history"
+const fetchCreate = url + '/createGameHistory';
+const fetchRead = url + '/gameHistoriesList';
+
+function create_user(){
+    //Validate Password (must be 6-20 characters in len)
+    //verifyPassword("click");
+    const body = {
+        username: document.getElementById("user").value,
+        score: document.getElementById("score_value").value
+    };
+    const requestOptions = {
+        method: 'POST',
+        body: JSON.stringify(body),
+        headers: {
+            "content-type": "application/json"
+        },
+    };
+
+    // URL for Create API
+    // Fetch API call to the database to create a new user
+    fetch(fetchCreate, requestOptions)
+      .then(response => {
+        // trap error response from Web API
+        if (response.status !== 200) {
+          const errorMsg = 'Database create error: ' + response.status;
+          console.log(errorMsg);
+        //   const tr = document.createElement("tr");
+        //   const td = document.createElement("td");
+        //   td.innerHTML = errorMsg;
+        //   tr.appendChild(td);
+        //   addTable.appendChild(tr);
+          return;
+        }
+        // response contains valid result
+        response.json().then(data => {
+            console.log(data);
+            //add a table row for the new/created userid
+            // add_row(data);
+        })
+    })
+    }
 </script>
