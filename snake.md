@@ -408,33 +408,40 @@ window.addEventListener("keydown", function(e) {
  // prepare HTML result container for new output
   // const resultContainer = document.getElementById("scoresList");
   // prepare URL's to allow easy switch from deployment and localhost
-  //const url = "http://localhost:8095/api/score" 
+  //const url = "http://localhost:8095/api/score"
   const url = "https://pythonalflask.tk/api/score"
   const create_fetch = url + '/addScore';
-  
+  // Load users on page entry
   function create_user(){
+    //Validate Password (must be 6-20 characters in len)
+    //verifyPassword("click");
     const body = {
         username: document.getElementById("username").value,
         score: document.getElementById("score").value,
     };
     const requestOptions = {
         method: 'POST',
+
         mode: 'cors',
-        cache: 'default'
+        cache: 'default', // *default, no-cache, reload, force-cache, only-if-cached
+        credentials: 'omit',
         body: JSON.stringify(body),
         headers: {
             "content-type": "application/json",
             'Authorization': 'Bearer my-token',
         },
     };
-    
+    // URL for Create API
+    // Fetch API call to the database to create a new user
     fetch(create_fetch, requestOptions)
       .then(response => {
+        // trap error response from Web API
         if (response.status !== 200) {
           const errorMsg = 'Database create error: ' + response.status;
           console.log(errorMsg);
           return;
         }
+        // response contains valid result
         response.json().then(data => {
             console.log(data);
         })
