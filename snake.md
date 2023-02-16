@@ -413,7 +413,7 @@ window.addEventListener("keydown", function(e) {
   // const resultContainer = document.getElementById("scoresList");
   // prepare URL's to allow easy switch from deployment and localhost
   //const url = "http://localhost:8095/api/score"
-  const url = "http://172.19.252.29:8086/api/score"
+  const url = "https://pythonalflask.tk/api/score"
   const create_fetch = url + '/addScore';
   // Load users on page entry
   function create_user(){
