@@ -79,11 +79,15 @@
                     <span name="score" id="score">0</span>
                 </label></p>
                 <p><label>
+                    Enter Score:
+                    <input type="text" name="score2" id="score2" required>
+                </label></p>
+                <p><label>
                     Date of Score:
                     <span type="date" name="dos" id="dos"></span>
                 </label></p>
                 <p>
-                    <button>Submit</button>
+                    <button onclick="alert('Your score has been posted!')">Submit</button>
                 </p>
             </form>
             <a id="new_game1" class="link-alert">new game</a>
@@ -157,24 +161,24 @@ window.addEventListener("keydown", function(e) {
         let food = {x: 0, y: 0};
         let score;
         let wall;
-        const getScores = () => JSON.parse(localStorage.getItem("recentScores")) || []
-        const saveScore = (username) => {
-            display_username.innerHTML = username;
-            const prevScores = getScores()
-            prevScores.push({ username, score, date: new Date() })
-            localStorage.setItem(
-                "recentScores",
-                JSON.stringify(prevScores)
-            )
-        }
-        const getUsername = () => {
-            let tried = false;
-            while (true) {
-                const username = prompt(`${tried ? "Invalid username!" : "Game over"}! Enter your username to save your score (max 3 chars.)`)
-                if (username.length === 3) return username;
-                else tried = true;
-            }
-        }
+        // const getScores = () => JSON.parse(localStorage.getItem("recentScores")) || []
+        // const saveScore = (username) => {
+        //     display_username.innerHTML = username;
+        //     const prevScores = getScores()
+        //     prevScores.push({ username, score, date: new Date() })
+        //     localStorage.setItem(
+        //         "recentScores",
+        //         JSON.stringify(prevScores)
+        //     )
+        // }
+        // const getUsername = () => {
+        //     let tried = false;
+        //     while (true) {
+        //         const username = prompt(`${tried ? "Invalid username!" : "Game over"}! Enter your username to save your score (max 3 chars.)`)
+        //         if (username.length === 3) return username;
+        //         else tried = true;
+        //     }
+        // }
         /* Display Control */
         /////////////////////////////////////////////////////////////
         // 0 for the game
@@ -191,8 +195,8 @@ window.addEventListener("keydown", function(e) {
                     screen_game_over.style.display = "none";
                     break;
                 case SCREEN_GAME_OVER:
-                    const username = getUsername();
-                    saveScore(username);
+                    // const username = getUsername();
+                    // saveScore(username);
                     screen_snake.style.display = "block";
                     screen_menu.style.display = "none";
                     screen_setting.style.display = "none";
@@ -409,7 +413,7 @@ window.addEventListener("keydown", function(e) {
   // const resultContainer = document.getElementById("scoresList");
   // prepare URL's to allow easy switch from deployment and localhost
   //const url = "http://localhost:8095/api/score"
-  const url = "https://pythonalflask.tk/api/score"
+  const url = "http://172.19.252.29:8086/api/score"
   const create_fetch = url + '/addScore';
   // Load users on page entry
   function create_user(){
@@ -417,7 +421,7 @@ window.addEventListener("keydown", function(e) {
     //verifyPassword("click");
     const body = {
         username: document.getElementById("username").value,
-        score: document.getElementById("score").value,
+        score: document.getElementById("score2").value
     };
     const requestOptions = {
         method: 'POST',
