@@ -10,7 +10,7 @@
     position: relative;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -5%);
     width: 600px;
     height: 400px;
     background: #222;
@@ -50,7 +50,7 @@
     height: 10px;
     position: relative;
     background: #eee;
-    top: 190px;
+    top: 30px;
     left: 40px;
     z-index: 1;
     }
@@ -68,7 +68,7 @@
     }
 
     #score-2 {
-    left: 360px;
+    left: 380px;
     }
 </style>
 <div id="board">
