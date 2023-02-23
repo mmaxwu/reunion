@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html> -->
 <html>
 <head>
   <meta charset="UTF-8">
@@ -7,7 +7,7 @@
     #pong-container {
       position: absolute;
       left: 50%;
-      transform: translate(-50%, -50%);
+      transform: translate(-50%, +60%);
       width: 600px;
       height: 400px;
     }
@@ -29,19 +29,22 @@
     #score2 {
       left: 450px;
     }
+    #start_game_button {
+      height: 40px;
+      width: 100px;
+    }
   </style>
 </head>
 <body>
   <div class="container bg-secondary" style="text-align:center;">
         <!-- Main Menu -->
         <div id="menu" class="py-4 text-light">
-            <p>Welcome to Snake, press <span style="background-color: #FFFFFF; color: #000000">space</span> to begin</p>
-            <a id="new_game" class="link-alert">new game</a>
-            <a id="setting_menu" class="link-alert">settings</a>
+            <p>Welcome to Pong, press <span style="background-color: #d4ca1c; color: #000000">start</span> to begin</p>
+            <button id="start_game_button" onclick="gameLoop()">Start</button>
         </div>
         <!-- Game Over -->
         <div id="gameover" class="py-4 text-light">
-            <p>Game Over, press <span style="background-color: #FFFFFF; color: #000000">space</span> to try again</p>
+            <p>Game Over, press <span style="background-color: #d4ca1c; color: #000000">start</span> to try again</p>
             <form action="javascript:create_user()">
                 <p><label>
                     User ID:
@@ -59,8 +62,8 @@
                     <button onclick="alert('Your score has been posted!')">Submit</button>
                 </p>
             </form>
-            <a id="new_game1" class="link-alert">new game</a>
-            <a id="setting_menu1" class="link-alert">settings</a>
+            <!-- <a id="new_game1" class="link-alert">new game</a>
+            <a id="setting_menu1" class="link-alert">settings</a> -->
         </div>
         <!-- Play Screen -->
         <div id="empty-space"></div>
@@ -70,36 +73,18 @@
           <div class="score" id="score2">0</div>
           <button id="restartButton">Restart Game</button>
         </div>
-                <!-- Settings Screen -->
-        <div id="setting" class="py-4 text-light">
-            <p>Settings Screen, press <span style="background-color: #FFFFFF; color: #000000">space</span> to go back to playing</p>
-            <br>
-            <p>Speed:
-                <input id="speed1" type="radio" name="speed" value="120" checked/>
-                <label for="speed1">Slow</label>
-                <input id="speed2" type="radio" name="speed" value="75"/>
-                <label for="speed2">Normal</label>
-                <input id="speed3" type="radio" name="speed" value="35"/>
-                <label for="speed3">Fast</label>
-            </p>
-            <p>Wall:
-                <input id="wallon" type="radio" name="wall" value="1" checked/>
-                <label for="wallon">On</label>
-                <input id="walloff" type="radio" name="wall" value="0"/>
-                <label for="walloff">Off</label>
-            </p>
-        </div>
   </div>
 
 <script>
   const canvas = document.getElementById('canvas');
   const ctx = canvas.getContext('2d');
   const ballSize = 5;
-
+  const PONG_GAMEOVER = document.getElementById("gameover");
+  // const button_new_game = document.getElementById("new_game");
   // Set the canvas width and height
   canvas.width = 600;
   canvas.height = 400;
-
+  PONG_GAMEOVER.style.display= "none";
   // Set the initial ball position and velocity
   let ballX, ballY, ballSpeedX, ballSpeedY;
   resetBall();
@@ -118,7 +103,7 @@
   let scorePlayer2 = 0;
 
   // Define the score limit
-  const scoreLimit = 10;
+  const scoreLimit = 1;
 
   // Get the score elements
   const score1 = document.getElementById('score1');
@@ -184,6 +169,10 @@
     ballSpeedX = Math.random() < 0.5 ? -5 : 5;
     ballSpeedY = Math.random() * 4 - 2;
   }
+  function resetBallNoSpeed() {
+    ballX = canvas.width / 2;
+    ballY = canvas.height / 2;
+  }
 
   // Update the paddle positions based on the user input
   function movePaddles() {
@@ -218,17 +207,25 @@
   function checkGameEnd() {
     // Check if player 1 has won
     if (scorePlayer1 >= scoreLimit) {
-      if(confirm('Do you want to play again?')){
+      
+      if(confirm('Player 1 wins!')){
       restart();
+      PONG_GAMEOVER.style.display= "block";
       } else {
+      restart();
+      PONG_GAMEOVER.style.display= "block";
       window.close();
       }
     }
     // Check if player 2 has won
     if (scorePlayer2 >= scoreLimit) {
-      if(confirm('Do you want to play again?')){
+      PONG_GAMEOVER.style.display= "block";
+      if(confirm('Player 2 wins!')){
+      PONG_GAMEOVER.style.display= "block";
       restart();
       } else {
+      PONG_GAMEOVER.style.display= "block";
+      restart();
       window.close();
       }
     }
@@ -244,6 +241,7 @@
     score1.textContent = scorePlayer1;
     score2.textContent = scorePlayer2;
     requestAnimationFrame(gameLoop);
+    PONG_GAMEOVER.style.display= "none";
   }
 
   // Detect user input
@@ -277,26 +275,19 @@
   });
 
   // Start the game loop
-  gameLoop();
+  // gameLoop();
 
-  const button_new_game = document.getElementById("new_game");
+
 
   function restart() {
     // Reset the scores
     scorePlayer1 = 0;
     scorePlayer2 = 0;
 
-    let ballX = canvas.width / 2;
-    let ballY = canvas.height / 2;
-    let ballSpeedX = Math.random() < 0.5 ? -5 : 5;
-    let ballSpeedY = Math.random() * 4 - 2;
     // Reset the ball and paddles
-    resetBall();
+    resetBallNoSpeed();
     paddle1Y = canvas.height / 2 - 40;
     paddle2Y = canvas.height / 2 - 40;
-
-    // Restart the game loop
-    gameLoop();
   }
 
 </script>
