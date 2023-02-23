@@ -216,6 +216,7 @@
       PONG_GAMEOVER.style.display= "block";
       window.close();
       }
+    // return gameLoop();
     }
     // Check if player 2 has won
     if (scorePlayer2 >= scoreLimit) {
@@ -228,6 +229,7 @@
       restart();
       window.close();
       }
+      // return gameLoop();
     }
   }
 
