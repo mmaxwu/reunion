@@ -1,60 +1,22 @@
-<style>
-    html, body {
-    background: #222;
-    font-family: 'Press Start 2P', Arial, sans-serif;
-    font-size: 16px;
-    color: #eee;
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Pong Game</title>
+  <style>
+    #pong-container {
+      position: absolute;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 600px;
+      height: 400px;
     }
-
-    #board {
-    position: relative;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 600px;
-    height: 400px;
-    background: #222;
-    border: 5px solid #eee;
+    canvas {
+      width: 100%;
+      height: 100%;
+      background: #222;
+      border: 5px solid #eee;
     }
-
-    #board::before {
-    content: "";
-    position: relative;
-    top: 0;
-    left: 50%;
-    height: 100%;
-    width:0%;
-    border-left: 5px dashed #eee;
-    transform: translate(-50%, 0%);
-    }
-
-    .paddle {
-    height: 80px;
-    width:10px;
-    background: #eee;
-    position: relative;
-    }
-
-    #paddle-1 {
-    top: 160px;
-    left: 20px;
-    }
-
-    #paddle-2 {
-    top: 160px;
-    right: 20px;
-    }
-
-    #ball {
-    width: 10px;
-    height: 10px;
-    position: relative;
-    background: #eee;
-    top: 190px;
-    left: 40px;
-    z-index: 1;
-    }
-
     .score {
       font-size: 4rem;
       color: #aaa;
@@ -64,9 +26,8 @@
     #score1 {
       left: 150px;
     }
-
-    #score-2 {
-    left: 360px;
+    #score2 {
+      left: 450px;
     }
   </style>
 </head>
