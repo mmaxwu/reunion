@@ -274,6 +274,8 @@
     if (scorePlayer1 >= scoreLimit) {
       score1.textContent = scorePlayer1;
       alert('Player 1 wins!');
+      scorePlayer1 = 0;
+      scorePlayer2 = 0;
       PONG_GAMEOVER.style.display= "block";
       window.close();
       }
@@ -281,6 +283,8 @@
     // Check if player 2 has won
     if (scorePlayer2 >= scoreLimit) {
       score2.textContent = scorePlayer2;
+      scorePlayer1 = 0;
+      scorePlayer2 = 0;
       alert('Player 2 wins!');
       PONG_GAMEOVER.style.display= "block";
       window.close();
