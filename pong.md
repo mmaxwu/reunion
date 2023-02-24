@@ -103,12 +103,11 @@
   let scorePlayer2 = 0;
 
   // Define the score limit
-  const scoreLimit = 1;
+  const scoreLimit = 2;
 
   // Get the score elements
   const score1 = document.getElementById('score1');
   const score2 = document.getElementById('score2');
-
   // Restart
   const restartButton = document.getElementById('restartButton');
   restartButton.addEventListener('click', restart);
@@ -205,9 +204,11 @@
 
   // Check for the game end
   function checkGameEnd() {
+    
+    
     // Check if player 1 has won
     if (scorePlayer1 >= scoreLimit) {
-      
+      score1.textContent = scorePlayer1;
       if(confirm('Player 1 wins!')){
       restart();
       PONG_GAMEOVER.style.display= "block";
@@ -220,6 +221,7 @@
     }
     // Check if player 2 has won
     if (scorePlayer2 >= scoreLimit) {
+      score2.textContent = scorePlayer2;
       PONG_GAMEOVER.style.display= "block";
       if(confirm('Player 2 wins!')){
       PONG_GAMEOVER.style.display= "block";
@@ -244,6 +246,8 @@
     score2.textContent = scorePlayer2;
     requestAnimationFrame(gameLoop);
     PONG_GAMEOVER.style.display= "none";
+    console.log(score1);
+    console.log(score2);
   }
 
   // Detect user input
