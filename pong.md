@@ -52,7 +52,7 @@
 <body>
   <div class="container bg-secondary" style="text-align:center;">
         <!-- Main Menu -->
-        <div id="menu" class="py-4 text-light">
+        <div id="start_menu" class="py-4 text-light">
             <p>Welcome to Pong, press <span style="background-color: #d4ca1c; color: #000000">start</span> to begin</p>
             <button id="start_game_button" onclick="gameLoop()">Start</button>
         </div>
@@ -109,11 +109,13 @@
   const ctx = canvas.getContext('2d');
   const ballSize = 5;
   const PONG_GAMEOVER = document.getElementById("gameover");
+  const PONG_START = document.getElementById("start_menu");
   // const button_new_game = document.getElementById("new_game");
   // Set the canvas width and height
   canvas.width = 600;
   canvas.height = 400;
   PONG_GAMEOVER.style.display= "none";
+  PONG_START.style.display="block";
   // Set the initial ball position and velocity
   let ballX, ballY, ballSpeedX, ballSpeedY;
   resetBall();
@@ -310,6 +312,7 @@
     // Check if player 1 has won
     if (scorePlayer1 >= scoreLimit) {
       PONG_GAMEOVER.style.display= "block";
+      PONG_START.style.display="none";
       gameRes.innerHTML = "Player 1 wins!";
       requestAnimationFrame();
       // gameState = 1;
@@ -317,6 +320,7 @@
     // Check if player 2 has won
     if (scorePlayer2 == scoreLimit) {
       PONG_GAMEOVER.style.display= "block";
+      PONG_START.style.display="none";
       gameRes.innerHTML = "Player 2 wins!";
       requestAnimationFrame();
       // gameState = 1;
