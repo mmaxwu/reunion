@@ -36,6 +36,17 @@
       height: 40px;
       width: 100px;
     }
+    .player_number{
+      font-size: 2rem;
+      /* background-color: #02fa51d7; */
+      color: #968796;
+    }
+    #player2{
+      transform: translate(+40%, -1000%);
+    }
+    #player1{
+      transform: translate(-35%, -1100%);
+    }
   </style>
 </head>
 <body>
@@ -47,20 +58,33 @@
         </div>
         <!-- Game Over -->
         <div id="gameover" class="py-4 text-light">
-            <p>Game Over, press <span style="background-color: #d4ca1c; color: #000000">start</span> to try again</p>
+            <p>Game Over, press the <span style="background-color: #d4ca1c; color: #000000">refresh</span> button to try again</p>
+            <p><span style="background-color: #FFFFFF; color: #000000">Your username must have exactly 3 characters in order to log your score.</span></p>
             <form action="javascript:create_user()">
                 <p><label>
-                    User ID:
-                    <input type="text" name="username" id="username" required>
+                    Username for Player 1:
+                    <input type="text" name="user1" id="user1" placeholder="Must have 3 characters" required>
                 </label></p>
                 <p><label>
-                    Score:
-                    <span name="score" id="score">0</span>
+                    Username for Player 2:
+                    <input type="text" name="user2" id="user2" placeholder="Must have 3 characters" required>
                 </label></p>
                 <p><label>
+                    Score for Player 1:
+                    <span name="scoring_1" id="scoring_1">0</span>
+                </label></p>
+                <p><label>
+                    Score for Player 2:
+                    <span name="scoring_2" id="scoring_2">0</span>
+                </label></p>
+                <p><label>
+                    Result:
+                    <span name="gameResult" id="gameResult">Result is displayed here.</span>
+                </label></p>
+                <!-- <p><label>
                     Date of Score:
                     <span type="date" name="dos" id="dos"></span>
-                </label></p>
+                </label></p> -->
                 <p>
                     <button onclick="alert('Your score has been posted!')">Submit</button>
                 </p>
@@ -72,9 +96,11 @@
         <div id="empty-space"></div>
         <div id="pong-container" style="text-align:center;">
           <canvas id="canvas"></canvas>
+          <div class="player_number" id="player2">Player 2</div>
+          <div class="player_number" id="player1">Player 1</div>
           <div class="score" id="score1">0</div>
           <div class="score" id="score2">0</div>
-          <button id="restartButton">Restart Game</button>
+          <!-- <button id="restartButton">Restart Game</button> -->
         </div>
   </div>
 
@@ -92,6 +118,7 @@
   let ballX, ballY, ballSpeedX, ballSpeedY;
   resetBall();
 
+  // let gameState = 0;
 
   // Set the initial paddle positions
   let paddle1Y = canvas.height / 2 - 40;
@@ -106,14 +133,27 @@
   let scorePlayer2 = 0;
 
   // Define the score limit
-  const scoreLimit = 2;
+  const scoreLimit = 5;
 
+  // Get the game result
+  const gameRes = document.getElementById('gameResult');
   // Get the score elements
   const score1 = document.getElementById('score1');
   const score2 = document.getElementById('score2');
+  const score1_display = document.getElementById('scoring_1');
+  const score2_display = document.getElementById('scoring_2');
   // Restart
-  const restartButton = document.getElementById('restartButton');
-  restartButton.addEventListener('click', restart);
+  // const restartButton = document.getElementById('restartButton');
+  // restartButton.addEventListener('click', restart);
+
+  // function gameStart() {
+  //   if(gameState ===0){
+  //     gameLoop();
+  //   }else{
+  //     PONG_GAMEOVER.style.display= "block";
+  //     resetBallNoSpeed();
+  //   }
+  // }
 
   // Draw the paddles and ball on the canvas
   function drawPaddlesAndBall() {
@@ -153,13 +193,13 @@
 
     // Check for a goal scored by player 1
     if (ballX - ballSize < 0) {
-      scorePlayer2++;
+      scorePlayer2 = scorePlayer2 + 1;
       resetBall();
     }
 
     // Check for a goal scored by player 2
     if (ballX + ballSize > canvas.width) {
-      scorePlayer1++;
+      scorePlayer1 = scorePlayer1 + 1;
       resetBall();
     }
   }
@@ -207,17 +247,19 @@
 
   // Main game loop
   function gameLoop() {
+    // PONG_GAMEOVER.style.display= "none";
+    // gameStart();
     drawPaddlesAndBall();
     moveBall();
     movePaddles();
+    scoreTracker();
     checkGameEnd();
-    // Update the score display
-    score1.textContent = scorePlayer1;
-    score2.textContent = scorePlayer2;
+    // // Update the score display
+    // score1.textContent = scorePlayer1;
+    // score2.textContent = scorePlayer2;
     requestAnimationFrame(gameLoop);
-    console.log(score1);
-    console.log(score2);
-    // return hi;
+    // console.log(score1);
+    // console.log(score2);
   }
 
   // Detect user input
@@ -242,16 +284,13 @@
   if (event.key === 'w') {
   wPressed = false;
   } else if (event.key === 's') {
-  sPressed = false;
+  sPressed = false;resetBallNoSpeed
   } else if (event.key === 'ArrowUp') {
   upPressed = false;
   } else if (event.key === 'ArrowDown') {
   downPressed = false;
   }
   });
-
-  // Start the game loop
-  // gameLoop();
 
 
 
@@ -268,29 +307,29 @@
 
   // Check for the game end
   function checkGameEnd() {
-    
-    
     // Check if player 1 has won
     if (scorePlayer1 >= scoreLimit) {
-      score1.textContent = scorePlayer1;
-      alert('Player 1 wins!');
-      scorePlayer1 = 0;
-      scorePlayer2 = 0;
       PONG_GAMEOVER.style.display= "block";
-      window.close();
-      }
-    // return gameLoop();
-    // Check if player 2 has won
-    if (scorePlayer2 >= scoreLimit) {
-      score2.textContent = scorePlayer2;
-      scorePlayer1 = 0;
-      scorePlayer2 = 0;
-      alert('Player 2 wins!');
-      PONG_GAMEOVER.style.display= "block";
-      window.close();
-      }
-      // return gameLoop();
+      gameRes.innerHTML = "Player 1 wins!";
+      requestAnimationFrame();
+      // gameState = 1;
     }
+    // Check if player 2 has won
+    if (scorePlayer2 == scoreLimit) {
+      PONG_GAMEOVER.style.display= "block";
+      gameRes.innerHTML = "Player 2 wins!";
+      requestAnimationFrame();
+      // gameState = 1;
+    }
+    }
+    
+    function scoreTracker(){
+      score1.innerHTML = String(scorePlayer1);
+      score2.innerHTML = String(scorePlayer2);
+      score1_display.innerHTML = String(scorePlayer1);
+      score2_display.innerHTML = String(scorePlayer2);
+    }
+    
 </script>
 
 </body>
