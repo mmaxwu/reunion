@@ -270,30 +270,17 @@
     // Check if player 1 has won
     if (scorePlayer1 >= scoreLimit) {
       score1.textContent = scorePlayer1;
-      if(confirm('Player 1 wins!')){
-      restart();
+      alert('Player 1 wins!');
       PONG_GAMEOVER.style.display= "block";
-      } else {
-      restart();
-      PONG_GAMEOVER.style.display= "block";
-      window.close();
       }
     // return gameLoop();
-    }
     // Check if player 2 has won
     if (scorePlayer2 >= scoreLimit) {
       score2.textContent = scorePlayer2;
+      alert('Player 2 wins!');
       PONG_GAMEOVER.style.display= "block";
-      if(confirm('Player 2 wins!')){
-      PONG_GAMEOVER.style.display= "block";
-      restart();
-      } else {
-      PONG_GAMEOVER.style.display= "block";
-      restart();
-      window.close();
       }
       // return gameLoop();
-    }
   }
 </script>
 
