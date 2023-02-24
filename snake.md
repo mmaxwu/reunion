@@ -52,11 +52,7 @@
 
 <div class="container">
     <header class="pb-3 mb-4 border-bottom border-primary text-dark">
-        <div class="the_data">
         <p class="fs-4">Snake score: <span id="score_value">0</span></p>
-        <p id="user">Username Appears Here</p>
-        <button onclick="create_user()">Post</button>
-        </div>
     </header>
     <div class="container bg-secondary" style="text-align:center;">
         <!-- Main Menu -->
