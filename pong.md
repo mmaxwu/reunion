@@ -272,6 +272,7 @@
       score1.textContent = scorePlayer1;
       alert('Player 1 wins!');
       PONG_GAMEOVER.style.display= "block";
+      window.close();
       }
     // return gameLoop();
     // Check if player 2 has won
@@ -279,9 +280,10 @@
       score2.textContent = scorePlayer2;
       alert('Player 2 wins!');
       PONG_GAMEOVER.style.display= "block";
+      window.close();
       }
       // return gameLoop();
-  }
+    }
 </script>
 
 </body>
