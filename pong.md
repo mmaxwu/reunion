@@ -17,6 +17,9 @@
       background: #222;
       border: 5px solid #eee;
     }
+    canvas:focus{
+      outline: none;
+    }
     .score {
       font-size: 4rem;
       color: #aaa;
@@ -131,6 +134,8 @@
 
   // Update the ball position and check for collisions
   function moveBall() {
+    ballSpeedX = Math.random() < 0.5 ? -5 : 5;
+    ballSpeedY = Math.random() * 4 - 2;
     ballX += ballSpeedX;
     ballY += ballSpeedY;
     // Check for collisions with the top and bottom walls
@@ -162,9 +167,7 @@
   }
 
   // Reset the ball to the center of the canvas
-  function resetBall() {
-    ballX = canvas.width / 2;
-    ballY = canvas.height / 2;
+  function resetBallSpeed() {
     ballSpeedX = Math.random() < 0.5 ? -5 : 5;
     ballSpeedY = Math.random() * 4 - 2;
   }
@@ -261,6 +264,11 @@
     resetBallNoSpeed();
     paddle1Y = canvas.height / 2 - 40;
     paddle2Y = canvas.height / 2 - 40;
+    
+    ballSpeedX = 0;
+    ballSpeedY = 0;
+    
+    gameLoop();
   }
 
   // Check for the game end
