@@ -5,16 +5,58 @@
 
 </head>
 <body id="ht">
+	<div class="menu_controls" style="text-align:center;">
+        <!-- Main Menu -->
+        <div id="start_menu" class="py-4 text-light">
+            <p>Welcome to Pong, press <span style="background-color: #d4ca1c; color: #000000">start</span> to begin</p>
+            <button id="start_game_button" onclick="declareWinner()">Start</button>
+        </div>
+        <!-- Game Over -->
+        <div id="gameover" class="py-4 text-light">
+            <p>Game Over, press the <span style="background-color: #d4ca1c; color: #000000">refresh</span> button to try again</p>
+            <p><span style="background-color: #FFFFFF; color: #000000">Your username must have exactly 3 characters in order to log your score.</span></p>
+            <form action="javascript:create_user()">
+                <p><label>
+                    Username for Player 1:
+                    <input type="text" name="user1" id="user1" placeholder="Must have 3 characters" required>
+                </label></p>
+                <p><label>
+                    Username for Player 2:
+                    <input type="text" name="user2" id="user2" placeholder="Must have 3 characters" required>
+                </label></p>
+                <p><label>
+                    Score for Player 1:
+                    <span name="scoring_1" id="scoring_1">0</span>
+                </label></p>
+                <p><label>
+                    Score for Player 2:
+                    <span name="scoring_2" id="scoring_2">0</span>
+                </label></p>
+                <p><label>
+                    Result:
+                    <span name="gameResult" id="gameResult">Result is displayed here.</span>
+                </label></p>
+                <!-- <p><label>
+                    Date of Score:
+                    <span type="date" name="dos" id="dos"></span>
+                </label></p> -->
+                <p>
+                    <button onclick="alert('Your score has been posted!')">Submit</button>
+                </p>
+            </form>
+            <!-- <a id="new_game1" class="link-alert">new game</a>
+            <a id="setting_menu1" class="link-alert">settings</a> -->
+        </div>
 <!-- astea 2 sunt puse ca indexarea claselor sa inceapa de la 1 -->
 <div class="checker white_checker" style="display:none"> </div>
 <div class="checker black_checker" style="display:none"> </div>
-
 
 <div class="square" style="display: none" id ="ht"> </div>
 <div class="black_background" id="black_background"> </div>
 	<div class="score" id="score">
 		<br>
 	</div>
+<button id="exit_screen" onclick="exitResultScreen()">Exit</button>
 <div class="table" id="table">
 
   <div class="checker white_checker"> </div>
@@ -140,6 +182,7 @@ var black_checker_class = document.getElementsByClassName("black_checker");
 var table = document.getElementById("table");
 var score = document.getElementById("score");
 var black_background = document.getElementById("black_background");
+const exit_background = document.getElementById("exit_screen");
 var moveSound = document.getElementById("moveSound");
 var winSound = document.getElementById("winSound");
 var windowHeight = window.innerHeight
@@ -536,6 +579,11 @@ function checkIfLost(){
 			return false;
 	return true;
 }
+function exitResultScreen(){
+	black_background.style.display = "none";
+	exit_background.style.display = "none";
+	score.style.display = "none";
+}
 function  checkForMoves(){
 	var i ;
 	for(i = 1 ; i <= 12; i++)
@@ -549,6 +597,7 @@ function declareWinner(){
 	playSound(winSound);
 	black_background.style.display = "inline";
 	score.style.display = "block";
+	exit_background.style.display = "block";
 0
 if(the_checker[1].color == "white")
 	score.innerHTML = "Black wins";
@@ -666,13 +715,21 @@ if(windowWidth > 650){
   transition: 0.3s ease-in-out;
 }
 .black_background{
-	position: fixed;
+	/* position: fixed; */
 	width: 100%;
 	height: 100%;
 	background-color: black;
 	opacity: 0.5;
 	z-index:  7;
+	/* display: none; */
 	display: none;
+  	/* margin: auto; */
+	/* text-align: center; */
+	transform: translate(+100%, -1000%);
+}
+#exit_screen{
+	/* position: fixed; */
+	transform: translate(+100%, -1000%);
 }
 @media only screen and (max-width : 640px){
 	.table{
