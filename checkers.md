@@ -24,12 +24,16 @@
                     Username for Player Black:
                     <input type="text" name="uidB" id="user2" placeholder="Must have 3 characters" required>
                 </label></p>
-                <!-- <p><label>
-                    Date of Score:
-                    <span type="date" name="dos" id="dos"></span>
-                </label></p> -->
+                <p><label>
+                    Result for red:
+                    <span name="resultR" id="resultR">Result displayed here</span>
+                </label></p>
+				<p><label>
+                    Result for black:
+                    <span name="resultB" id="resultB">Result displayed here</span>
+                </label></p>
                 <p>
-                    <button onclick="alert('Your score has been posted!')">Submit</button>
+                    <button onclick="alert('Your game has been posted!')">Submit</button>
                 </p>
             </form>
             <!-- <a id="new_game1" class="link-alert">new game</a>
@@ -196,6 +200,8 @@ var multiplier = 1 // 2 daca face saritura 1 in caz contrat
 var tableLimit,reverse_tableLimit ,  moveUpLeft,moveUpRight, moveDownLeft,moveDownRight , tableLimitLeft, tableLimitRight;
 const GAMEOVERFORM = document.getElementById("gameover_form");
 GAMEOVERFORM.style.display = "none";
+const result_red = document.getElementById("resultR");
+const result_black = document.getElementById("resultB");
 /*================================*/
   getDimension();
 	if(windowWidth > 640){
@@ -592,8 +598,12 @@ function declareWinner(){
 0
 if(the_checker[1].color == "white")
 	score.innerHTML = "Black wins";
+	result_red.innerHTML = "Loss";
+	result_black.innerHTML = "Win";
 else
 	score.innerHTML = "Red wins";
+	result_red.innerHTML = "Win";
+	result_black.innerHTML = "Loss";
 }
 function playSound(sound){
 	if(sound) sound.play();
