@@ -5,6 +5,7 @@
 
 </head>
 <body id="ht">
+<div class="black_background" id="black_background"> </div>
 	<div class="menu_controls" style="text-align:center;">
         <!-- Main Menu -->
         <div id="start_menu" class="py-4 text-light">
@@ -12,7 +13,7 @@
             <button id="start_game_button" onclick="declareWinner()">Start</button>
         </div>
         <!-- Game Over -->
-        <div id="gameover" class="py-4 text-light">
+        <div id="gameover_form" class="py-4 text-light">
             <p>Game Over, press the <span style="background-color: #d4ca1c; color: #000000">refresh</span> button to try again</p>
             <p><span style="background-color: #FFFFFF; color: #000000">Your username must have exactly 3 characters in order to log your score.</span></p>
             <form action="javascript:create_user()">
@@ -50,9 +51,7 @@
 <!-- astea 2 sunt puse ca indexarea claselor sa inceapa de la 1 -->
 <div class="checker white_checker" style="display:none"> </div>
 <div class="checker black_checker" style="display:none"> </div>
-
 <div class="square" style="display: none" id ="ht"> </div>
-<div class="black_background" id="black_background"> </div>
 	<div class="score" id="score">
 		<br>
 	</div>
@@ -183,6 +182,7 @@ var table = document.getElementById("table");
 var score = document.getElementById("score");
 var black_background = document.getElementById("black_background");
 const exit_background = document.getElementById("exit_screen");
+exit_background.style.display = "none";
 var moveSound = document.getElementById("moveSound");
 var winSound = document.getElementById("winSound");
 var windowHeight = window.innerHeight
@@ -207,6 +207,8 @@ var anotherMove;
 var mustAttack = false;
 var multiplier = 1 // 2 daca face saritura 1 in caz contrat
 var tableLimit,reverse_tableLimit ,  moveUpLeft,moveUpRight, moveDownLeft,moveDownRight , tableLimitLeft, tableLimitRight;
+const GAMEOVERFORM = document.getElementById("gameover_form");
+GAMEOVERFORM.style.display = "none";
 /*================================*/
   getDimension();
 	if(windowWidth > 640){
@@ -583,6 +585,7 @@ function exitResultScreen(){
 	black_background.style.display = "none";
 	exit_background.style.display = "none";
 	score.style.display = "none";
+	// GAMEOVERFORM.style.display = "none";
 }
 function  checkForMoves(){
 	var i ;
@@ -594,10 +597,11 @@ function  checkForMoves(){
 	return true;
 }
 function declareWinner(){
-	playSound(winSound);
+	// playSound(winSound);
 	black_background.style.display = "inline";
 	score.style.display = "block";
-	exit_background.style.display = "block";
+	exit_background.style.display = "inline";
+	GAMEOVERFORM.style.display = "block";
 0
 if(the_checker[1].color == "white")
 	score.innerHTML = "Black wins";
@@ -720,16 +724,12 @@ if(windowWidth > 650){
 	height: 100%;
 	background-color: black;
 	opacity: 0.5;
-	z-index:  7;
-	/* display: none; */
+	z-index:  8;
 	display: none;
-  	/* margin: auto; */
-	/* text-align: center; */
-	transform: translate(+100%, -1000%);
+	float: left;
 }
 #exit_screen{
-	/* position: fixed; */
-	transform: translate(+100%, -1000%);
+	z-index: 10;
 }
 @media only screen and (max-width : 640px){
 	.table{
