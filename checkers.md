@@ -9,8 +9,7 @@
 	<div class="menu_controls" style="text-align:center;">
         <!-- Main Menu -->
         <div id="start_menu" class="py-4 text-light">
-            <p>Welcome to Pong, press <span style="background-color: #d4ca1c; color: #000000">start</span> to begin</p>
-            <button id="start_game_button" onclick="declareWinner()">Start</button>
+            <p>Welcome to checkers!</p>
         </div>
         <!-- Game Over -->
         <div id="gameover_form" class="py-4 text-light">
@@ -720,8 +719,10 @@ if(windowWidth > 650){
 }
 .black_background{
 	/* position: fixed; */
+	overflow: hidden;
+	position: absolute;
 	width: 100%;
-	height: 100%;
+	height: 120%;
 	background-color: black;
 	opacity: 0.5;
 	z-index:  8;
@@ -730,6 +731,11 @@ if(windowWidth > 650){
 }
 #exit_screen{
 	z-index: 10;
+	overflow: hidden;
+	position: absolute;
+	transform: translate(-50%, -750%);
+	height: 40px;
+    width: 100px;
 }
 @media only screen and (max-width : 640px){
 	.table{
