@@ -74,10 +74,6 @@
                     Score:
                     <span name="score" id="score">0</span>
                 </label></p>
-                <p><label>
-                    Date of Score:
-                    <span type="date" name="dos" id="dos"></span>
-                </label></p>
                 <p>
                     <button onclick="alert('Your score has been posted!')">Submit</button>
                 </p>

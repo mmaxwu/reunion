@@ -2,7 +2,7 @@
   <tr>
     <th>Username</th>
     <th>Score</th>
-    <th>Date & Time</th>
+    <th>Date</th>
   </tr>
   <tbody id="scoresList">
   </tbody>
@@ -76,7 +76,7 @@
     const tr = document.createElement("tr");
     const username = document.createElement("td");
     const score = document.createElement("td");
-    const dos = document.createElement("td")
+    const dos = document.createElement("td");
   
     // obtain data that is specific to the API
     username.innerHTML = data.username; 
