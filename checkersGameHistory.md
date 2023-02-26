@@ -1,8 +1,8 @@
 <table id="recentGames" style="width: 100%;">
   <tr>
-    <th>Username Black</th>
+    <th>Black Username</th>
     <th>Black Result</th>
-    <th>Username Red</th>
+    <th>Red Username</th>
     <th>Red Result</th>
     <th>Date & Time</th>
   </tr>
