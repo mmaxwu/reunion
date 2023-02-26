@@ -154,4 +154,41 @@ body h1, header h1, .title h1 { text-align: center; }
   .navbar a:hover {
     background: #009494;
     color: black;
-}
+  }
+// Rating feature //
+  .rating {
+    display: inline-block;
+    font-size: 0;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    vertical-align: middle;
+  }
+    
+  .rating input[type="radio"] {
+    display: none;
+  }
+    
+  .rating label {
+    cursor: pointer;
+    display: inline-block;
+    font-size: 24px;
+    line-height: 24px;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    text-indent: -999em;
+  }
+    
+  .rating label:before {
+    content: "\2605";
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+    
+  .rating label:hover:before,
+  .rating label:hover ~ label:before,
+  .rating input[type="radio"]:checked ~ label:before {
+    color: #ffce00;
+  }
