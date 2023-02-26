@@ -17,24 +17,12 @@
             <p><span style="background-color: #FFFFFF; color: #000000">Your username must have exactly 3 characters in order to log your score.</span></p>
             <form action="javascript:create_user()">
                 <p><label>
-                    Username for Player 1:
-                    <input type="text" name="user1" id="user1" placeholder="Must have 3 characters" required>
+                    Username for Player Red:
+                    <input type="text" name="uidR" id="user1" placeholder="Must have 3 characters" required>
                 </label></p>
                 <p><label>
-                    Username for Player 2:
-                    <input type="text" name="user2" id="user2" placeholder="Must have 3 characters" required>
-                </label></p>
-                <p><label>
-                    Score for Player 1:
-                    <span name="scoring_1" id="scoring_1">0</span>
-                </label></p>
-                <p><label>
-                    Score for Player 2:
-                    <span name="scoring_2" id="scoring_2">0</span>
-                </label></p>
-                <p><label>
-                    Result:
-                    <span name="gameResult" id="gameResult">Result is displayed here.</span>
+                    Username for Player Black:
+                    <input type="text" name="uidB" id="user2" placeholder="Must have 3 characters" required>
                 </label></p>
                 <!-- <p><label>
                     Date of Score:
