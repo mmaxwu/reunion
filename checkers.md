@@ -742,3 +742,49 @@ if(windowWidth > 650){
 </style>
 </body>
 </html>
+
+<script>
+ // prepare HTML result container for new output
+  // const resultContainer = document.getElementById("scoresList");
+  // prepare URL's to allow easy switch from deployment and localhost
+  //const url = "http://localhost:8095/api/score"
+  const url = "https://pythonalflask.tk/api/checkers"
+  const create_fetch = url + '/addCheckersGame';
+  // Load users on page entry
+  function create_user(){
+    //Validate Password (must be 6-20 characters in len)
+    //verifyPassword("click");
+    const body = {
+        uidB: document.getElementById("uidB").value,
+		resultB: document.getElementById("resultB").innerHTML
+		uidR: document.getElementById("uidR").value,
+        resultR: document.getElementById("resultR").innerHTML
+    };
+    const requestOptions = {
+        method: 'POST',
+        body: JSON.stringify(body),
+        mode: 'cors',
+        cache: 'default',
+        //credentials: 'include',
+        headers: {
+            "content-type": "application/json",
+            'Authorization': 'Bearer my-token',
+        },
+    };
+    // URL for Create API
+    // Fetch API call to the database to create a new user
+    fetch(create_fetch, requestOptions)
+      .then(response => {
+        // trap error response from Web API
+        if (response.status !== 200) {
+          const errorMsg = 'Database create error: ' + response.status;
+          console.log(errorMsg);
+          return;
+        }
+        // response contains valid result
+        response.json().then(data => {
+            console.log(data);
+        })
+    })
+  }
+</script>
