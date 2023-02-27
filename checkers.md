@@ -598,14 +598,16 @@ function declareWinner(){
     exit_background.style.display = "inline";
     GAMEOVERFORM.style.display = "block";
 0
-if(the_checker[1].color == "white")
+if(the_checker[1].color == "white"){
     score.innerHTML = "Black wins";
-    //result_red.innerHTML = "Loss";
-    //result_black.innerHTML = "Win";
-else
+    result_red.innerHTML = "Loss";
+    result_black.innerHTML = "Win";
+}
+else{
     score.innerHTML = "Red wins";
     result_red.innerHTML = "Win";
     result_black.innerHTML = "Loss";
+}    
 }
 function playSound(sound){
     if(sound) sound.play();
