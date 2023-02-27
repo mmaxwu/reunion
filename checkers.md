@@ -600,8 +600,8 @@ function declareWinner(){
 0
 if(the_checker[1].color == "white")
     score.innerHTML = "Black wins";
-    //result_red.innerHTML = "Loss";
-    //result_black.innerHTML = "Win";
+    result_red.innerHTML = "Loss";
+    result_black.innerHTML = "Win";
 else
     score.innerHTML = "Red wins";
     result_red.innerHTML = "Win";
@@ -771,6 +771,7 @@ if(windowWidth > 650){
         resultB: result_black.innerHTML,
         uidR: document.getElementById("user1").value,
         resultR: result_red.innerHTML
+        
     };
     const requestOptions = {
         method: 'POST',

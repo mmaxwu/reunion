@@ -15,7 +15,7 @@
   const resultContainer = document.getElementById("checkersList");
   // prepare URL's to allow easy switch from deployment and localhost
   //const url = "http://localhost:8086/api/users"
-  const url = "http://192.168.1.97:8086/api/checkers"
+  const url = "http://127.0.0.1:8086/api/checkers"
   const read_fetch = url + '/checkersList';
 
   // Load users on page entry
@@ -54,12 +54,12 @@
       response.json().then(data => {
           console.log(data);
           data.sort(function(a, b) {
-            return b.score - a.score;
+            return new Date(b.dogame) - new Date(a.dogame);
           });
-        for (let i = 0; i < 5; i++) {
-          const row = data[i];
-          console.log(row);
-          add_row(row);
+          for (let i = 0; i < 5; i++) {
+            const row = data[i];
+            console.log(row);
+            add_row(row);
           }
         })
     })
@@ -80,21 +80,21 @@
     const resultB = document.createElement("td");
     const uidR = document.createElement("td");
     const resultR = document.createElement("td");
-    const dos = document.createElement("td")
+    const dogame = document.createElement("td")
   
     // obtain data that is specific to the API
     uidB.innerHTML = data.uidB; 
     resultB.innerHTML = data.resultB; 
     uidR.innerHTML = data.uidR; 
     resultR.innerHTML = data.resultR; 
-    dos.innerHTML = data.dos;
+    dogame.innerHTML = data.dogame;
 
     // add HTML to container
     tr.appendChild(uidB);
     tr.appendChild(resultB)
     tr.appendChild(uidR);
     tr.appendChild(resultR)
-    tr.appendChild(dos);
+    tr.appendChild(dogame);
 
     resultContainer.appendChild(tr);
   }
