@@ -401,7 +401,7 @@
     })
     // show refresh button
     PONG_REFRESH.style.display= "block";
-    //PONG_GAMEOVER.style.display= "none";
+    PONG_GAMEOVER.style.display= "none";
   }
 </script>
 <script>
