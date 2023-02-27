@@ -68,7 +68,7 @@
             <form action="javascript:create_user()">
                 <p><label>
                     User ID:
-                    <input type="text" name="username" id="username" required>
+                    <input type="text" name="username" id="username" placeholder="Must have 3 characters" required>
                 </label></p>
                 <p><label>
                     Score:
