@@ -15,7 +15,7 @@
   const resultContainer = document.getElementById("checkersList");
   // prepare URL's to allow easy switch from deployment and localhost
   //const url = "http://localhost:8086/api/users"
-  const url = "http://127.0.0.1:8086/api/checkers"
+  const url = "https://pythonalflask.tk/api/checkers"
   const read_fetch = url + '/checkersList';
 
   // Load users on page entry

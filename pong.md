@@ -346,8 +346,8 @@
     
   // const resultContainer = document.getElementById("scoresList");
   // prepare URL's to allow easy switch from deployment and localhost
-  const url = "http://127.0.0.1:8086/api/pong"
-  //const url = "https://pythonalflask.tk/api/pong"
+  //const url = "http://127.0.0.1:8086/api/pong"
+  const url = "https://pythonalflask.tk/api/pong"
   const create_fetch = url + '/addPongScore';
   // Load users on page entry
   function create_user(){
