@@ -1,3 +1,4 @@
+<input type="text" id="searchInput" placeholder="Search..." onkeyup="search_table()">
 <table id="recentGames" style="width: 100%;">
   <tr>
     <th>Player 1</th>
@@ -23,7 +24,38 @@
   // Load users on page entry
   read_users();
 
+    
+  // Search table function
+  function search_table() {
+    // Declare variables
+    var input, filter, table, tr, td, i, j, txtValue;
+    input = document.getElementById("searchInput");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("recentGames");
+    tr = table.getElementsByTagName("tr");
 
+    // Loop through all table rows, and hide those that don't match the search query
+    for (i = 0; i < tr.length; i++) {
+      // Search only in the first 6 columns
+      for (j = 0; j < 6; j++) {
+        td = tr[i].getElementsByTagName("td")[j];
+        if (td) {
+          txtValue = td.textContent || td.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+            break;
+          } else {
+            tr[i].style.display = "none";
+          }
+        }
+      }
+    }
+
+  // Bind search function to search input field
+  document.getElementById("searchInput").addEventListener("keyup", function() {
+    search_table();
+  });
+  }
   // Display User Table, data is fetched from Backend Database
   function read_users() {
     // prepare fetch options
