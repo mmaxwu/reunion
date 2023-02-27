@@ -49,6 +49,16 @@
           }
         }
       }
+      // Search in the "Date Played" column separately
+      td = tr[i].getElementsByTagName("td")[6];
+      if (td) {
+        txtValue = td.textContent || td.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+          tr[i].style.display = "";
+        } else {
+          tr[i].style.display = "none";
+        }
+      }
     }
 
   // Bind search function to search input field
