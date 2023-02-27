@@ -32,7 +32,7 @@
     #score2 {
       left: 450px;
     }
-    #start_game_button {
+    #start_game_button, #refresh {
       height: 40px;
       width: 100px;
     }
@@ -390,7 +390,7 @@
     })
     // show refresh button
     PONG_REFRESH.style.display= "block";
-    PONG_GAMEOVER.style.display= "none";
+    //PONG_GAMEOVER.style.display= "none";
   }
 </script>
 <script>
