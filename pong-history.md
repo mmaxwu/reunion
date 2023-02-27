@@ -90,7 +90,7 @@
           data.sort(function(a, b) {
             return new Date(b.scoreDate) - new Date(a.scoreDate);
           });
-          add_row(row);
+          add_row(data);
         })
       })
       // catch fetch errors (ie ACCESS to server blocked)
