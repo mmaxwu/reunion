@@ -78,8 +78,12 @@
                     <span name="scoring_2" id="scoring_2">0</span>
                 </label></p>
                 <p><label>
-                    Result:
-                    <span name="gameResult" id="gameResult">Result is displayed here.</span>
+                    Player 1: 
+                    <span name="gameResult1" id="gameResult1">Result is displayed here.</span>
+                </label></p>
+                <p><label>
+                    Player 2: 
+                    <span name="gameResult2" id="gameResult2">Result is displayed here.</span>
                 </label></p>
                 <!-- <p><label>
                     Date of Score:
@@ -92,6 +96,7 @@
             <!-- <a id="new_game1" class="link-alert">new game</a>
             <a id="setting_menu1" class="link-alert">settings</a> -->
         </div>
+        <div id="refresh"><button onclick="location.reload()">Refresh Page</button></div>
         <!-- Play Screen -->
         <div id="empty-space"></div>
         <div id="pong-container" style="text-align:center;">
@@ -110,12 +115,14 @@
   const ballSize = 5;
   const PONG_GAMEOVER = document.getElementById("gameover");
   const PONG_START = document.getElementById("start_menu");
+  const PONG_REFRESH = document.getElementById("refresh");
   // const button_new_game = document.getElementById("new_game");
   // Set the canvas width and height
   canvas.width = 600;
   canvas.height = 400;
   PONG_GAMEOVER.style.display= "none";
   PONG_START.style.display="block";
+  PONG_REFRESH.style.display="none";
   // Set the initial ball position and velocity
   let ballX, ballY, ballSpeedX, ballSpeedY;
   resetBall();
@@ -138,7 +145,8 @@
   const scoreLimit = 5;
 
   // Get the game result
-  const gameRes = document.getElementById('gameResult');
+  const gameRes1 = document.getElementById('gameResult1');
+  const gameRes2 = document.getElementById('gameResult2');
   // Get the score elements
   const score1 = document.getElementById('score1');
   const score2 = document.getElementById('score2');
@@ -249,7 +257,7 @@
 
   // Main game loop
   function gameLoop() {
-    // PONG_GAMEOVER.style.display= "none";
+    PONG_GAMEOVER.style.display= "none";
     // gameStart();
     drawPaddlesAndBall();
     moveBall();
@@ -313,16 +321,18 @@
     if (scorePlayer1 >= scoreLimit) {
       PONG_GAMEOVER.style.display= "block";
       PONG_START.style.display="none";
-      gameRes.innerHTML = "Player 1 wins!";
-      requestAnimationFrame();
+      gameRes1.innerHTML = "Won";
+      gameRes2.innerHTML = "Loss";
+      cancelAnimationFrame();
       // gameState = 1;
     }
     // Check if player 2 has won
     if (scorePlayer2 == scoreLimit) {
       PONG_GAMEOVER.style.display= "block";
       PONG_START.style.display="none";
-      gameRes.innerHTML = "Player 2 wins!";
-      requestAnimationFrame();
+      gameRes1.innerHTML = "Loss";
+      gameRes2.innerHTML = "Won";
+      cancelAnimationFrame();
       // gameState = 1;
     }
     }
@@ -334,6 +344,63 @@
       score2_display.innerHTML = String(scorePlayer2);
     }
     
+  // const resultContainer = document.getElementById("scoresList");
+  // prepare URL's to allow easy switch from deployment and localhost
+  const url = "http://127.0.0.1:8086/api/pong"
+  //const url = "https://pythonalflask.tk/api/pong"
+  const create_fetch = url + '/addPongScore';
+  // Load users on page entry
+  function create_user(){
+    //Validate Password (must be 6-20 characters in len)
+    //verifyPassword("click");
+    const body = {
+        user1: document.getElementById("user1").value,
+        user2: document.getElementById("user2").value,
+        score1: document.getElementById("scoring_1").innerHTML,
+        score2: document.getElementById("scoring_2").innerHTML,
+        result1: document.getElementById("gameResult1").innerHTML,
+        result2: document.getElementById("gameResult2").innerHTML        
+
+    };
+    const requestOptions = {
+        method: 'POST',
+        body: JSON.stringify(body),
+        mode: 'cors',
+        cache: 'default',
+        //credentials: 'include',
+        headers: {
+            "content-type": "application/json",
+            'Authorization': 'Bearer my-token',
+        },
+    };
+    // URL for Create API
+    // Fetch API call to the database to create a new user
+    fetch(create_fetch, requestOptions)
+      .then(response => {
+        // trap error response from Web API
+        if (response.status !== 200) {
+          const errorMsg = 'Database create error: ' + response.status;
+          console.log(errorMsg);
+          return;
+        }
+        // response contains valid result
+        response.json().then(data => {
+            console.log(data);
+        })
+    })
+    // show refresh button
+    PONG_REFRESH.style.display= "block";
+    PONG_GAMEOVER.style.display= "none";
+  }
+</script>
+<script>
+    const stars = document.querySelectorAll('.rating input');
+    stars.forEach((star, index) => {
+    star.addEventListener('click', () => {
+        const rating = index + 1;
+        console.log(`You rated this ${rating} stars.`);
+  });
+});
 </script>
 
 </body>
