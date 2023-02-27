@@ -90,11 +90,7 @@
           data.sort(function(a, b) {
             return new Date(b.scoreDate) - new Date(a.scoreDate);
           });
-          for (let i = 0; i < 5; i++) {
-            const row = data[i];
-            console.log(row);
-            add_row(row);
-          }
+          add_row(row);
         })
       })
       // catch fetch errors (ie ACCESS to server blocked)
