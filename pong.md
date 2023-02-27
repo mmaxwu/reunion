@@ -66,7 +66,7 @@
         </div>
         <!-- Game Over -->
         <div id="gameover" class="py-4 text-light">
-            <p>Game Over, press the <span style="background-color: #d4ca1c; color: #000000">refresh</span> button to try again</p>
+            <p>Game Over, press the <span style="background-color: #d4ca1c; color: #000000">New Game</span> button to play again</p>
             <p><span style="background-color: #FFFFFF; color: #000000">Your username must have exactly 3 characters in order to log your score.</span></p>
             <form action="javascript:create_user()">
                 <p><label>
@@ -104,7 +104,7 @@
             <!-- <a id="new_game1" class="link-alert">new game</a>
             <a id="setting_menu1" class="link-alert">settings</a> -->
         </div>
-        <div id="refresh" class="py-4 text-light"><button id="refreshbutton" onclick="location.reload()">Refresh Page</button></div>
+        <div id="refresh" class="py-4 text-light"><button id="refreshbutton" onclick="location.reload()">New Game</button></div>
         <!-- Play Screen -->
         <div id="empty-space"></div>
         <div id="pong-container" style="text-align:center;">
