@@ -279,6 +279,9 @@
   let downPressed = false;
 
   document.addEventListener('keydown', (event) => {
+  if (event.code === 'ArrowUp' || event.code === 'ArrowDown'){
+    event.preventDefault();
+  }
   if (event.key === 'w') {
   wPressed = true;
   } else if (event.key === 's') {
