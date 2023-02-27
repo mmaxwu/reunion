@@ -760,7 +760,7 @@ if(windowWidth > 650){
   // const resultContainer = document.getElementById("scoresList");
   // prepare URL's to allow easy switch from deployment and localhost
   //const url = "http://localhost:8095/api/score"
-  const url = "http://192.168.1.97:8086/api/checkers"
+  const url = "https://pythonalflask.tk/api/checkers"
   const create_fetch = url + '/addCheckersGame';
   // Load users on page entry
   function create_user(){
