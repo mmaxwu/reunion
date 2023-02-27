@@ -104,7 +104,7 @@
             <!-- <a id="new_game1" class="link-alert">new game</a>
             <a id="setting_menu1" class="link-alert">settings</a> -->
         </div>
-        <div id="refresh" class="py-4 text-light"><button id="refreshbutton" onclick="restart()">New Game</button></div>
+        <div id="refresh" class="py-4 text-light"><button id="refreshbutton" onclick="location.reload()">New Game</button></div>
         <!-- Play Screen -->
         <div id="empty-space"></div>
         <div id="pong-container" style="text-align:center;">
@@ -316,8 +316,14 @@
 
 
   function restart() {
-    location.reload()
-    gameLoop()
+    // Reset the scores
+    scorePlayer1 = 0;
+    scorePlayer2 = 0;
+
+    // Reset the ball and paddles
+    resetBallNoSpeed();
+    paddle1Y = canvas.height / 2 - 40;
+    paddle2Y = canvas.height / 2 - 40;
   }
 
   // Check for the game end
