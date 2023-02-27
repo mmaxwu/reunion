@@ -32,7 +32,15 @@
     #score2 {
       left: 450px;
     }
-    #start_game_button, #refresh {
+    #start_game_button {
+      height: 40px;
+      width: 100px;
+    }
+    #refresh {
+      height: 40px;
+      width: 100px;
+    }
+    #post {
       height: 40px;
       width: 100px;
     }
@@ -90,7 +98,7 @@
                     <span type="date" name="dos" id="dos"></span>
                 </label></p> -->
                 <p>
-                    <button onclick="alert('Your score has been posted!')">Submit</button>
+                    <button id="post" onclick="alert('Your score has been posted!')">Submit</button>
                 </p>
             </form>
             <!-- <a id="new_game1" class="link-alert">new game</a>
