@@ -96,7 +96,7 @@
             <!-- <a id="new_game1" class="link-alert">new game</a>
             <a id="setting_menu1" class="link-alert">settings</a> -->
         </div>
-        <div id="refresh"><button onclick="location.reload()">Refresh Page</button></div>
+        <div id="refresh" class="py-4 text-light"><button onclick="location.reload()">Refresh Page</button></div>
         <!-- Play Screen -->
         <div id="empty-space"></div>
         <div id="pong-container" style="text-align:center;">
