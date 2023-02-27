@@ -600,8 +600,8 @@ function declareWinner(){
 0
 if(the_checker[1].color == "white")
     score.innerHTML = "Black wins";
-    result_red.innerHTML = "Loss";
-    result_black.innerHTML = "Win";
+    //result_red.innerHTML = "Loss";
+    //result_black.innerHTML = "Win";
 else
     score.innerHTML = "Red wins";
     result_red.innerHTML = "Win";
@@ -760,7 +760,7 @@ if(windowWidth > 650){
   // const resultContainer = document.getElementById("scoresList");
   // prepare URL's to allow easy switch from deployment and localhost
   //const url = "http://localhost:8095/api/score"
-  const url = "https://pythonalflask.tk/api/checkers"
+  const url = "http://192.168.1.97:8086/api/checkers"
   const create_fetch = url + '/addCheckersGame';
   // Load users on page entry
   function create_user(){
@@ -771,7 +771,6 @@ if(windowWidth > 650){
         resultB: result_black.innerHTML,
         uidR: document.getElementById("user1").value,
         resultR: result_red.innerHTML
-
     };
     const requestOptions = {
         method: 'POST',
@@ -801,3 +800,4 @@ if(windowWidth > 650){
     })
   }
 </script>
+
