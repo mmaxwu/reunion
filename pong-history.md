@@ -12,6 +12,7 @@ Be able to search up who has been playing, who is doing well in pong, and more.
     <th>Player 1 Result</th>
     <th>Player 2 Result</th>
     <th>Date Played</th>
+    <th></th>
   </tr>
   <tbody id="pongList">
   </tbody>
