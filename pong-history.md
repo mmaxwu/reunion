@@ -1,3 +1,7 @@
+# Pong Game History
+
+Be able to search up who has been playing, who is doing well in pong, and more.
+
 <input type="text" id="searchInput" placeholder="Search..." onkeyup="search_table()">
 <table id="recentGames" style="width: 100%;">
   <tr>
