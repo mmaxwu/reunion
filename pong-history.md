@@ -18,7 +18,7 @@ Be able to search up who has been playing, who is doing well in pong, and more.
 </table>
 
 <script>
- // prepare HTML result container for new output
+  // prepare HTML result container for new output
   const resultContainer = document.getElementById("pongList");
   // prepare URL's to allow easy switch from deployment and localhost
   //const url = "http://127.0.0.1:8086/api/pong"
@@ -28,55 +28,55 @@ Be able to search up who has been playing, who is doing well in pong, and more.
   // Load users on page entry
   read_games();
 
-  
-function search_table() {
-  // Declare variables
-  var input, filter, table, tr, td, i, j, txtValue;
-  input = document.getElementById("searchInput");
-  filter = input.value.toUpperCase();
-  table = document.getElementById("recentGames");
-  tr = table.getElementsByTagName("tr");
-
-  // Loop through all table rows, and hide those that don't match the search query
-  let matchesFound = false;
-  for (i = 0; i < tr.length; i++) {
-    // Search only in the first 6 columns
-    for (j = 0; j < 6; j++) {
-      td = tr[i].getElementsByTagName("td")[j];
-      if (td) {
-        txtValue = td.textContent || td.innerText;
-        if (txtValue.toUpperCase().indexOf(filter) > -1) {
-          tr[i].style.display = "";
-          matchesFound = true;
-          break;
-        } else {
-          tr[i].style.display = "none";
-        }
-      }
-    }
-  }
-
-  // Add "No results found" row if no matches found
-  if (!matchesFound) {
-    const noResultsRow = document.createElement("tr");
-    const noResultsMsg = document.createElement("td");
-    noResultsMsg.innerHTML = "No results found";
-    noResultsRow.appendChild(noResultsMsg);
-    noResultsRow.id = "noResultsRow";
-    resultContainer.appendChild(noResultsRow);
-  } else {
-    // Remove "No results found" row if search input is empty and row exists
-    const noResultsRow = document.getElementById("noResultsRow");
-    if (noResultsRow && !filter) {
-      resultContainer.removeChild(noResultsRow);
-    }
-  }
-
   // Bind search function to search input field
   document.getElementById("searchInput").addEventListener("keyup", function() {
     search_table();
   });
+
+  function search_table() {
+    // Declare variables
+    var input, filter, table, tr, td, i, j, txtValue;
+    input = document.getElementById("searchInput");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("recentGames");
+    tr = table.getElementsByTagName("tr");
+
+    // Loop through all table rows, and hide those that don't match the search query
+    let matchesFound = false;
+    for (i = 0; i < tr.length; i++) {
+      // Search only in the first 6 columns
+      for (j = 0; j < 6; j++) {
+        td = tr[i].getElementsByTagName("td")[j];
+        if (td) {
+          txtValue = td.textContent || td.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+            matchesFound = true;
+            break;
+          } else {
+            tr[i].style.display = "none";
+          }
+        }
+      }
+    }
+
+    // Add "No results found" row if no matches found
+    if (!matchesFound) {
+      const noResultsRow = document.createElement("tr");
+      const noResultsMsg = document.createElement("td");
+      noResultsMsg.innerHTML = "No results found";
+      noResultsRow.appendChild(noResultsMsg);
+      noResultsRow.id = "noResultsRow";
+      resultContainer.appendChild(noResultsRow);
+    } else {
+      // Remove "No results found" row if search input is empty and row exists
+      const noResultsRow = document.getElementById("noResultsRow");
+      if (noResultsRow && !filter) {
+        resultContainer.removeChild(noResultsRow);
+      }
+    }
   }
+  
   // Display Game history Table, data is fetched from Backend Database
   function read_games() {
     // prepare fetch options
