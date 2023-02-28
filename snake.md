@@ -57,49 +57,51 @@
     <div class="container bg-secondary" style="text-align:center;">
         <!-- Main Menu -->
         <div id="menu" class="py-4 text-light">
-            <p>Welcome to Snake, press <span style="background-color: #FFFFFF; color: #000000">space</span> to begin</p>
+            <p>Welcome to Snake, press <span style="background-color: #FFFFFF; color: #000000">Enter</span> to begin</p>
             <!-- <a class="link-alert" href="{{site.baseurl}}/recent" style="text-decoration: none;">recent games</a> -->
             <a id="new_game" class="link-alert">new game</a>
             <a id="setting_menu" class="link-alert">settings</a>
         </div>
         <!-- Game Over -->
         <div id="gameover" class="py-4 text-light">
-            <p>Game Over, press <span style="background-color: #FFFFFF; color: #000000">space</span> to try again</p>
+            <p>Game Over, press <span style="background-color: #FFFFFF; color: #000000">Enter</span> to try again</p>
+            <!-- Form does function create_user() -->
             <form action="javascript:create_user()">
                 <p><label>
                     User ID:
                     <input type="text" name="username" id="username" placeholder="Must have 3 characters" required>
                 </label></p>
                 <p><label>
+                <!-- Score has automatic input -->
                     Score:
                     <span name="score" id="score">0</span>
                 </label></p>
+                <p><label>
+                    How would you like to rate this game? (1-lowest, 5-highest)
+                </label></p>
+                <p><label>
+                    <input type="radio" name="star" id="star-1"/> 1
+                    <input type="radio" name="star" id="star-2"/> 2
+                    <input type="radio" name="star" id="star-3"/> 3
+                    <input type="radio" name="star" id="star-4"/> 4
+                    <input type="radio" name="star" id="star-5"/> 5
+                </label></p>
+                <p><label>
+                <input type="comments" name="comments" id="comments" placeholder="Any additional comments">
+                </label></p>
                 <p>
+                <!-- Popup message on button click -->
                     <button onclick="alert('Your score has been posted!')">Submit</button>
                 </p>
             </form>
             <a id="new_game1" class="link-alert">new game</a>
             <a id="setting_menu1" class="link-alert">settings</a>
         </div>
-        <!-- move this out of form -->
-        <div class="rating">
-            <input type="radio" name="star" class="star-1" id="star-1"/>
-            <label class="star-1" for="star-1">1</label>
-            <input type="radio" name="star" class="star-2" id="star-2"/>
-            <label class="star-2" for="star-2">2</label>
-            <input type="radio" name="star" class="star-3" id="star-3"/>
-            <label class="star-3" for="star-3">3</label>
-            <input type="radio" name="star" class="star-4" id="star-4"/>
-            <label class="star-4" for="star-4">4</label>
-            <input type="radio" name="star" class="star-5" id="star-5"/>
-            <label class="star-5" for="star-5">5</label>
-        </div>
-                <!-- move this out of form -->
         <!-- Play Screen -->
         <canvas id="snake" class="wrap" width="480" height="480" tabindex="1"></canvas>
         <!-- Settings Screen -->
         <div id="setting" class="py-4 text-light">
-            <p>Settings Screen, press <span style="background-color: #FFFFFF; color: #000000">space</span> to go back to playing</p>
+            <p>Settings Screen, press <span style="background-color: #FFFFFF; color: #000000">Enter</span> to go back to playing</p>
             <a id="new_game2" class="link-alert">new game</a>
             <br>
             <p>Speed:
@@ -123,8 +125,8 @@
 <script>
     
 window.addEventListener("keydown", function(e) {
-    // space and arrow keys
-    if([32, 37, 38, 39, 40].indexOf(e.keyCode) > -1) {
+    // Enter and arrow keys
+    if([37, 38, 39, 40].indexOf(e.keyCode) > -1) {
         e.preventDefault();
     }
 }, false);
@@ -136,6 +138,7 @@ window.addEventListener("keydown", function(e) {
         const ctx = canvas.getContext("2d");
         // HTML Game IDs
         const SCREEN_SNAKE = 0;
+        const SCREEN_DEFAULT = -2
         const screen_snake = document.getElementById("snake");
         const ele_score = document.getElementById("score_value");
         const ele_score1 = document.getElementById("score");
@@ -210,6 +213,13 @@ window.addEventListener("keydown", function(e) {
                     screen_setting.style.display = "block";
                     screen_game_over.style.display = "none";
                     break;
+                    // This is to fix spam button issue. Doesn't completely work though
+                // case SCREEN_DEFAULT:
+                //     screen_snake.style.display = "none";
+                //     screen_menu.style.display = "block";
+                //     screen_setting.style.display = "none";
+                //     screen_game_over.style.display = "none";
+                //     break;
             }
         }
         /* Actions and Events  */
@@ -245,8 +255,8 @@ window.addEventListener("keydown", function(e) {
             }
             // activate window events
             window.addEventListener("keydown", function(evt) {
-                // spacebar detected
-                if(evt.code === "Space" && SCREEN !== SCREEN_SNAKE)
+                // Enter detected
+                if(evt.code === "Enter" && SCREEN !== SCREEN_SNAKE)
                     newGame();
             }, true);
         }
@@ -419,6 +429,8 @@ window.addEventListener("keydown", function(e) {
   const create_fetch = url + '/addScore';
   // Load users on page entry
   function create_user(){
+    // Fix spam button issue
+    // showScreen(SCREEN_DEFAULT);
     // Get the data
     const body = {
         username: document.getElementById("username").value,
@@ -450,6 +462,7 @@ window.addEventListener("keydown", function(e) {
             console.log(data);
         })
     })
+    
   }
 </script>
 <script>

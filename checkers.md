@@ -46,7 +46,7 @@
     </div>
 <button id="exit_screen" onclick="exitResultScreen()">Exit</button>
 <div class="table" id="table">
-
+<!-- Creating the board-->
   <div class="checker white_checker"> </div>
     <div class="checker white_checker"> </div>
     <div class="checker white_checker"> </div>
@@ -155,14 +155,16 @@
     <div class="clear_float"> </div>
 
 </div>
-
+<!-- not needed-->
 <audio id="moveSound">
     <source src = "sounds/move.mp3"> 
 </audio>
 <audio id="winSound">
     <<source src="sounds/win.mp3">
 </audio>
+
 <script>
+//setting the variables
 var square_class = document.getElementsByClassName("square");
 var white_checker_class = document.getElementsByClassName("white_checker");
 var black_checker_class = document.getElementsByClassName("black_checker");
@@ -199,6 +201,7 @@ const GAMEOVERFORM = document.getElementById("gameover_form");
 GAMEOVERFORM.style.display = "none";
 const result_red = document.getElementById("resultR");
 const result_black = document.getElementById("resultB");
+//start of game logic  
   getDimension();
     if(windowWidth > 640){
         moveLength = 80;
@@ -610,6 +613,7 @@ if(windowWidth > 650){
     }
     }
 }
+//end of game logic
 </script>
 <style>
   body , html{
@@ -727,16 +731,11 @@ if(windowWidth > 650){
 </html>
 
 <script>
- // prepare HTML result container for new output
-  // const resultContainer = document.getElementById("scoresList");
-  // prepare URL's to allow easy switch from deployment and localhost
   //const url = "http://localhost:8095/api/score"
   const url = "https://pythonalflask.tk/api/checkers"
   const create_fetch = url + '/addCheckersGame';
   // Load users on page entry
   function create_user(){
-    //Validate Password (must be 6-20 characters in len)
-    //verifyPassword("click");
     const body = {
         uidB: document.getElementById("user2").value,
         resultB: result_black.innerHTML,
