@@ -59,6 +59,7 @@ Be able to search up who has been playing, who is doing well in pong, and more.
         }
       }
     }
+  }
 
   // Display Game history Table, data is fetched from Backend Database
   function read_games() {
