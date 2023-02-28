@@ -28,40 +28,7 @@ Be able to search up who has been playing, who is doing well in pong, and more.
   // Load users on page entry
   read_games();
 
-    
-  // Search table function
-  function search_table() {
-    // Declare variables
-    var input, filter, table, tr, td, i, j, txtValue;
-    input = document.getElementById("searchInput");
-    filter = input.value.toUpperCase();
-    table = document.getElementById("recentGames");
-    tr = table.getElementsByTagName("tr");
-
-    // Loop through all table rows, and hide those that don't match the search query
-    let matchesFound = false;
-    for (i = 0; i < tr.length; i++) {
-      // Search only in the first 6 columns
-      for (j = 0; j < 6; j++) {
-        td = tr[i].getElementsByTagName("td")[j];
-        if (td) {
-          txtValue = td.textContent || td.innerText;
-          if (txtValue.toUpperCase().indexOf(filter) > -1) {
-            tr[i].style.display = "";
-            matchesFound = true;
-            break;
-          } else {
-            tr[i].style.display = "none";
-          }
-        }
-      }
-    }
-
-    // Add "No results found" row if no matches found
-Yes, you can modify the search_table() function to remove the "No results found" row when the search input changes. You can achieve this by checking if the search input is empty and removing the "No results found" row if it exists. Here's an updated search_table() function with this functionality:
-
-javascript
-Copy code
+  
 function search_table() {
   // Declare variables
   var input, filter, table, tr, td, i, j, txtValue;
