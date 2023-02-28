@@ -419,8 +419,7 @@ window.addEventListener("keydown", function(e) {
   const create_fetch = url + '/addScore';
   // Load users on page entry
   function create_user(){
-    //Validate Password (must be 6-20 characters in len)
-    //verifyPassword("click");
+    // Get the data
     const body = {
         username: document.getElementById("username").value,
         score: document.getElementById("score").innerHTML
