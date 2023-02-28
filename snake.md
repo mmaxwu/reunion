@@ -136,6 +136,7 @@ window.addEventListener("keydown", function(e) {
         const ctx = canvas.getContext("2d");
         // HTML Game IDs
         const SCREEN_SNAKE = 0;
+        const SCREEN_DEFAULT = -2
         const screen_snake = document.getElementById("snake");
         const ele_score = document.getElementById("score_value");
         const ele_score1 = document.getElementById("score");
@@ -210,6 +211,13 @@ window.addEventListener("keydown", function(e) {
                     screen_setting.style.display = "block";
                     screen_game_over.style.display = "none";
                     break;
+                    // This is to fix spam button issue. Doesn't completely work though
+                // case SCREEN_DEFAULT:
+                //     screen_snake.style.display = "none";
+                //     screen_menu.style.display = "block";
+                //     screen_setting.style.display = "none";
+                //     screen_game_over.style.display = "none";
+                //     break;
             }
         }
         /* Actions and Events  */
@@ -419,6 +427,8 @@ window.addEventListener("keydown", function(e) {
   const create_fetch = url + '/addScore';
   // Load users on page entry
   function create_user(){
+    // Fix spam button issue
+    // showScreen(SCREEN_DEFAULT);
     // Get the data
     const body = {
         username: document.getElementById("username").value,
@@ -450,6 +460,7 @@ window.addEventListener("keydown", function(e) {
             console.log(data);
         })
     })
+    
   }
 </script>
 <script>
