@@ -65,12 +65,14 @@
         <!-- Game Over -->
         <div id="gameover" class="py-4 text-light">
             <p>Game Over, press <span style="background-color: #FFFFFF; color: #000000">Enter</span> to try again</p>
+            <!-- Form does function create_user() -->
             <form action="javascript:create_user()">
                 <p><label>
                     User ID:
                     <input type="text" name="username" id="username" placeholder="Must have 3 characters" required>
                 </label></p>
                 <p><label>
+                <!-- Score has automatic input -->
                     Score:
                     <span name="score" id="score">0</span>
                 </label></p>
@@ -88,6 +90,7 @@
                 <input type="comments" name="comments" id="comments" placeholder="Any additional comments">
                 </label></p>
                 <p>
+                <!-- Popup message on button click -->
                     <button onclick="alert('Your score has been posted!')">Submit</button>
                 </p>
             </form>
