@@ -140,6 +140,8 @@ Be able to search up who has been playing, who is doing well in pong, and more.
   const options = {
     method: 'PUT',
     mode: 'cors',
+    cache: 'default', // *default, no-cache, reload, force-cache, only-if-cached
+    credentials: 'omit', // include, *same-origin, omit
     headers: {
       'Content-Type': 'application/json'
     },
