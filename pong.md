@@ -355,15 +355,14 @@
       score2_display.innerHTML = String(scorePlayer2);
     }
     
-  // const resultContainer = document.getElementById("scoresList");
+
   // prepare URL's to allow easy switch from deployment and localhost
   //const url = "http://127.0.0.1:8086/api/pong"
   const url = "https://pythonalflask.tk/api/pong"
   const create_fetch = url + '/addPongScore';
-  // Load users on page entry
+  // Load games on page entry
   function create_user(){
-    //Validate Password (must be 6-20 characters in len)
-    //verifyPassword("click");
+    // Creating json for the game
     const body = {
         user1: document.getElementById("user1").value,
         user2: document.getElementById("user2").value,
@@ -373,6 +372,7 @@
         result2: document.getElementById("gameResult2").innerHTML        
 
     };
+    //using the POST method
     const requestOptions = {
         method: 'POST',
         body: JSON.stringify(body),
@@ -385,7 +385,7 @@
         },
     };
     // URL for Create API
-    // Fetch API call to the database to create a new user
+    // Fetch API call to the database to create a new game
     fetch(create_fetch, requestOptions)
       .then(response => {
         // trap error response from Web API
