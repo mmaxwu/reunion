@@ -102,7 +102,7 @@ Be able to search up who has been playing, who is doing well in pong, and more.
         response.json().then(data => {
           console.log(data);
           data.sort(function(a, b) {
-            return new Datetime(b.gameDatetime) - new Datetime(a.gameDatetime);
+            return new DateTime(b.gameDatetime) - new DateTime(a.gameDatetime);
           });
           for (let i = 0; i < data.length; i++) {
             const row = data[i];
