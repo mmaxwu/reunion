@@ -23,7 +23,9 @@ Be able to search up who has been playing, who is doing well in pong, and more.
   // prepare URL's to allow easy switch from deployment and localhost
   //const url = "http://127.0.0.1:8086/api/pong"
   const url = "https://pythonalflask.tk/api/pong"
+  
   const read_fetch = url + '/pongList';
+  const update_fetch = url + '/updatePong';
 
   // Load users on page entry
   read_games();
@@ -113,6 +115,56 @@ Be able to search up who has been playing, who is doing well in pong, and more.
       });
   }
 
+  function update_game(id) {
+  // prompt user to enter new game data
+  const user1 = prompt("Enter new Player 1:");
+  const user2 = prompt("Enter new Player 2:");
+  const score1 = prompt("Enter new Player 1 Score:");
+  const score2 = prompt("Enter new Player 2 Score:");
+  const result1 = prompt("Enter new Player 1 Result (Win/Loss):");
+  const result2 = prompt("Enter new Player 2 Result (Win/Loss):");
+  const gameDatetime = new Date().toISOString();
+
+  // prepare PUT request data
+  const data = {
+    user1: user1,
+    user2: user2,
+    score1: score1,
+    score2: score2,
+    result1: result1,
+    result2: result2,
+    gameDatetime: gameDatetime
+  };
+
+  // prepare PUT request options
+  const options = {
+    method: 'PUT',
+    mode: 'cors',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+  };
+
+  // send PUT request to API
+  fetch(update_fetch, options)
+    .then(response => {
+      // check for response errors
+      if (response.status !== 200) {
+        const errorMsg = 'Database update error: ' + response.status;
+        console.log(errorMsg);
+        alert(errorMsg);
+        return;
+      }
+      // on successful update, reload game history table
+      resultContainer.innerHTML = ""; // clear current table
+      read_games(); // reload table
+    })
+    .catch(err => {
+      console.error(err);
+      alert(err);
+    });
+}
 
   function add_row(data) {
     const tr = document.createElement("tr");
@@ -142,6 +194,11 @@ Be able to search up who has been playing, who is doing well in pong, and more.
     tr.appendChild(result1);
     tr.appendChild(result2);
     tr.appendChild(gameDatetime);
+
+    // add click event listener to row
+    tr.addEventListener("click", function() {
+      update_game(data.id); // call update_game function with the id of the game to be updated
+    });
 
     resultContainer.appendChild(tr);
   }
