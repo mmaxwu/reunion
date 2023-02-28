@@ -77,24 +77,24 @@
                 <p>
                     <button onclick="alert('Your score has been posted!')">Submit</button>
                 </p>
-                <!-- move this out of form -->
-                <div class="rating">
-                    <input type="radio" name="star" class="star-1" id="star-1"/>
-                    <label class="star-1" for="star-1">1</label>
-                    <input type="radio" name="star" class="star-2" id="star-2"/>
-                    <label class="star-2" for="star-2">2</label>
-                    <input type="radio" name="star" class="star-3" id="star-3"/>
-                    <label class="star-3" for="star-3">3</label>
-                    <input type="radio" name="star" class="star-4" id="star-4"/>
-                    <label class="star-4" for="star-4">4</label>
-                    <input type="radio" name="star" class="star-5" id="star-5"/>
-                    <label class="star-5" for="star-5">5</label>
-                </div>
-                <!-- move this out of form -->
             </form>
             <a id="new_game1" class="link-alert">new game</a>
             <a id="setting_menu1" class="link-alert">settings</a>
         </div>
+        <!-- move this out of form -->
+        <div class="rating">
+            <input type="radio" name="star" class="star-1" id="star-1"/>
+            <label class="star-1" for="star-1">1</label>
+            <input type="radio" name="star" class="star-2" id="star-2"/>
+            <label class="star-2" for="star-2">2</label>
+            <input type="radio" name="star" class="star-3" id="star-3"/>
+            <label class="star-3" for="star-3">3</label>
+            <input type="radio" name="star" class="star-4" id="star-4"/>
+            <label class="star-4" for="star-4">4</label>
+            <input type="radio" name="star" class="star-5" id="star-5"/>
+            <label class="star-5" for="star-5">5</label>
+        </div>
+                <!-- move this out of form -->
         <!-- Play Screen -->
         <canvas id="snake" class="wrap" width="480" height="480" tabindex="1"></canvas>
         <!-- Settings Screen -->
