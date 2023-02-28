@@ -141,9 +141,10 @@ Be able to search up who has been playing, who is doing well in pong, and more.
     method: 'PUT',
     mode: 'cors',
     cache: 'default', // *default, no-cache, reload, force-cache, only-if-cached
-    credentials: 'omit', // include, *same-origin, omit
+    //credentials: 'omit', // include, *same-origin, omit
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer my-token',
     },
     body: JSON.stringify(data)
   };
