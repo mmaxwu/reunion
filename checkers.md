@@ -24,7 +24,6 @@
                     Username for Player Black:
                     <input type="text" name="uidB" id="user2" placeholder="Must have 3 characters" required>
                 </label></p>
-                <!-- Alan's commit: -->
                 <p><label>
                     Result for red:
                     <span name="resultR" id="resultR">Result displayed here</span>
@@ -37,10 +36,8 @@
                     <button onclick="alert('Your game has been posted!')">Submit</button>
                 </p>
             </form>
-            <!-- <a id="new_game1" class="link-alert">new game</a>
-            <a id="setting_menu1" class="link-alert">settings</a> -->
         </div>
-<!-- astea 2 sunt puse ca indexarea claselor sa inceapa de la 1 -->
+
 <div class="checker white_checker" style="display:none"> </div>
 <div class="checker black_checker" style="display:none"> </div>
 <div class="square" style="display: none" id ="ht"> </div>
@@ -166,7 +163,6 @@
     <<source src="sounds/win.mp3">
 </audio>
 <script>
-/*=========variabile globale=========================*/
 var square_class = document.getElementsByClassName("square");
 var white_checker_class = document.getElementsByClassName("white_checker");
 var black_checker_class = document.getElementsByClassName("black_checker");
@@ -187,7 +183,7 @@ var moveLength = 80 ;
 var moveDeviation = 10;
 var Dimension = 1;
 var selectedPiece,selectedPieceindex;
-var upRight,upLeft,downLeft,downRight;  // toate variantele posibile de mers pt o  dama
+var upRight,upLeft,downLeft,downRight;
 var contor = 0 , gameOver = 0;
 var bigScreen = 1;
 var block = [];
@@ -197,14 +193,12 @@ var the_checker ;
 var oneMove;
 var anotherMove;
 var mustAttack = false;
-var multiplier = 1 // 2 daca face saritura 1 in caz contrat
+var multiplier = 1 
 var tableLimit,reverse_tableLimit ,  moveUpLeft,moveUpRight, moveDownLeft,moveDownRight , tableLimitLeft, tableLimitRight;
 const GAMEOVERFORM = document.getElementById("gameover_form");
 GAMEOVERFORM.style.display = "none";
-// Alan's commit:
 const result_red = document.getElementById("resultR");
 const result_black = document.getElementById("resultB");
-/*================================*/
   getDimension();
     if(windowWidth > 640){
         moveLength = 80;
@@ -214,7 +208,6 @@ const result_black = document.getElementById("resultB");
         moveLength = 50;
         moveDeviation = 6;
     }
-/*================declararea claselor=========*/
 var square_p = function(square,index){
     this.id = square;
     this.ocupied = false;
@@ -262,12 +255,8 @@ checker.prototype.checkIfKing = function () {
         this.id.style.border = "4px solid #FFFF00";
     }
 }
-/*===============Initializarea campurilor de joc =================================*/
 for (var i = 1; i <=64; i++)
-    block[i] =new square_p(square_class[i],i);
-/*==================================================*/
-/*================initializarea damelor =================================*/
-    // damele albe 
+    block[i] =new square_p(square_class[i],i); 
 for (var i = 1; i <= 4; i++){
     w_checker[i] = new checker(white_checker_class[i], "white", 2*i -1 );
     w_checker[i].setCoord(0,0);
@@ -286,7 +275,6 @@ for (var i = 9; i <= 12; i++){
     block[2*i - 1].ocupied = true;
     block[2*i - 1].pieceId = w_checker[i];
 }
-//damele negre
 for (var i = 1; i <= 4; i++){
     b_checker[i] = new checker(black_checker_class[i], "black", 56 + 2*i  );
     b_checker[i].setCoord(0,0);
@@ -305,13 +293,8 @@ for (var i = 9; i <= 12; i++){
     block[24 + 2*i ].ocupied = true;
     block[24 + 2*i ].pieceId = b_checker[i];
 }
-/*========================================================*/
-/*================SELECTIA UNEI PIESE==============*/
 the_checker = w_checker;
 function showMoves (piece) {
-    /* daca a fost selectat inainte o piesa stergem drumurile ei actualizand nu drumurile  Game made by Cojocaru Calin George all rights reserved piesei noi s
-    electat
-    */
     var match = false;
     mustAttack = false;
     if(selectedPiece){
@@ -335,9 +318,8 @@ function showMoves (piece) {
         return false;
     }
     if(!match) {
-     return 0 ; // daca nu a fost gasit nicio potrivire ; se intampla cand de exemplu rosu muta iar tu apasi pe negru
+     return 0 ;
     }
-    /*===acum in functie de culoarea lor setez marginile si miscarile damei===*/
     if(the_checker[i].color =="white"){
         tableLimit = 8;
         tableLimitRight = 1;
@@ -356,9 +338,7 @@ function showMoves (piece) {
         moveDownRight = 9;
         moveDownLeft = 7;
     }
-    /*===========VERIFIC DACA POT ATACA====*/
-        attackMoves(the_checker[i]); // verifica daca am vreo miscare de atac
-    /*========DACA NU POT ATACA VERIFIC DACA POT MERGE======*/
+        attackMoves(the_checker[i]); 
     if(!mustAttack){
       downLeft = checkMove( the_checker[i] , tableLimit , tableLimitRight , moveUpRight , downLeft);
         downRight = checkMove( the_checker[i] , tableLimit , tableLimitLeft , moveUpLeft , downRight);
@@ -378,17 +358,15 @@ function erase_roads(piece){
     if(upRight) block[upRight].id.style.background = "#BA7A3A";
     if(upLeft) block[upLeft].id.style.background = "#BA7A3A";
 }   
-/*=============MUTAREA PIESEI======*/
 function makeMove (index) {
     var isMove = false;
-    if(!selectedPiece) // daca jocu de abea a inceput si nu a fost selectata nicio piesa
+    if(!selectedPiece)
         return false;
     if(index != upLeft && index != upRight && index != downLeft && index != downRight){
         erase_roads(0);
         selectedPiece = undefined;
         return false;
     }
- /* =========perspectiva e a jucatorului care muta ======*/
     if(the_checker[1].color=="white"){
         cpy_downRight = upRight;
         cpy_downLeft = upLeft;
@@ -401,16 +379,14 @@ function makeMove (index) {
         cpy_upLeft = downRight;
         cpy_upRight = downLeft;
     }  
-    if(mustAttack)  // ca sa stiu daca sar doar un rand sau 2 
+    if(mustAttack)  
         multiplier = 2;
     else
         multiplier = 1;
         if(index == cpy_upRight){
             isMove = true;      
             if(the_checker[1].color=="white"){
-                // muta piesa
                 executeMove( multiplier * 1, multiplier * 1, multiplier * 9 );
-                //elimina piesa daca a fost executata o saritura
                 if(mustAttack) eliminateCheck(index - 9);
             }
             else{
@@ -455,7 +431,6 @@ function makeMove (index) {
         }
     erase_roads(0);
     the_checker[selectedPieceindex].checkIfKing();
-    // schimb randul
     if (isMove) {
             playSound(moveSound);
             anotherMove = undefined;
@@ -476,14 +451,10 @@ function makeMove (index) {
         }
     }
 }
-/*===========MUTAREA PIESEI-SCHIMBAREA COORDONATELOR======*/
 function executeMove (X,Y,nSquare){
-    // schimb coordonate piesei mutate
     the_checker[selectedPieceindex].changeCoord(X,Y); 
     the_checker[selectedPieceindex].setCoord(0,0);
-    // eliberez campul pe care il ocupa piesa si il ocup pe cel pe care il va ocupa
     block[the_checker[selectedPieceindex].ocupied_square].ocupied = false;          
-    //alert (the_checker[selectedPieceindex].ocupied_square);
     block[the_checker[selectedPieceindex].ocupied_square + nSquare].ocupied = true;
     block[the_checker[selectedPieceindex].ocupied_square + nSquare].pieceId =   block[the_checker[selectedPieceindex].ocupied_square ].pieceId;
     block[the_checker[selectedPieceindex].ocupied_square ].pieceId = undefined;     
@@ -580,7 +551,6 @@ function exitResultScreen(){
     black_background.style.display = "none";
     exit_background.style.display = "none";
     score.style.display = "none";
-    // GAMEOVERFORM.style.display = "none";
 }
 function  checkForMoves(){
     var i ;
@@ -592,7 +562,6 @@ function  checkForMoves(){
     return true;
 }
 function declareWinner(){
-    // playSound(winSound);
     black_background.style.display = "inline";
     score.style.display = "block";
     exit_background.style.display = "inline";
