@@ -85,7 +85,7 @@
                     <input type="radio" name="star" id="star-5"/> 5
                 </label></p>
                 <p><label>
-                    <input type="text" name="comment" id="comment" placeholder="Any additional comments"/> 
+                <input type="comments" name="comments" id="comments" placeholder="Any additional comments">
                 </label></p>
                 <p>
                     <button onclick="alert('Your score has been posted!')">Submit</button>
@@ -123,7 +123,7 @@
     
 window.addEventListener("keydown", function(e) {
     // Enter and arrow keys
-    if([32, 37, 38, 39, 40].indexOf(e.keyCode) > -1) {
+    if([37, 38, 39, 40].indexOf(e.keyCode) > -1) {
         e.preventDefault();
     }
 }, false);
