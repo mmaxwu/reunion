@@ -26,7 +26,7 @@ Be able to search up who has been playing, who is doing well in pong, and more.
   const read_fetch = url + '/pongList';
 
   // Load users on page entry
-  read_users();
+  read_games();
 
     
   // Search table function
@@ -71,7 +71,7 @@ Be able to search up who has been playing, who is doing well in pong, and more.
   });
   }
   // Display Game history Table, data is fetched from Backend Database
-  function read_users() {
+  function read_games() {
     // prepare fetch options
     const read_options = {
       method: 'GET', // *GET, POST, PUT, DELETE, etc.
