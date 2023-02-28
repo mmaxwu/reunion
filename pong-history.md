@@ -39,6 +39,7 @@ Be able to search up who has been playing, who is doing well in pong, and more.
     tr = table.getElementsByTagName("tr");
 
     // Loop through all table rows, and hide those that don't match the search query
+    let matchesFound = false;
     for (i = 0; i < tr.length; i++) {
       // Search only in the first 6 columns
       for (j = 0; j < 6; j++) {
@@ -47,22 +48,22 @@ Be able to search up who has been playing, who is doing well in pong, and more.
           txtValue = td.textContent || td.innerText;
           if (txtValue.toUpperCase().indexOf(filter) > -1) {
             tr[i].style.display = "";
+            matchesFound = true;
             break;
           } else {
             tr[i].style.display = "none";
           }
         }
       }
-      // Search in the "Date Played" column separately
-      td = tr[i].getElementsByTagName("td")[6];
-      if (td) {
-        txtValue = td.textContent || td.innerText;
-        if (txtValue.toUpperCase().indexOf(filter) > -1) {
-          tr[i].style.display = "";
-        } else {
-          tr[i].style.display = "none";
-        }
-      }
+    }
+
+    // Add "No results found" row if no matches found
+    if (!matchesFound) {
+      const noResultsRow = document.createElement("tr");
+      const noResultsMsg = document.createElement("td");
+      noResultsMsg.innerHTML = "No results found";
+      noResultsRow.appendChild(noResultsMsg);
+      resultContainer.appendChild(noResultsRow);
     }
 
   // Bind search function to search input field
