@@ -178,6 +178,7 @@ body h1, header h1, .title h1 { text-align: center; }
     padding: 0;
     position: relative;
     text-indent: -999em;
+    z-index: auto;
   }
     
   .rating label:before {
