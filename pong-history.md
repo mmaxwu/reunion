@@ -44,8 +44,8 @@ Be able to search up who has been playing, who is doing well in pong, and more.
     // Loop through all table rows, and hide those that don't match the search query
     let matchesFound = false;
     for (i = 0; i < tr.length; i++) {
-      // Search only in the first 6 columns
-      for (j = 0; j < 6; j++) {
+      // Search in all 7 columns
+      for (j = 0; j < 7; j++) {
         td = tr[i].getElementsByTagName("td")[j];
         if (td) {
           txtValue = td.textContent || td.innerText;
