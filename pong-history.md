@@ -144,7 +144,7 @@ Be able to search up who has been playing, who is doing well in pong, and more.
     //credentials: 'omit', // include, *same-origin, omit
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': 'Bearer my-token',
+      'Authorization': 'Bearer my-token'
     },
     body: JSON.stringify(data)
   };
@@ -167,7 +167,37 @@ Be able to search up who has been playing, who is doing well in pong, and more.
       console.error(err);
       alert(err);
     });
-}
+  }
+
+  function delete_game(gameId) {
+    const deleteUrl = url + '/pongList/' + gameId;
+    const delete_options = {
+      method: 'DELETE',
+      mode: 'cors',
+      cache: 'no-cache',
+      credentials: 'omit',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer my-token'
+      },
+    };
+
+    fetch(deleteUrl, delete_options)
+      .then(response => {
+        if (response.status !== 200) {
+          console.log('Error deleting game: ' + response.status);
+          return;
+        }
+        console.log('Game deleted successfully');
+        // Reload game list after successful deletion
+        resultContainer.innerHTML = '';
+        read_games();
+      })
+      .catch(err => {
+        console.error(err);
+      });
+  }
+
 
   function add_row(data) {
     const tr = document.createElement("tr");
@@ -202,6 +232,15 @@ Be able to search up who has been playing, who is doing well in pong, and more.
     tr.addEventListener("click", function() {
       update_game(data.id); // call update_game function with the id of the game to be updated
     });
+
+      const deleteBtn = document.createElement("button");
+    deleteBtn.innerHTML = "Delete";
+    deleteBtn.onclick = function() {
+      if (confirm("Are you sure you want to delete this game?")) {
+        delete_game(data.id);
+      }
+    };
+    tr.appendChild(deleteBtn);
 
     resultContainer.appendChild(tr);
   }
