@@ -60,23 +60,6 @@ Be able to search up who has been playing, who is doing well in pong, and more.
       }
     }
 
-    // Add "No results found" row if no matches found
-    if (!matchesFound) {
-      const noResultsRow = document.createElement("tr");
-      const noResultsMsg = document.createElement("td");
-      noResultsMsg.innerHTML = "No results found";
-      noResultsRow.appendChild(noResultsMsg);
-      noResultsRow.id = "noResultsRow";
-      resultContainer.appendChild(noResultsRow);
-    } else {
-      // Remove "No results found" row if search input is empty and row exists
-      const noResultsRow = document.getElementById("noResultsRow");
-      if (noResultsRow && !filter) {
-        resultContainer.removeChild(noResultsRow);
-      }
-    }
-  }
-  
   // Display Game history Table, data is fetched from Backend Database
   function read_games() {
     // prepare fetch options
