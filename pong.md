@@ -317,7 +317,7 @@
     if (scorePlayer1 >= scoreLimit) {
       PONG_GAMEOVER.style.display= "block";
       PONG_START.style.display="none";
-      gameRes1.innerHTML = "Won";
+      gameRes1.innerHTML = "Win";
       gameRes2.innerHTML = "Loss";
       cancelAnimationFrame();
       // gameState = 1;
@@ -327,7 +327,7 @@
       PONG_GAMEOVER.style.display= "block";
       PONG_START.style.display="none";
       gameRes1.innerHTML = "Loss";
-      gameRes2.innerHTML = "Won";
+      gameRes2.innerHTML = "Win";
       cancelAnimationFrame();
       // gameState = 1;
     }
