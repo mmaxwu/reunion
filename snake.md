@@ -421,12 +421,18 @@ window.addEventListener("keydown", function(e) {
         }
     })();
 
+
+
+
  // prepare HTML result container for new output
   // const resultContainer = document.getElementById("scoresList");
   // prepare URL's to allow easy switch from deployment and localhost
   //const url = "http://localhost:8095/api/score"
-  const url = "https://pythonalflask.tk/api/score"
-  const create_fetch = url + '/addScore';
+  const urlGame = "https://pythonalflask.tk/api/score"
+  const createGame_fetch = urlGame + '/addScore';
+
+  const urlRating = "https://pythonalflask.tk/api/rating"
+  const createRating_fetch = urlRating + '/createRating'; 
   // Load users on page entry
   function create_user(){
     // Fix spam button issue
@@ -434,7 +440,7 @@ window.addEventListener("keydown", function(e) {
     // Get the data
     const body = {
         username: document.getElementById("username").value,
-        score: document.getElementById("score").innerHTML
+        rating: document.getElementById("score").innerHTML
     };
     const requestOptions = {
         method: 'POST',
@@ -449,7 +455,7 @@ window.addEventListener("keydown", function(e) {
     };
     // URL for Create API
     // Fetch API call to the database to create a new user
-    fetch(create_fetch, requestOptions)
+    fetch(createGame_fetch, requestOptions)
       .then(response => {
         // trap error response from Web API
         if (response.status !== 200) {
@@ -464,6 +470,58 @@ window.addEventListener("keydown", function(e) {
     })
     
   }
+
+
+    let selectedValue;
+
+    // Get all the radio buttons
+    const radioButtons = document.querySelectorAll('input[type="radio"][name="star"]');
+
+    // Add a click event listener to each radio button
+    radioButtons.forEach(function(radioButton) {
+    radioButton.addEventListener('click', function() {
+        // Retrieve the value of the clicked radio button
+        selectedValue = this.value;
+    });
+    });
+
+  function create_rating(){
+    // Fix spam button issue
+    // showScreen(SCREEN_DEFAULT);
+    // Get the data
+    const body = {
+        username: document.getElementById("username").value,
+        score: selectedValue,
+        comment: document.getElementById("comments").value
+    };
+    const requestOptions = {
+        method: 'POST',
+        body: JSON.stringify(body),
+        mode: 'cors',
+        cache: 'default',
+        //credentials: 'include',
+        headers: {
+            "content-type": "application/json",
+            'Authorization': 'Bearer my-token',
+        },
+    };
+    // URL for Create API
+    // Fetch API call to the database to create a new user
+    fetch(createRating_fetch, requestOptions)
+      .then(response => {
+        // trap error response from Web API
+        if (response.status !== 200) {
+          const errorMsg = 'Database create error: ' + response.status;
+          console.log(errorMsg);
+          return;
+        }
+        // response contains valid result
+        response.json().then(data => {
+            console.log(data);
+        })
+    })
+    
+  }  
 </script>
 <script>
     const stars = document.querySelectorAll('.rating input');
