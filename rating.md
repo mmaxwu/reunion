@@ -120,6 +120,7 @@
     // obtain data that is specific to the API
     username.innerHTML = data.username; 
     rating.innerHTML = data.rating; 
+    comment.innerHTML = data.comment;
     // add HTML to container
     tr.appendChild(username);
     tr.appendChild(rating);
@@ -136,4 +137,5 @@
 //     scoreElement.innerHTML = `${str} - <b>${s.username}</b>: ${s.score}`
 //     recentGames.appendChild(scoreElement)
 // })
+// table
 </script>
