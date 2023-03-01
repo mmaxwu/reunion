@@ -523,12 +523,3 @@ window.addEventListener("keydown", function(e) {
     
   }  
 </script>
-<script>
-    const stars = document.querySelectorAll('.rating input');
-    stars.forEach((star, index) => {
-    star.addEventListener('click', () => {
-        const rating = index + 1;
-        console.log(`You rated this ${rating} stars.`);
-  });
-});
-</script>
