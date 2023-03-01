@@ -428,10 +428,10 @@ window.addEventListener("keydown", function(e) {
   // const resultContainer = document.getElementById("scoresList");
   // prepare URL's to allow easy switch from deployment and localhost
   //const url = "http://localhost:8095/api/score"
-  const urlGame = "https://pythonalflask.tk/api/score"
+  const urlGame = "https://pythonalflask.tk/api/score";
   const createGame_fetch = urlGame + '/addScore';
 
-  const urlRating = "https://pythonalflask.tk/api/rating"
+  const urlRating = "https://pythonalflask.tk/api/rating";
   const createRating_fetch = urlRating + '/createRating'; 
   // Load users on page entry
   function create_user(){
