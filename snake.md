@@ -491,7 +491,7 @@ window.addEventListener("keydown", function(e) {
     // Get the data
     const body = {
         username: document.getElementById("username").value,
-        score: selectedValue,
+        rating: selectedValue,
         comment: document.getElementById("comments").value
     };
     const requestOptions = {
