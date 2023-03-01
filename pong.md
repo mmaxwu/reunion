@@ -68,7 +68,8 @@
         <div id="gameover" class="py-4 text-light">
             <p>Game Over, press the <span style="background-color: #d4ca1c; color: #000000">New Game</span> button to play again</p>
             <p><span style="background-color: #FFFFFF; color: #000000">Your username must have exactly 3 characters in order to log your score.</span></p>
-            <form action="javascript:create_user()">
+            <!--Form that takes in the inputs and will save it to the database when submitted-->
+            <form action="javascript:create_game()">
                 <p><label>
                     Username for Player 1:
                     <input type="text" name="user1" id="user1" placeholder="Must have 3 characters" required>
@@ -160,18 +161,6 @@
   const score2 = document.getElementById('score2');
   const score1_display = document.getElementById('scoring_1');
   const score2_display = document.getElementById('scoring_2');
-  // Restart
-  // const restartButton = document.getElementById('restartButton');
-  // restartButton.addEventListener('click', restart);
-
-  // function gameStart() {
-  //   if(gameState ===0){
-  //     gameLoop();
-  //   }else{
-  //     PONG_GAMEOVER.style.display= "block";
-  //     resetBallNoSpeed();
-  //   }
-  // }
 
   // Draw the paddles and ball on the canvas
   function drawPaddlesAndBall() {
@@ -229,10 +218,6 @@
     ballSpeedX = Math.random() < 0.5 ? -5 : 5;
     ballSpeedY = Math.random() * 4 - 2;
   }
-  function resetBallNoSpeed() {
-    ballX = canvas.width / 2;
-    ballY = canvas.height / 2;
-  }
 
   // Update the paddle positions based on the user input
   function movePaddles() {
@@ -288,7 +273,7 @@
 
   document.addEventListener('keydown', (event) => {
   if (event.code === 'ArrowUp' || event.code === 'ArrowDown'){
-    event.preventDefault();
+    event.preventDefault(); // Prevents arrow keys from scrolling the page up or down
   }
   if (event.key === 'w') {
   wPressed = true;
@@ -332,7 +317,7 @@
     if (scorePlayer1 >= scoreLimit) {
       PONG_GAMEOVER.style.display= "block";
       PONG_START.style.display="none";
-      gameRes1.innerHTML = "Won";
+      gameRes1.innerHTML = "Win";
       gameRes2.innerHTML = "Loss";
       cancelAnimationFrame();
       // gameState = 1;
@@ -342,7 +327,7 @@
       PONG_GAMEOVER.style.display= "block";
       PONG_START.style.display="none";
       gameRes1.innerHTML = "Loss";
-      gameRes2.innerHTML = "Won";
+      gameRes2.innerHTML = "Win";
       cancelAnimationFrame();
       // gameState = 1;
     }
@@ -361,7 +346,7 @@
   const url = "https://pythonalflask.tk/api/pong"
   const create_fetch = url + '/addPongScore';
   // Load games on page entry
-  function create_user(){
+  function create_game(){
     // Creating json for the game
     const body = {
         user1: document.getElementById("user1").value,
