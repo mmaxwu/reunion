@@ -70,7 +70,7 @@ Be able to search up who has been playing, who is doing well in pong, and more.
     search_table();
   });
   }
-  // Display User Table, data is fetched from Backend Database
+  // Display Game history Table, data is fetched from Backend Database
   function read_users() {
     // prepare fetch options
     const read_options = {
@@ -102,7 +102,7 @@ Be able to search up who has been playing, who is doing well in pong, and more.
         response.json().then(data => {
           console.log(data);
           data.sort(function(a, b) {
-            return new Date(b.scoreDate) - new Date(a.scoreDate);
+            return new DateTime(b.gameDatetime) - new DateTime(a.gameDatetime);
           });
           for (let i = 0; i < data.length; i++) {
             const row = data[i];
@@ -131,7 +131,7 @@ Be able to search up who has been playing, who is doing well in pong, and more.
     const score2 = document.createElement("td");
     const result1 = document.createElement("td");
     const result2 = document.createElement("td");
-    const scoreDate = document.createElement("td");
+    const gameDatetime = document.createElement("td");
 
   
     // obtain data that is specific to the API
@@ -141,7 +141,7 @@ Be able to search up who has been playing, who is doing well in pong, and more.
     score2.innerHTML = data.score2;
     result1.innerHTML = data.result1;
     result2.innerHTML = data.result2;
-    scoreDate.innerHTML = data.scoreDate;
+    gameDatetime.innerHTML = data.gameDatetime;
 
     // add HTML to container
     tr.appendChild(user1);
@@ -150,7 +150,7 @@ Be able to search up who has been playing, who is doing well in pong, and more.
     tr.appendChild(score2);
     tr.appendChild(result1);
     tr.appendChild(result2);
-    tr.appendChild(scoreDate);
+    tr.appendChild(gameDatetime);
 
     resultContainer.appendChild(tr);
   }
