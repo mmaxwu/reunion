@@ -1,3 +1,9 @@
+<style>
+  #title_snake{
+    font-size: 150%;
+  }
+</style>
+<h><strong>Snake High Scores</strong></h>
 <table id="recentGames" style="width: 100%;">
   <tr>
     <th>Username</th>
