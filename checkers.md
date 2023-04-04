@@ -155,13 +155,6 @@
     <div class="clear_float"> </div>
 
 </div>
-<!-- not needed-->
-<audio id="moveSound">
-    <source src = "sounds/move.mp3"> 
-</audio>
-<audio id="winSound">
-    <<source src="sounds/win.mp3">
-</audio>
 
 <script>
 //setting the variables
@@ -173,8 +166,6 @@ var score = document.getElementById("score");
 var black_background = document.getElementById("black_background");
 const exit_background = document.getElementById("exit_screen");
 exit_background.style.display = "none";
-var moveSound = document.getElementById("moveSound");
-var winSound = document.getElementById("winSound");
 var windowHeight = window.innerHeight
 || document.documentElement.clientHeight
 || document.body.clientHeight;  ;
@@ -213,7 +204,7 @@ const result_black = document.getElementById("resultB");
     }
 var square_p = function(square,index){
     this.id = square;
-    this.ocupied = false;
+    this.occupied = false;
     this.pieceId = undefined;
     this.id.onclick = function() {
         makeMove(index);
@@ -223,7 +214,7 @@ var checker = function(piece,color,square) {
     this.id = piece;
     this.color = color;
     this.king = false;
-    this.ocupied_square = square;
+    this.occupied_square = square;
     this.alive = true;
     this.attack = false;
     if(square%8){
@@ -263,37 +254,37 @@ for (var i = 1; i <=64; i++)
 for (var i = 1; i <= 4; i++){
     w_checker[i] = new checker(white_checker_class[i], "white", 2*i -1 );
     w_checker[i].setCoord(0,0);
-    block[2*i - 1].ocupied = true;
+    block[2*i - 1].occupied = true;
     block[2*i - 1].pieceId =w_checker[i];
 }
 for (var i = 5; i <= 8; i++){
     w_checker[i] = new checker(white_checker_class[i], "white", 2*i );
     w_checker[i].setCoord(0,0);
-    block[2*i].ocupied = true;
+    block[2*i].occupied = true;
     block[2*i].pieceId = w_checker[i];
 }
 for (var i = 9; i <= 12; i++){
     w_checker[i] = new checker(white_checker_class[i], "white", 2*i - 1 );
     w_checker[i].setCoord(0,0);
-    block[2*i - 1].ocupied = true;
+    block[2*i - 1].occupied = true;
     block[2*i - 1].pieceId = w_checker[i];
 }
 for (var i = 1; i <= 4; i++){
     b_checker[i] = new checker(black_checker_class[i], "black", 56 + 2*i  );
     b_checker[i].setCoord(0,0);
-    block[56 +  2*i ].ocupied = true;
+    block[56 +  2*i ].occupied = true;
     block[56+  2*i ].pieceId =b_checker[i];
 }
 for (var i = 5; i <= 8; i++){
     b_checker[i] = new checker(black_checker_class[i], "black", 40 +  2*i - 1 );
     b_checker[i].setCoord(0,0);
-    block[ 40 + 2*i - 1].ocupied = true;
+    block[ 40 + 2*i - 1].occupied = true;
     block[ 40 + 2*i - 1].pieceId = b_checker[i];
 }
 for (var i = 9; i <= 12; i++){
     b_checker[i] = new checker(black_checker_class[i], "black", 24 + 2*i  );
     b_checker[i].setCoord(0,0);
-    block[24 + 2*i ].ocupied = true;
+    block[24 + 2*i ].occupied = true;
     block[24 + 2*i ].pieceId = b_checker[i];
 }
 the_checker = w_checker;
@@ -304,7 +295,7 @@ function showMoves (piece) {
             erase_roads(selectedPiece);
     }
     selectedPiece = piece;
-    var i,j; // retine indicele damei
+    var i,j; // retain the queen index
     for ( j = 1; j <= 12; j++){
         if(the_checker[j].id == piece){
             i = j;
@@ -435,7 +426,6 @@ function makeMove (index) {
     erase_roads(0);
     the_checker[selectedPieceindex].checkIfKing();
     if (isMove) {
-            playSound(moveSound);
             anotherMove = undefined;
          if(mustAttack) {
                 anotherMove = attackMoves(the_checker[selectedPieceindex]);
@@ -457,17 +447,17 @@ function makeMove (index) {
 function executeMove (X,Y,nSquare){
     the_checker[selectedPieceindex].changeCoord(X,Y); 
     the_checker[selectedPieceindex].setCoord(0,0);
-    block[the_checker[selectedPieceindex].ocupied_square].ocupied = false;          
-    block[the_checker[selectedPieceindex].ocupied_square + nSquare].ocupied = true;
-    block[the_checker[selectedPieceindex].ocupied_square + nSquare].pieceId =   block[the_checker[selectedPieceindex].ocupied_square ].pieceId;
-    block[the_checker[selectedPieceindex].ocupied_square ].pieceId = undefined;     
-    the_checker[selectedPieceindex].ocupied_square += nSquare;
+    block[the_checker[selectedPieceindex].occupied_square].occupied = false;          
+    block[the_checker[selectedPieceindex].occupied_square + nSquare].occupied = true;
+    block[the_checker[selectedPieceindex].occupied_square + nSquare].pieceId =   block[the_checker[selectedPieceindex].occupied_square ].pieceId;
+    block[the_checker[selectedPieceindex].occupied_square ].pieceId = undefined;     
+    the_checker[selectedPieceindex].occupied_square += nSquare;
 }
 function checkMove(Apiece,tLimit,tLimit_Side,moveDirection,theDirection){
     if(Apiece.coordY != tLimit){
-        if(Apiece.coordX != tLimit_Side && !block[ Apiece.ocupied_square + moveDirection ].ocupied){
-            block[ Apiece.ocupied_square + moveDirection ].id.style.background = "#704923";
-            theDirection = Apiece.ocupied_square + moveDirection;
+        if(Apiece.coordX != tLimit_Side && !block[ Apiece.occupied_square + moveDirection ].occupied){
+            block[ Apiece.occupied_square + moveDirection ].id.style.background = "#704923";
+            theDirection = Apiece.occupied_square + moveDirection;
         }
     else
             theDirection = undefined;
@@ -477,9 +467,9 @@ function checkMove(Apiece,tLimit,tLimit_Side,moveDirection,theDirection){
     return theDirection;
 }
 function  checkAttack( check , X, Y , negX , negY, squareMove, direction){
-    if(check.coordX * negX >=   X * negX && check.coordY *negY <= Y * negY && block[check.ocupied_square + squareMove ].ocupied && block[check.ocupied_square + squareMove].pieceId.color != check.color && !block[check.ocupied_square + squareMove * 2 ].ocupied){
+    if(check.coordX * negX >=   X * negX && check.coordY *negY <= Y * negY && block[check.occupied_square + squareMove ].occupied && block[check.occupied_square + squareMove].pieceId.color != check.color && !block[check.occupied_square + squareMove * 2 ].occupied){
         mustAttack = true;
-        direction = check.ocupied_square +  squareMove*2 ;
+        direction = check.occupied_square +  squareMove*2 ;
         block[direction].id.style.background = "#704923";
         return direction ;
     }
@@ -492,7 +482,7 @@ function eliminateCheck(indexx){
         return  0;
     var x =block[ indexx ].pieceId ;
     x.alive =false;
-    block[ indexx ].ocupied = false;
+    block[ indexx ].occupied = false;
     x.id.style.display  = "none";
 }
 function attackMoves(ckc){
@@ -555,34 +545,33 @@ function exitResultScreen(){
     exit_background.style.display = "none";
     score.style.display = "none";
 }
-function  checkForMoves(){
+function  checkForMoves() {
     var i ;
     for(i = 1 ; i <= 12; i++)
-        if(the_checker[i].alive && showMoves(the_checker[i].id)){
+        if (the_checker[i].alive && showMoves(the_checker[i].id)) {
             erase_roads(0);
             return false;
         }
     return true;
 }
-function declareWinner(){
+function declareWinner() {
     black_background.style.display = "inline";
     score.style.display = "block";
     exit_background.style.display = "inline";
     GAMEOVERFORM.style.display = "block";
-0
-if(the_checker[1].color == "white"){
+
+if (the_checker[1].color == "white") {
     score.innerHTML = "Black wins";
     result_red.innerHTML = "Loss";
     result_black.innerHTML = "Win";
 }
-else{
+
+else {
     score.innerHTML = "Red wins";
     result_red.innerHTML = "Win";
     result_black.innerHTML = "Loss";
-}    
-}
-function playSound(sound){
-    if(sound) sound.play();
+} 
+
 }
 function getDimension (){
     contor ++;
@@ -644,7 +633,7 @@ if(windowWidth > 650){
     margin: 0 auto;
 }
 .score{
-    background-color: #1aaaad;
+    background-color: #ada61a;
     color: white;
     display: none;
     font-size: 45px;
