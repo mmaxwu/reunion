@@ -16,11 +16,14 @@ Be able to search up who has been playing, who is doing well in pong, and more.
   </tr>
   <tbody id="pongList">
   </tbody>
+  <tr>No matches found</tr>
 </table>
+<p id="noMatchesFound" style="display:none;">No matches found</p>
 
 <script>
   // prepare HTML result container for new output
   const resultContainer = document.getElementById("pongList");
+  const noMatchesFound = document.getElementById("noMatchesFound");
   // prepare URL's to allow easy switch from deployment and localhost
   //const url = "http://127.0.0.1:8086/api/pong"
   const url = "https://pythonalflask.tk/api/pong"
@@ -61,6 +64,11 @@ Be able to search up who has been playing, who is doing well in pong, and more.
           }
         }
       }
+    }
+    if (!matchesFound) {
+      noMatchesFound.style.display = "block";
+    } else {
+      noMatchesFound.style.display = "none";
     }
   }
 
