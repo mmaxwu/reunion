@@ -16,7 +16,6 @@ Be able to search up who has been playing, who is doing well in pong, and more.
   </tr>
   <tbody id="pongList">
   </tbody>
-  <tr>No matches found</tr>
 </table>
 <p id="noMatchesFound" style="display:none;">No matches found</p>
 
