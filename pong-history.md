@@ -57,11 +57,7 @@ Be able to search up who has been playing, who is doing well in pong, and more.
             matchesFound = true;
             break;
           } else {
-            const tr = document.createElement("tr");
-            const td = document.createElement("td");
-            td.innerHTML = "no matches found";
-            tr.appendChild(td);
-            resultContainer.appendChild(tr);
+            tr[i].style.display = "none";
           }
         }
       }
