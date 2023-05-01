@@ -31,7 +31,7 @@ Be able to search up who has been playing, who is doing well in pong, and more.
   // Load users on page entry
   read_games();
 
-  // Bind search function to search input field
+  // search function gets connected to the input
   document.getElementById("searchInput").addEventListener("keyup", function() {
     search_table();
   });
@@ -57,7 +57,11 @@ Be able to search up who has been playing, who is doing well in pong, and more.
             matchesFound = true;
             break;
           } else {
-            tr[i].style.display = "none";
+            const tr = document.createElement("tr");
+            const td = document.createElement("td");
+            td.innerHTML = "no matches found";
+            tr.appendChild(td);
+            resultContainer.appendChild(tr);
           }
         }
       }
